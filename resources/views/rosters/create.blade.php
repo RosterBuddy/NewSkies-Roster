@@ -1,8 +1,17 @@
+@extends('layouts.app')
+
+@section('content')
 <form action="{{ route('roster.store') }}" method="post">
     {{ csrf_field() }}
-    Agents name:
+    Select Agent Name:
     <br />
-    <input type="text" name="name" />
+    <select name="user_id">
+      @foreach ($users as $user)
+        <option name="user_id" value="{{$user->id}}">{{$user->name}}</option>  
+      @endforeach
+    </select>    
+    
+    
     <br /><br />
     Description:
     <br />
@@ -21,3 +30,4 @@
 
 <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+@endsection
