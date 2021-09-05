@@ -8,6 +8,16 @@
     text-align: center;   
 }
 
+.menu-container{
+    width:21%;
+    /*border: 1px solid #000;*/
+    padding-top: 10px;
+}
+.action-container{
+    display:inline-block;
+    margin-bottom: 5px;
+}
+
 /*This is modifying the btn-primary colors but you could create your own .btn-something class as well*/
 .btn-primary {
     color: #fff;
@@ -24,8 +34,28 @@
 </style>
 
 <div class="center-screen">
-    <a style="margin-right: 2%;" class="btn btn-primary btn-lg" href="{{route('admin.create')}}" role="button">Update Roster</a>
-    <a style="margin-left: 2%;"  class="btn btn-primary btn-lg" href="#" role="button">Update User Profile</a>
+    <div class="menu-container">
+        <div class="button-container">
+            <div style="margin-right: 6%;" class="action-container">
+                <a  class="btn btn-primary btn-lg" href="{{route('admin.create')}}" role="button">Update Roster</a>
+            </div>
+            <div style="margin-right: 6%;" class="action-container">
+                <a class="btn btn-primary btn-lg" href="{{route('admin.newuser')}}" role="button">Create User Profile</a>
+            </div>
+            <div style="margin-right: 6%; margin-top: 5%;" class="action-container">
+                <a class="btn btn-primary btn-lg" href="#" role="button">Place Holder</a>
+            </div>
+            <div style="margin-right: 6%; margin-top: 5%;" class="action-container">
+                <a class="btn btn-primary btn-lg" href="#" role="button">Update User Profile</a>
+            </div>
+            <div style="margin-right: 6%; margin-top: 5%;" class="action-container">
+                <a class="btn btn-primary btn-lg" href="#" role="button">Place Holder</a>
+            </div>
+            <div style="margin-right: 6%; margin-top: 5%;" class="action-container">
+                <a class="btn btn-primary btn-lg" href="#" role="button">Place Holder</a>
+            </div>
+        </div>
+    </div>
 </div>
 
 @endsection
