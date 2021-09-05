@@ -21,14 +21,12 @@ class RostersController extends Controller
 
     public function create()
     {
-        $users = User::all();
-        return view('rosters.create', compact('users'));
+        //
     }
 
     public function store(Request $request)
     {
-        Roster::create($request->all());
-        return redirect()->route('roster.index');
+        //
     }
     /**
      * Display the specified resource.
