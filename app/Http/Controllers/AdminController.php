@@ -102,4 +102,15 @@ class AdminController extends Controller
         toastr()->success('User Created Successfully!');
         return redirect()->route('admin.index');
     }
+    
+    public function user_calendar() {
+        $users = User::all();
+        return view('admin.roster.list', compact('users'));
+    }
+
+    public function show_user_calendar($id) {
+        $roster = Roster::find($id);
+        $user = User::find($id);
+        return view('admin.roster.show', compact('roster', 'user'));
+    }
 }
