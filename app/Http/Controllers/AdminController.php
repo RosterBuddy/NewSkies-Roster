@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Roster;
 use App\User;
-
+use Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\RegistersUsers;
 class AdminController extends Controller
 {
     /**
@@ -26,13 +29,13 @@ class AdminController extends Controller
     public function create()
     {
         $users = User::all();
-        return view('admin.roster_create', compact('users'));
+        return view('admin.roster.roster_create', compact('users'));
     }
 
     public function store(Request $request)
     {
         Roster::create($request->all());
-        return redirect()->route('roster.index');
+        return redirect()->route('admin.index');
     }
 
     /**
@@ -78,5 +81,25 @@ class AdminController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function makeuser(){
+        return view('admin.users.new_user');
+    }
+
+    public function createuser(Request $request) {
+        $validated = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+
+        User::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => Hash::make($request['password']),
+        ]);
+        toastr()->success('User Created Successfully!');
+        return redirect()->route('admin.index');
     }
 }
