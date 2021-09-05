@@ -18,7 +18,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    
+    @toastr_css    
 </head>
 <body>
     <div id="app">
@@ -84,5 +84,7 @@
             @yield('content')
         </main>
     </div>
+    @toastr_js
+    @toastr_render
 </body>
 </html>
