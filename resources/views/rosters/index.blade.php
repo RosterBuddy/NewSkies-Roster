@@ -1,8 +1,7 @@
-<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.css' />
+@extends('layouts.app')
+@section('content')
 
-<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.js'></script>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.css' />
 
 <style>
 html, body {
@@ -20,8 +19,12 @@ html, body {
     color: #fff; /* bootstrap default styles make it black. undo */
 }
 </style>
+
 <div id='calendar'></div>
 
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.js'></script>
 
 <script>
     $(document).ready(function() {
@@ -46,8 +49,8 @@ html, body {
                 @foreach($rosters as $roster)
                     {
                         title : '{{$roster->user->name}}',
-                        backgroundColor : 'rgb(255,0,0)',
-                        eventBorderColor : 'rgb(255,0,0)',
+                        backgroundColor : '{{$roster->user->color}}',
+                        eventBorderColor : '{{$roster->user->color}}',
                         start : '{{ $roster->shift_start }}',
                         end : '{{ $roster->shift_end }}',
                         url : '{{ route('roster.edit', $roster->id) }}'
@@ -57,3 +60,4 @@ html, body {
         })
     });
 </script>
+@endsection
