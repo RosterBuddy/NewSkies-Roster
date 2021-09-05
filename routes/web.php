@@ -23,4 +23,6 @@ Route::resource('roster', 'RostersController');
 
 Route::resource('profile', 'ProfileController');
 
-Route::resource('admin', 'AdminController');
+Route::group(['middleware' => ['admin']], function () {
+    Route::resource('admin', 'AdminController');
+});
