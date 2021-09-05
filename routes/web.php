@@ -23,8 +23,10 @@ Route::resource('profile', 'ProfileController');
 
 Route::group(['middleware' => ['admin']], function () {
     Route::resource('admin', 'AdminController');
-
+    //Creates new user
     Route::get('admin/new/user', 'AdminController@makeuser')->name('admin.newuser');
-
     Route::post('admin/create/user', 'AdminController@createuser')->name('admin.create.user');
+    //User Roster Updates
+    Route::get('admin/user/roster', 'AdminController@user_calendar')->name('admin.show_user_calendar');
+    Route::get('admin/user/roster/{id}', 'AdminController@show_user_calendar');
 });
