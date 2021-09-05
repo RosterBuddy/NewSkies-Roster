@@ -22,3 +22,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('roster', 'RostersController');
 
 Route::resource('profile', 'ProfileController');
+
+Route::resource('admin', 'AdminController');
