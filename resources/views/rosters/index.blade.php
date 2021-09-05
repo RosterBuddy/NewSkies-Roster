@@ -57,7 +57,6 @@ html, body {
                         eventBorderColor : '{{$roster->user->color}}',
                         start : '{{ $roster->shift_start }}',
                         end : '{{ $roster->shift_end }}',
-                        url : '{{ route('roster.edit', $roster->id) }}'
                     },
                 @endforeach
             ],
