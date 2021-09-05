@@ -12,7 +12,7 @@
     <tr>
         <th>{{$user->name}}</th>
         <th>{{$user->email}}</th>
-        <th><a href="{{$user->id}}">Show Roster</a></th>
+        <th><a href="{{ route('admin.show_user_calendar',$user->id)}}">Show Roster</a></th>
     </tr>
     @endforeach
     

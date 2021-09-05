@@ -43,7 +43,7 @@
                 <a class="btn btn-primary btn-lg" href="{{route('admin.newuser')}}" role="button">Create User Profile</a>
             </div>
             <div style="margin-right: 6%; margin-top: 5%;" class="action-container">
-                <a class="btn btn-primary btn-lg" href="{{route('admin.show_user_calendar')}}" role="button">Update Roster</a>
+                <a class="btn btn-primary btn-lg" href="{{route('admin.show_user')}}" role="button">Update Roster</a>
             </div>
             <div style="margin-right: 6%; margin-top: 5%;" class="action-container">
                 <a class="btn btn-primary btn-lg" href="#" role="button">Update User Profile</a>
