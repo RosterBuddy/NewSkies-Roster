@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Roster;
+use App\User;
 
 class RostersController extends Controller
 {
@@ -20,7 +21,8 @@ class RostersController extends Controller
 
     public function create()
     {
-        return view('rosters.create');
+        $users = User::all();
+        return view('rosters.create', compact('users'));
     }
 
     public function store(Request $request)
