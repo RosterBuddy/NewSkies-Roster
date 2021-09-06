@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Roster;
 use App\User;
 use Auth;
+use Carbon\Carbon;
+
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -109,8 +111,22 @@ class AdminController extends Controller
     }
 
     public function show_user_calendar($id) {
-        $roster = Roster::find($id);
+        $rosters = Roster::all();
         $user = User::find($id);
-        return view('admin.roster.show', compact('roster', 'user'));
+        return view('admin.roster.show', compact('rosters', 'user', 'id'));
+    }
+
+    public function edit_user_calendar($id) {
+        $roster = Roster::find($id);
+
+        $starttime = Carbon::createFromFormat('Y-m-d H:i:s', $roster->shift_start)->format('Y-m-d\TH:i');
+        $endtime = Carbon::createFromFormat('Y-m-d H:i:s', $roster->shift_end)->format('Y-m-d\TH:i');
+        
+
+        return view('admin.roster.edit', compact('roster', 'starttime', 'endtime'));
+    }
+
+    public function update_user_calendar($id){
+        # code...
     }
 }
