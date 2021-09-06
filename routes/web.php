@@ -33,6 +33,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::post('admin/create/user', 'AdminController@createuser')->name('admin.create.user');
     //User Roster Updates
     Route::get('admin/user/roster', 'AdminController@user_calendar')->name('admin.show_user');
-    Route::get('admin/user/roster/{id}', 'AdminController@show_user_calendar')->name('admin.show_user_calendar');
-    Route::post('admin/user/roster/{id}', 'AdminController@edit_user_calendar')->name('admin.edit_user_calendar');
+    Route::get('admin/user/roster/{admin}', 'AdminController@show_user_calendar')->name('admin.show_user_calendar');
+    Route::get('admin/user/roster/{admin}/edit', 'AdminController@edit_user_calendar')->name('admin.edit_user_calendar');
+    Route::patch('admin/user/roster/{admin}/update', 'AdminController@update_user_calendar')->name('admin.update_user_calendar');
 });
