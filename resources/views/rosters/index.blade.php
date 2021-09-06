@@ -35,7 +35,7 @@ html, body {
         // page is now ready, initialize the calendar...
         $('#calendar').fullCalendar({
             // put your options and callbacks here
-            defaultView: 'agendaDay',
+            defaultView: 'month',
             minTime: '06:00:00', /* calendar start Timing */
             maxTime: '24:00:00',  /* calendar end Timing */
             timeFormat: 'H:mm', /* 24Hour Clock Format */
