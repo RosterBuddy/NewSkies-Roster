@@ -46,14 +46,18 @@ html, body {
             },
 
             events : [
-                    {
-                        title : '{{$user->name}}',
-                        backgroundColor : '{{$user->color}}',
-                        eventBorderColor : '{{$user->color}}',
-                        start : '{{ $roster->shift_start }}',
-                        end : '{{ $roster->shift_end }}',
-                        url : '{{ route('roster.edit', $roster->id) }}'
-                    },
+                @foreach($rosters as $roster)
+                    @if($roster->user_id == $id)
+                        {
+                            title : '{{$user->name}}',
+                            backgroundColor : '{{$user->color}}',
+                            eventBorderColor : '{{$user->color}}',
+                            start : '{{ $roster->shift_start }}',
+                            end : '{{ $roster->shift_end }}',
+                            url : '{{ route('admin.edit_user_calendar', $id) }}'
+                        },
+                    @endif
+                @endforeach
             ],
         })
     });
