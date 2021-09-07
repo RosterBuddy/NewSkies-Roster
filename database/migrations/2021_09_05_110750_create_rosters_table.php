@@ -15,7 +15,7 @@ class CreateRostersTable extends Migration
     {
         Schema::create('rosters', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('user_id');
             $table->text('description')->nullable();
             $table->dateTime('shift_start');
             $table->dateTime('shift_end');
