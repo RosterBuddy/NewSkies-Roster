@@ -46,7 +46,7 @@
                 <a class="btn btn-primary btn-lg" href="{{route('admin.show_user')}}" role="button">Update Roster</a>
             </div>
             <div style="margin-right: 6%; margin-top: 5%;" class="action-container">
-                <a class="btn btn-primary btn-lg" href="#" role="button">Update User Profile</a>
+                <a class="btn btn-primary btn-lg" href="{{route('admin.select_user_profile')}}" role="button">Update User Profile</a>
             </div>
             <div style="margin-right: 6%; margin-top: 5%;" class="action-container">
                 <a class="btn btn-primary btn-lg" href="#" role="button">Place Holder</a>
