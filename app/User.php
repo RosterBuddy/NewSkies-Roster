@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'team_id', 'isAdmin', 'color'
     ];
 
     /**
@@ -42,5 +42,9 @@ class User extends Authenticatable
             return true;
         }
         else return false;
+    }
+
+    public function Team() {
+        return $this->belongsTo(Team::class);
     }
 }
