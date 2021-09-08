@@ -39,15 +39,25 @@
                                 @enderror
                             </div>
                         </div>
+                        
+                        @foreach ($teams as $team)
+                        
 
+                        @endforeach
                         <!--Insert Team Logic Here-->
-                        <!--<div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
+                        <div class="form-group row">
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Select Team') }}</label>
                             <div class="col-md-6">
-                                <input id="email" type="email" value="{{$user->email}}" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                <select name="team" id="team">
+                                    <option value="{{$user->team_id}}">{{$user->team->team_name}}</option>
+                                    @foreach ($teams as $team)
+                                        @if($team->id != $user->team_id)
+                                            <option value="{{$team->id}}">{{$team->team_name}}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
                             </div>
-                        </div>-->
+                        </div>
 
                         <!--Insert isAdmin Here-->
                         <div class="form-group row">

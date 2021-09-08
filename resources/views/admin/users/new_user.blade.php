@@ -61,6 +61,29 @@
                             </div>
                         </div>
 
+                        <!--Insert Team Logic Here-->
+                        <div class="form-group row">
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Select Team') }}</label>
+                            <div class="col-md-6">
+                                <select name="team" id="team">
+                                    @foreach ($teams as $team)
+                                        <option value="{{$team->id}}">{{$team->team_name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
+                        <!--Insert isAdmin Here-->
+                        <div class="form-group row">
+                            <label for="isAdmin" class="col-md-4 col-form-label text-md-right">{{ __('Is user an Admin?') }}</label>
+                            <div class="col-md-6">
+                                <select name="isAdmin" id="isAdmin">
+                                    <option value="0">No</option>
+                                    <option value="1">Yes</option>
+                                </select>
+                            </div>
+                        </div>
+
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
