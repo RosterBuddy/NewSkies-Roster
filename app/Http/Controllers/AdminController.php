@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Roster;
 use App\User;
+use App\Team;
 use Auth;
 use Carbon\Carbon;
 
@@ -86,7 +87,8 @@ class AdminController extends Controller
     }
 
     public function makeuser(){
-        return view('admin.users.new_user');
+        $teams = Team::all();
+        return view('admin.users.new_user', compact('teams'));
     }
 
     public function createuser(Request $request) {
@@ -100,6 +102,8 @@ class AdminController extends Controller
             'name' => $request['name'],
             'email' => $request['email'],
             'password' => Hash::make($request['password']),
+            'team_id' => $request['team'],
+            'isAdmin' => $request['isAdmin'],
         ]);
         toastr()->success('User Created Successfully!');
         return redirect()->route('admin.index');
@@ -112,8 +116,8 @@ class AdminController extends Controller
     
     public function view_user_profile($id){
         $user = User::find($id);
-
-        return view('admin.users.view_user', compact('user'));
+        $teams = Team::all();
+        return view('admin.users.view_user', compact('user', 'teams'));
     }
 
     public function update_user_profile(Request $request, $id) {
@@ -126,6 +130,7 @@ class AdminController extends Controller
         
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->team_id = $request->team;
         $user->isAdmin = $request->isAdmin;
         $user->save();
 
