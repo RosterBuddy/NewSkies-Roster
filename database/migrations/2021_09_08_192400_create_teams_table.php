@@ -15,10 +15,15 @@ class CreateTeamsTable extends Migration
     {
         Schema::create('teams', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('team_lead_id');
-            $table->string('user_id');
+            $table->string('team_name');
             $table->timestamps();
         });
+
+        DB::table('teams')->insert(["team_name" => "Unassigned", "created_at" => NOW(), "updated_at" => NOW()]);
+        DB::table('teams')->insert(["team_name" => "Coms", "created_at" => NOW(), "updated_at" => NOW()]);
+        DB::table('teams')->insert(["team_name" => "Disruptions", "created_at" => NOW(), "updated_at" => NOW()]);
+        DB::table('teams')->insert(["team_name" => "Reaccom", "created_at" => NOW(), "updated_at" => NOW()]);
+        DB::table('teams')->insert(["team_name" => "Systems", "created_at" => NOW(), "updated_at" => NOW()]);
     }
 
     /**
