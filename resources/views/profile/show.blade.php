@@ -46,14 +46,17 @@ html, body {
             },
 
             events : [
-                    {
-                        title : '{{$user->name}}',
-                        backgroundColor : '{{$user->color}}',
-                        eventBorderColor : '{{$user->color}}',
-                        start : '{{ $roster->shift_start }}',
-                        end : '{{ $roster->shift_end }}',
-                        url : '{{ route('roster.edit', $roster->id) }}'
-                    },
+                @foreach($rosters as $roster)
+                    @if($roster->user_id == Auth::id())
+                        {
+                            title : '{{$roster->user->name}}',
+                            backgroundColor : '{{$roster->user->color}}',
+                            eventBorderColor : '{{$roster->user->color}}',
+                            start : '{{ $roster->shift_start }}',
+                            end : '{{ $roster->shift_end }}',
+                        },
+                    @endif
+                @endforeach
             ],
         })
     });
