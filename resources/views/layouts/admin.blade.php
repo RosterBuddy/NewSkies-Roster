@@ -56,6 +56,10 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                @if(Auth::user()->isAdmin)
+                                    <a class="dropdown-item" href="{{ route('admin.index')}}">Admin-Area</a>
+                                @endif
+                                
                                 <a class="dropdown-item" href="{{ route('profile.show', Auth::id()) }}">Profile</a>
 
                                 <a class="dropdown-item" href="{{ route('roster.index') }}">Roster</a>
