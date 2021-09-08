@@ -1,6 +1,6 @@
-@extends('layouts.app')
-
+@extends('layouts.admin')
 @section('content')
+
 <form action="{{ route('admin.update_user_calendar', $roster->id) }}" method="post">
     @csrf
     @method('PATCH')
