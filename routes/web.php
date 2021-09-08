@@ -35,8 +35,8 @@ Route::group(['middleware' => ['admin']], function () {
     //Update User Route
     //This route needs to be changed to admin/user and remove update from the middle
     Route::get('admin/update/user', 'AdminController@select_user_profile')->name('admin.select_user_profile');
-    Route::get('admin/user/{admin}', 'AdminController@view_user_profile')->name('admin.view_user_profile');
-    Route::patch('admin/user/{admin}/update', 'AdminController@update_user_profile')->name('admin.update_user_profile');
+    Route::get('admin/update/user/{admin}', 'AdminController@view_user_profile')->name('admin.view_user_profile');
+    Route::patch('admin/update/user/{admin}/update', 'AdminController@update_user_profile')->name('admin.update_user_profile');
 
 
     //User Roster Updates
