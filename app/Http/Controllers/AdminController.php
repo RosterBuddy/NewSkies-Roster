@@ -104,6 +104,39 @@ class AdminController extends Controller
         toastr()->success('User Created Successfully!');
         return redirect()->route('admin.index');
     }
+
+    public function select_user_profile(){
+        $users = User::all();
+        return view('admin.users.select_user', compact('users'));
+    }
+    
+    public function view_user_profile($id){
+        $user = User::find($id);
+
+        return view('admin.users.view_user', compact('user'));
+    }
+
+    public function update_user_profile(Request $request, $id) {
+        $validated = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255'],
+        ]);
+
+        $user = User::find($id);
+        
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->isAdmin = $request->isAdmin;
+        $user->save();
+
+
+        toastr()->success('User Updated Successfully!');
+        return redirect()->route('admin.select_user_profile');
+    }
+
+
+
+    //===================Calendar Stuff======================//
     
     public function user_calendar() {
         $users = User::all();
