@@ -49,10 +49,10 @@ class ProfileController extends Controller
      */
     public function show($id)
     {
-        $user = User::findorFail(Auth::id());
+        $user = User::findorFail($id);
         $rosters = Roster::all();
         //check if AuthID == $id or else show error?
-        return view('profile.show', compact('user', 'rosters'));
+        return view('profile.show', compact('user', 'rosters', 'id'));
     }
 
     /**

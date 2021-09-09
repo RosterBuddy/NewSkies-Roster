@@ -47,7 +47,7 @@ html, body {
 
             events : [
                 @foreach($rosters as $roster)
-                    @if($roster->user_id == Auth::id())
+                    @if($roster->user_id == $id)
                         {
                             title : '{{$roster->user->name}}',
                             backgroundColor : '{{$roster->user->color}}',
