@@ -8,6 +8,7 @@
         Select Agent Name:
         <br />
         <select name="user_id">
+          <option name="user_id" value="">Select A User</option>  
           @foreach ($users as $user)
             <option name="user_id" value="{{$user->id}}">{{$user->name}}</option>  
           @endforeach
