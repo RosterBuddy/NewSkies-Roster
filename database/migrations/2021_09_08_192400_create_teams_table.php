@@ -22,7 +22,6 @@ class CreateTeamsTable extends Migration
         DB::table('teams')->insert(["team_name" => "Unassigned", "created_at" => NOW(), "updated_at" => NOW()]);
         DB::table('teams')->insert(["team_name" => "Coms", "created_at" => NOW(), "updated_at" => NOW()]);
         DB::table('teams')->insert(["team_name" => "Disruptions", "created_at" => NOW(), "updated_at" => NOW()]);
-        DB::table('teams')->insert(["team_name" => "Reaccom", "created_at" => NOW(), "updated_at" => NOW()]);
         DB::table('teams')->insert(["team_name" => "Systems", "created_at" => NOW(), "updated_at" => NOW()]);
     }
 
