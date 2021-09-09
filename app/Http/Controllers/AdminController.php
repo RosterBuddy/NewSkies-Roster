@@ -8,6 +8,8 @@ use App\User;
 use App\Team;
 use Auth;
 use Carbon\Carbon;
+use Carbon\CarbonPeriod;
+use Carbon\CarbonInterval;
 
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -166,5 +168,24 @@ class AdminController extends Controller
 
     public function update_user_calendar($id){
         # code...
+    }
+
+
+    public function test() {
+        return view('admin.test');
+    }
+
+    public function test_upload(Request $request){
+
+        Roster::create([
+            'user_id' => "1",
+            'description' => $request->description,
+            'shift_start' => $request->shift_start,
+            'shift_end' => $request->shift_end,
+        ]);
+
+
+        return redirect()->route('admin.select_user_profile');
+
     }
 }
