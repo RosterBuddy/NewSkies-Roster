@@ -20,7 +20,24 @@ html, body {
 }
 </style>
 
-<div id='calendar'></div>
+<h3>Block dates</h3>
+<label for="">Start</label>
+<input type="date" value="<?= date('Y-m-d') ?>" id="datestart">
+<label for=""1>End</label>
+<input type="date" value="<?= date('Y-m-d') ?>" id="dateend">
+<br>
+<br>
+<br>
+<br>
+<H3>Select Start and Finish Time</H3>
+<label for="time">Start Time:</label>
+<input type="time" id="start" class="start"><br>
+<label for="time">End Time:</label>
+<input type="time" id="finish" class="finish"><br>
+
+<button class="btn btn-success save-data">Save</button>
+
+
 
 <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js'></script>
@@ -38,12 +55,18 @@ html, body {
                 color: 'blue'
             }, ];
 
-            // define the range of events to generate
-            var startDay = moment("2021-09-20");
-            var endDay = moment("2021-09-27");
-
             // generate the events
             var events = [];
+
+            $(".save-data").click(function(err, event){
+                // define the range of events to generate
+                var datestart = document.getElementById("datestart").value;
+                var dateend = document.getElementById("dateend").value;    
+
+                var startDay = moment(datestart);
+                var endDay = moment(dateend);
+
+
             // we loop from the start until we have passed the end day
             // the way the code is defined, it will always complete a schedule segment
             for (var s = 0, day = startDay; day.isBefore(endDay);) {
@@ -67,27 +90,37 @@ html, body {
             s = (s + 1) % schedule.length;
             }
 
-            
-            for(let i = 0; i < events.length; i++){
-                datewitnotime = events[i].start._d.toISOString()
-                var date = moment(datewitnotime).format('YYYY/MM/DD HH:mm')
-                title = events[i].title
+        });
 
-                var givemedate = title + " " + date;
                 $(".save-data").click(function(err, event){
-                    let _token   = $('meta[name="csrf-token"]').attr('content');
+                    for(let i = 0; i < events.length; i++){
+                        datewitnotime = events[i].start._d.toISOString()
+                        var date = moment(datewitnotime).format('YYYY/MM/DD')
+
+
+                        title = events[i].title
+
+                        var start = document.getElementById("start").value;
+                        var finish = document.getElementById("finish").value;
+
+                        shift_start = date + " " + start;
+                        shift_finish = date + " " + finish;
+
+
+                        let _token   = $('meta[name="csrf-token"]').attr('content');
                     $.ajax({
-                        url: "test/upload/",
-                        type:"POST",
-                        data:{
-                            description:title,
-                            shift_start:date,
-                            shift_end:date,
-                            _token: _token
-                        },
-                    });
+                            url: "test/upload/",
+                            type:"POST",
+                            data:{
+                                description:title,
+                                shift_start:shift_start,
+                                shift_end:shift_finish,
+                                _token: _token
+                            },
+                        });
+                    }
                 });
-            }
+            
             
 
         // page is now ready, initialize the calendar...
@@ -110,8 +143,5 @@ html, body {
         })
     });
 </script>
-
-<button class="btn btn-success save-data">Save</button>
-
 
 @endsection
