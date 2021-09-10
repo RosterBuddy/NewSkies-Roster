@@ -51,13 +51,15 @@ html, body {
 
             events : [
                 @foreach($rosters as $roster)
-                    {
-                        title : '{{$roster->user->name}}',
-                        backgroundColor : '{{$roster->user->color}}',
-                        eventBorderColor : '{{$roster->user->color}}',
-                        start : '{{ $roster->shift_start }}',
-                        end : '{{ $roster->shift_end }}',
-                    },
+                    @if($roster->description == "work" || $roster->description == null)
+                        {
+                            title : '{{$roster->user->name}}',
+                            backgroundColor : '{{$roster->user->color}}',
+                            eventBorderColor : '{{$roster->user->color}}',
+                            start : '{{ $roster->shift_start }}',
+                            end : '{{ $roster->shift_end }}',
+                        },
+                    @endif
                 @endforeach
             ],
         })

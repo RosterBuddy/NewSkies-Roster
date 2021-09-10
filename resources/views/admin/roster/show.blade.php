@@ -48,14 +48,15 @@ html, body {
             events : [
                 @foreach($rosters as $roster)
                     @if($roster->user_id == $id)
-                        {
-                            title : '{{$user->name}}',
-                            backgroundColor : '{{$user->color}}',
-                            eventBorderColor : '{{$user->color}}',
-                            start : '{{ $roster->shift_start }}',
-                            end : '{{ $roster->shift_end }}',
-                            url : '{{ route('admin.edit_user_calendar', $roster->id) }}'
-                        },
+                        @if($roster->description == "work" || $roster->description == null)
+                            {
+                                title : '{{$roster->user->name}}',
+                                backgroundColor : '{{$roster->user->color}}',
+                                eventBorderColor : '{{$roster->user->color}}',
+                                start : '{{ $roster->shift_start }}',
+                                end : '{{ $roster->shift_end }}',
+                            },
+                        @endif
                     @endif
                 @endforeach
             ],
