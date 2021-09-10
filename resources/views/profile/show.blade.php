@@ -48,13 +48,23 @@ html, body {
             events : [
                 @foreach($rosters as $roster)
                     @if($roster->user_id == $id)
-                        {
-                            title : '{{$roster->user->name}}',
-                            backgroundColor : '{{$roster->user->color}}',
-                            eventBorderColor : '{{$roster->user->color}}',
-                            start : '{{ $roster->shift_start }}',
-                            end : '{{ $roster->shift_end }}',
-                        },
+                        @if($roster->description == "work")
+                            {
+                                title : '{{$roster->user->name}}',
+                                backgroundColor : '{{$roster->user->color}}',
+                                eventBorderColor : '{{$roster->user->color}}',
+                                start : '{{ $roster->shift_start }}',
+                                end : '{{ $roster->shift_end }}',
+                            },
+                        @elseif($roster->description == "off")
+                            {
+                                title : 'OFF',
+                                backgroundColor : '#f1aea6',
+                                eventBorderColor : '#f1aea6',
+                                start : '{{ $roster->shift_start }}',
+                                end : '{{ $roster->shift_end }}',
+                            },
+                        @endif
                     @endif
                 @endforeach
             ],
