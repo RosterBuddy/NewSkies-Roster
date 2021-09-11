@@ -20,11 +20,20 @@ html, body {
 }
 </style>
 
+<h3>Select User</h3>
+<select name="users" id="users">
+    <option value="">Select User</option>
+        @foreach ($users as $user)
+            <option id="users" value="{{$user->id}}">{{$user->name}}</option>
+        @endforeach
+</select>
+<br>
+<br>
 <h3>Block dates</h3>
 <label for="">Start</label>
-<input type="date" value="<?= date('Y-m-d') ?>" id="datestart">
+<input type="date" value="<?= date('Y-m-d') ?>" id="datestart"><br>
 <label for=""1>End</label>
-<input type="date" value="<?= date('Y-m-d') ?>" id="dateend">
+<input type="date" value="<?= date('Y-m-d') ?>" id="dateend"><br>
 <br>
 <br>
 <br>
@@ -103,6 +112,9 @@ html, body {
                         var start = document.getElementById("start").value;
                         var finish = document.getElementById("finish").value;
 
+                        var user_id = document.getElementById("users").value;
+
+
                         shift_start = date + " " + start;
                         shift_finish = date + " " + finish;
 
@@ -113,6 +125,7 @@ html, body {
                             type:"POST",
                             data:{
                                 description:title,
+                                user_id:user_id,
                                 shift_start:shift_start,
                                 shift_end:shift_finish,
                                 _token: _token
