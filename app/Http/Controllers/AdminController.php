@@ -37,6 +37,16 @@ class AdminController extends Controller
         return view('admin.roster.roster_create', compact('users'));
     }
 
+    public function test_upload(Request $request){
+            Roster::create([
+                'user_id' => $request->user_id,
+                'description' => $request->description,
+                'shift_start' => $request->shift_start,
+                'shift_end' => $request->shift_end,
+            ]);
+        return redirect()->route('admin.select_user_profile');
+    }
+
     public function store(Request $request)
     {
         Roster::create($request->all());
@@ -163,29 +173,10 @@ class AdminController extends Controller
         $endtime = Carbon::createFromFormat('Y-m-d H:i:s', $roster->shift_end)->format('Y-m-d\TH:i');
         
 
-        return view('admin.roster.edit', compact('roster', 'starttime', 'endtime'));
+        return view('admin.roster.edit', compact('rost+er', 'starttime', 'endtime'));
     }
 
     public function update_user_calendar($id){
         # code...
-    }
-
-
-    public function test() {
-        return view('admin.test');
-    }
-
-    public function test_upload(Request $request){
-
-        Roster::create([
-            'user_id' => "1",
-            'description' => $request->description,
-            'shift_start' => $request->shift_start,
-            'shift_end' => $request->shift_end,
-        ]);
-
-
-        return redirect()->route('admin.select_user_profile');
-
     }
 }
