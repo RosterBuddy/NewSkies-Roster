@@ -27,7 +27,7 @@ Route::group(['middleware' => ['isLoggedIn']], function (){
 
 //User must be admin to access this.
 Route::group(['middleware' => ['admin']], function () {
-    Route::get('admin/test', 'AdminController@test');
+    Route::get('admin/test', 'AdminController@test')->name('admin.test');
     Route::post('admin/test/upload/', 'AdminController@test_upload')->name('admin.test_upload');
 
     Route::resource('admin', 'AdminController');
