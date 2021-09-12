@@ -37,7 +37,7 @@ class AdminController extends Controller
         return view('admin.roster.roster_create', compact('users'));
     }
 
-    public function test_upload(Request $request){
+    public function create_block(Request $request){
             Roster::create([
                 'user_id' => $request->user_id,
                 'description' => $request->description,
