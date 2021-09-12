@@ -31,7 +31,7 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function block()
     {
         $users = User::all();
         return view('admin.roster.roster_create', compact('users'));
@@ -173,7 +173,7 @@ class AdminController extends Controller
         $endtime = Carbon::createFromFormat('Y-m-d H:i:s', $roster->shift_end)->format('Y-m-d\TH:i');
         
 
-        return view('admin.roster.edit', compact('rost+er', 'starttime', 'endtime'));
+        return view('admin.roster.edit', compact('roster', 'starttime', 'endtime'));
     }
 
     public function update_user_calendar($id){
