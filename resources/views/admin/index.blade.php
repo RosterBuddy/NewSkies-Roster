@@ -37,7 +37,7 @@
     <div class="menu-container">
         <div class="button-container">
             <div style="margin-right: 6%;" class="action-container">
-                <a  class="btn btn-primary btn-lg" href="{{route('admin.create')}}" role="button">Create Roster</a>
+                <a  class="btn btn-primary btn-lg" href="{{route('admin.block')}}" role="button">Add Roster Block</a>
             </div>
             <div style="margin-right: 6%;" class="action-container">
                 <a class="btn btn-primary btn-lg" href="{{route('admin.newuser')}}" role="button">Create User Profile</a>
