@@ -21,20 +21,6 @@
         Block Finish Date:
         <br />
         <input type="date" value="<?= date('Y-m-d') ?>" id="dateend"><br>
-        <br />
-        <br />
-        <!--<label for="time">Start Time:</label>
-        <input type="time" id="start" class="start">
-        <br>
-        <br>
-        <label for="time">End Time:</label>
-        <input type="time" id="finish" class="finish">
-        <br>
-        <br>-->
-        <select name="shift_status" id="shift_status">
-          <option value="early">Early</option>
-          <option value="late">Late</option>
-        </select>
         <br>
         <br>
         <button class="btn btn-success save-data">Save</button>
@@ -103,31 +89,17 @@
 
 
                       title = events[i].title
-                      //grab option from dropdown
-                      var shift_status = document.getElementById("shift_status").value;
-
-                      //If statement to figure out the times
-                      if(shift_status == "early"){
-                        var start = "06:00";
-                        var finish = "17:00";
-                      }
-
-                      if(shift_status == "late"){
-                        var start = "12:00";
-                        var finish = "23:00";
-                      }
-                      
-
+                    
                       var user_id = document.getElementById("users").value;
 
 
-                      shift_start = date + " " + start;
-                      shift_finish = date + " " + finish;
+                      shift_start = date + " 00:00:00";
+                      shift_finish = date + " 00:00:00";
 
 
                       let _token   = $('meta[name="csrf-token"]').attr('content');
                   $.ajax({
-                          url: "test/upload/",
+                          url: "create/block/",
                           type:"POST",
                           data:{
                               description:title,
@@ -139,27 +111,6 @@
                       });
                   }
               });
-          
-          
-
-      // page is now ready, initialize the calendar...
-      $('#calendar').fullCalendar({
-          // put your options and callbacks here
-          defaultView: 'month',
-          minTime: '06:00:00', /* calendar start Timing */
-          maxTime: '24:00:00',  /* calendar end Timing */
-          timeFormat: 'H:mm', /* 24Hour Clock Format */
-          allDaySlot: false,
-          handleWindowResize: true,   
-          height: $(window).height(),   
-
-          header: {
-              left: 'prev,next today',
-              center: 'title',
-              right: 'month,agendaWeek,agendaDay',
-          },
-          events: events  
-      })
   });
 </script>
 
