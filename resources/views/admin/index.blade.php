@@ -9,7 +9,7 @@
 }
 
 .menu-container{
-    width:21%;
+    width:22%;
     /*border: 1px solid #000;*/
     padding-top: 10px;
 }
