@@ -27,10 +27,8 @@ Route::group(['middleware' => ['isLoggedIn']], function (){
 
 //User must be admin to access this.
 Route::group(['middleware' => ['admin']], function () {
-    Route::get('admin/test', 'AdminController@test')->name('admin.test');
-    Route::post('admin/test/upload/', 'AdminController@test_upload')->name('admin.test_upload');
-
     Route::resource('admin', 'AdminController');
+
     //Creates new user
     Route::get('admin/new/user', 'AdminController@makeuser')->name('admin.newuser');
     Route::post('admin/create/user', 'AdminController@createuser')->name('admin.create.user');
@@ -40,6 +38,9 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('admin/update/user', 'AdminController@select_user_profile')->name('admin.select_user_profile');
     Route::get('admin/update/user/{admin}', 'AdminController@view_user_profile')->name('admin.view_user_profile');
     Route::patch('admin/update/user/{admin}/update', 'AdminController@update_user_profile')->name('admin.update_user_profile');
+
+    //Create Block Roster
+    Route::post('admin/create/block/', 'AdminController@create_block')->name('admin.create_block');
 
 
     //User Roster Updates
