@@ -81,6 +81,9 @@
         </nav>
 
         <main class="py-4">
+            @if(Auth::user()->isAdmin)
+                <a style="margin-left:26.4%" class="btn btn-primary" href="{{route('admin.index')}}" role="button">Create New Schedule</a>
+            @endif
             @yield('content')
         </main>
     </div>
