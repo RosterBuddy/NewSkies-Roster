@@ -27,22 +27,22 @@ Route::group(['middleware' => ['isLoggedIn']], function (){
 
 //User must be admin to access this.
 Route::group(['middleware' => ['admin']], function () {
-    Route::resource('admin', 'AdminController');
+    
+    //Create Block Roster
+    Route::get('admin/block', 'AdminController@block')->name('admin.block');
+    Route::post('admin/create/block/', 'AdminController@create_block')->name('admin.create_block');
 
+
+    Route::resource('admin', 'AdminController');
+    
     //Creates new user
     Route::get('admin/new/user', 'AdminController@makeuser')->name('admin.newuser');
     Route::post('admin/create/user', 'AdminController@createuser')->name('admin.create.user');
-
     //Update User Route
     //This route needs to be changed to admin/user and remove update from the middle
     Route::get('admin/update/user', 'AdminController@select_user_profile')->name('admin.select_user_profile');
     Route::get('admin/update/user/{admin}', 'AdminController@view_user_profile')->name('admin.view_user_profile');
     Route::patch('admin/update/user/{admin}/update', 'AdminController@update_user_profile')->name('admin.update_user_profile');
-
-    //Create Block Roster
-    Route::post('admin/create/block/', 'AdminController@create_block')->name('admin.create_block');
-
-
     //User Roster Updates
     Route::get('admin/user/roster', 'AdminController@user_calendar')->name('admin.show_user');
     Route::get('admin/user/roster/{admin}', 'AdminController@show_user_calendar')->name('admin.show_user_calendar');
