@@ -52,7 +52,7 @@
                 <a class="btn btn-primary btn-lg" href="{{route('teams.index')}}" role="button">View Teams</a>
             </div>
             <div style="margin-right: 6%; margin-top: 5%;" class="action-container">
-                <a class="btn btn-primary btn-lg" href="{{route('admin.test')}}" role="button">Place Holder</a>
+                <a class="btn btn-primary btn-lg" href="#" role="button">Place Holder</a>
             </div>
         </div>
     </div>
