@@ -97,18 +97,25 @@
                       shift_finish = date + " 00:00:00";
 
 
-                      let _token   = $('meta[name="csrf-token"]').attr('content');
+                  $.ajaxSetup({
+                    headers: {
+                      'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                    }
+                  });
                   $.ajax({
-                          url: "create/block/",
+                          url: "create/block",
                           type:"POST",
                           data:{
                               description:title,
                               user_id:user_id,
                               shift_start:shift_start,
                               shift_end:shift_finish,
-                              _token: _token
+                              _token:"{{ csrf_token() }}",
                           },
-                      });
+                          success: function(data){
+                            window.location = "{{route('admin.index')}}";
+                          },
+                    });
                   }
               });
   });
