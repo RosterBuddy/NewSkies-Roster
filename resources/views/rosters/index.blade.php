@@ -20,10 +20,6 @@ html, body {
 }
 </style>
 
-@if(Auth::user()->isAdmin)
-    <a style="margin-left:26.4%" class="btn btn-primary" href="{{route('admin.create')}}" role="button">Create New Schedule</a>
-@endif
-
 <div id='calendar'></div>
 
 <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
