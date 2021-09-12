@@ -17,8 +17,13 @@
       Select Shift Time
     <br/>
     <select name="shift" id="shift">
-      <option value="early">Early</option>
-      <option value="late">Late</option>
+      @if(!$roster->user->isAdmin)
+        <option value="early">Early</option>
+        <option value="late">Late</option>
+      @elseif($roster->user->isAdmin)
+        <option value="tlearly">TL Early</option>
+        <option value="tllate">TL Late</option>
+      @endif
     </select>
     <br/>
     <br/>
