@@ -48,7 +48,7 @@ html, body {
             events : [
                 @foreach($rosters as $roster)
                     @if($roster->user_id == $id)
-                        @if($roster->description == "work")
+                        @if($roster->description == "work" || $roster->description == null)
                             {
                                 title : '{{$roster->user->name}}',
                                 backgroundColor : '{{$roster->user->color}}',
