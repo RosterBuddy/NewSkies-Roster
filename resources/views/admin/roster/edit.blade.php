@@ -17,7 +17,7 @@
       Select Shift Time
     <br/>
     <select name="shift" id="shift">
-      @if(!$roster->user->isAdmin)
+      @if(!$roster->user->isAdmin || Auth::user()->name == "Ciaran Breen")
         <option value="early">Early</option>
         <option value="late">Late</option>
       @elseif($roster->user->isAdmin)
