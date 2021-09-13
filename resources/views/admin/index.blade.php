@@ -9,7 +9,7 @@
 }
 
 .menu-container{
-    width:22%;
+    width:33%;
     /*border: 1px solid #000;*/
     padding-top: 10px;
 }
@@ -49,10 +49,10 @@
                 <a class="btn btn-primary btn-lg" href="{{route('admin.select_user_profile')}}" role="button">Update User Profile</a>
             </div>
             <div style="margin-right: 6%; margin-top: 5%;" class="action-container">
-                <a class="btn btn-primary btn-lg" href="{{route('teams.index')}}" role="button">View Teams</a>
+                <a class="btn btn-primary btn-lg" href="{{route('admin.create')}}" role="button">Create Single Roster</a>
             </div>
             <div style="margin-right: 6%; margin-top: 5%;" class="action-container">
-                <a class="btn btn-primary btn-lg" href="#" role="button">Place Holder</a>
+                <a class="btn btn-primary btn-lg" href="{{route('teams.index')}}" role="button">View Teams</a>
             </div>
         </div>
     </div>
