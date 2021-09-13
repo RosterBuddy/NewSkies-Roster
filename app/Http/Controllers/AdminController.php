@@ -26,6 +26,21 @@ class AdminController extends Controller
         return view('admin.index');
     }
 
+    public function create(){
+        $users = User::all();
+        return view('admin.roster.single_roster_create', compact('users'));
+    }
+
+    public function store(Request $request) {
+        Roster::create([
+            'user_id' => $request->user_id,
+            'shift_start' => $request->shift_start,
+            'shift_end' => $request->shift_end,
+        ]);
+        toastr()->success('Time Successfully Added!');
+        return redirect()->route('admin.create');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -45,12 +60,6 @@ class AdminController extends Controller
                 'shift_end' => $request->shift_end,
             ]);
         return redirect()->route('admin.select_user_profile');
-    }
-
-    public function store(Request $request)
-    {
-        Roster::create($request->all());
-        return redirect()->route('admin.index');
     }
 
     /**
