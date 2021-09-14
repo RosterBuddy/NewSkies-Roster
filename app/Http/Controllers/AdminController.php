@@ -205,7 +205,7 @@ class AdminController extends Controller
             $roster->save();
 
             toastr()->success('Shift Updated Successfully!');
-            return redirect()->route('admin.show_user');
+            return redirect()->route('admin.show_user_calendar', $roster->user_id);
             
         }
 
@@ -221,7 +221,7 @@ class AdminController extends Controller
             $roster->save();
 
             toastr()->success('Shift Updated Successfully!');
-            return redirect()->route('admin.show_user');
+            return redirect()->route('admin.show_user_calendar', $roster->user_id);
         }
 
         if($shift == "tlearly"){
@@ -236,7 +236,7 @@ class AdminController extends Controller
             $roster->save();
 
             toastr()->success('Team Lead Shift Updated Successfully!');
-            return redirect()->route('admin.show_user');
+            return redirect()->route('admin.show_user_calendar', $roster->user_id);
         }
 
         if($shift == "tllate"){
@@ -251,7 +251,7 @@ class AdminController extends Controller
             $roster->save();
 
             toastr()->success('Team Lead Shift Updated Successfully!');
-            return redirect()->route('admin.show_user');
+            return redirect()->route('admin.show_user_calendar', $roster->user_id);
         }
 
     }
