@@ -30,8 +30,13 @@
     Annual Leave
     <br>
     <select name="annualleave" id="annualleave">
-      <option value="no">No</option>
-      <option value="yes">Yes</option>
+      @if($roster->annual_leave == 1)
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      @elseif($roster->annual_leave == 0)
+        <option value="no">No</option>
+        <option value="yes">Yes</option>
+      @endif
     </select>
     <br/>
       <input type="submit" value="Save" />
