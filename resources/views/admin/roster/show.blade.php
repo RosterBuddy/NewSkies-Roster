@@ -51,7 +51,6 @@ html, body {
                         @if($roster->description == "work" || $roster->description == null && $roster->annual_leave == 0)
                             {
                                 title : '{{$roster->user->name}}',
-                                color : '{{$roster->user->color}}',
                                 start : '{{ $roster->shift_start }}',
                                 end : '{{ $roster->shift_end }}',
                                 url : '{{route("admin.edit_user_calendar", $roster->id)}}',
