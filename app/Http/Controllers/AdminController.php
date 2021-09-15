@@ -192,66 +192,77 @@ class AdminController extends Controller
         $shift_end_date = substr($roster->shift_end, 0,10);
 
         $shift = $request->shift;
-
-        if($shift == "early"){
-            $shift_start_time = "06:00";
-            $shift_end_time = "17:00";
-
-            $new_shift_start = $shift_start_date . " " . $shift_start_time;
-            $new_shift_end = $shift_end_date . " " . $shift_end_time;
-
-            $roster->shift_start = $new_shift_start;
-            $roster->shift_end = $new_shift_end;
-            $roster->save();
-
-            toastr()->success('Shift Updated Successfully!');
-            return redirect()->route('admin.show_user_calendar', $roster->user_id);
+        $al = $request->annualleave;
+        
+        if($al == "no"){
+            if($shift == "early"){
+                $shift_start_time = "06:00";
+                $shift_end_time = "17:00";
             
-        }
+                $new_shift_start = $shift_start_date . " " . $shift_start_time;
+                $new_shift_end = $shift_end_date . " " . $shift_end_time;
+            
+                $roster->shift_start = $new_shift_start;
+                $roster->shift_end = $new_shift_end;
+                $roster->save();
+            
+                toastr()->success('Shift Updated Successfully!');
+                return redirect()->route('admin.show_user_calendar', $roster->user_id);
+                
+            }
+        
+            if($shift == "late"){
+                $shift_start_time = "12:00";
+                $shift_end_time = "23:00";
+            
+                $new_shift_start = $shift_start_date . " " . $shift_start_time;
+                $new_shift_end = $shift_end_date . " " . $shift_end_time;
+            
+                $roster->shift_start = $new_shift_start;
+                $roster->shift_end = $new_shift_end;
+                $roster->save();
+            
+                toastr()->success('Shift Updated Successfully!');
+                return redirect()->route('admin.show_user_calendar', $roster->user_id);
+            }
+        
+            if($shift == "tlearly"){
+                $shift_start_time = "07:00";
+                $shift_end_time = "18:00";
+            
+                $new_shift_start = $shift_start_date . " " . $shift_start_time;
+                $new_shift_end = $shift_end_date . " " . $shift_end_time;
+            
+                $roster->shift_start = $new_shift_start;
+                $roster->shift_end = $new_shift_end;
+                $roster->save();
+            
+                toastr()->success('Team Lead Shift Updated Successfully!');
+                return redirect()->route('admin.show_user_calendar', $roster->user_id);
+            }
+        
+            if($shift == "tllate"){
+                $shift_start_time = "10:00";
+                $shift_end_time = "21:00";
+            
+                $new_shift_start = $shift_start_date . " " . $shift_start_time;
+                $new_shift_end = $shift_end_date . " " . $shift_end_time;
+            
+                $roster->shift_start = $new_shift_start;
+                $roster->shift_end = $new_shift_end;
+                $roster->save();
+            
+                toastr()->success('Team Lead Shift Updated Successfully!');
+                return redirect()->route('admin.show_user_calendar', $roster->user_id);
+            }
+        }elseif($al == "yes"){
 
-        if($shift == "late"){
-            $shift_start_time = "12:00";
-            $shift_end_time = "23:00";
-
-            $new_shift_start = $shift_start_date . " " . $shift_start_time;
-            $new_shift_end = $shift_end_date . " " . $shift_end_time;
-
-            $roster->shift_start = $new_shift_start;
-            $roster->shift_end = $new_shift_end;
+            $roster->annual_leave = 1;
             $roster->save();
 
-            toastr()->success('Shift Updated Successfully!');
+            toastr()->success('Annual Leave Added Successfully!');
             return redirect()->route('admin.show_user_calendar', $roster->user_id);
-        }
 
-        if($shift == "tlearly"){
-            $shift_start_time = "07:00";
-            $shift_end_time = "18:00";
-
-            $new_shift_start = $shift_start_date . " " . $shift_start_time;
-            $new_shift_end = $shift_end_date . " " . $shift_end_time;
-
-            $roster->shift_start = $new_shift_start;
-            $roster->shift_end = $new_shift_end;
-            $roster->save();
-
-            toastr()->success('Team Lead Shift Updated Successfully!');
-            return redirect()->route('admin.show_user_calendar', $roster->user_id);
-        }
-
-        if($shift == "tllate"){
-            $shift_start_time = "10:00";
-            $shift_end_time = "21:00";
-
-            $new_shift_start = $shift_start_date . " " . $shift_start_time;
-            $new_shift_end = $shift_end_date . " " . $shift_end_time;
-
-            $roster->shift_start = $new_shift_start;
-            $roster->shift_end = $new_shift_end;
-            $roster->save();
-
-            toastr()->success('Team Lead Shift Updated Successfully!');
-            return redirect()->route('admin.show_user_calendar', $roster->user_id);
         }
 
     }

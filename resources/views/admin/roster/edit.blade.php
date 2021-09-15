@@ -26,6 +26,13 @@
       @endif
     </select>
     <br/>
+    <br>
+    Annual Leave
+    <br>
+    <select name="annualleave" id="annualleave">
+      <option value="no">No</option>
+      <option value="yes">Yes</option>
+    </select>
     <br/>
       <input type="submit" value="Save" />
   </form>
