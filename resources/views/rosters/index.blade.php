@@ -52,10 +52,18 @@ html, body {
             events : [
                 @foreach($rosters as $roster)
                     @if($roster->description == "work" || $roster->description == null)
+                    
                         {
                             title : '{{$roster->user->name}}',
-                            backgroundColor : '{{$roster->user->color}}',
-                            eventBorderColor : '{{$roster->user->color}}',
+                            @if($roster->user->team_id == 1)
+                            color : '{{$unacc}}',
+                            @elseif($roster->user->team_id == 2)
+                            color : '{{$coms}}',
+                            @elseif($roster->user->team_id == 3)
+                            color : '{{$disrupt}}',
+                            @elseif($roster->user->team_id == 4)
+                            color : '{{$system}}',
+                            @endif
                             start : '{{ $roster->shift_start }}',
                             end : '{{ $roster->shift_end }}',
                         },

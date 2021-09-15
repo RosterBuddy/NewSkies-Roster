@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Roster;
 use App\User;
+use App\Team;
 
 class RostersController extends Controller
 {
@@ -16,7 +17,26 @@ class RostersController extends Controller
     public function index()
     {
         $rosters = Roster::all();
-        return view('rosters.index', compact('rosters'));
+        $teams = Team::all();
+
+        $unacc = "";
+        $coms = "";
+        $disrupt = "";
+        $system = "";
+        
+        foreach($teams as $team){
+            if($team->id == 1){
+                $unacc = $team->color;
+            }elseif($team->id == 2){
+                $coms = $team->color;
+            }elseif($team->id == 3){
+                $disrupt = $team->color;
+            }elseif($team->id == 4){
+                $system = $team->color;
+            }
+        }
+
+        return view('rosters.index', compact('rosters', 'teams', 'unacc', 'coms', 'disrupt', 'system'));
     }
 
     public function create()
