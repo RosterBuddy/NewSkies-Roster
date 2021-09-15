@@ -48,7 +48,7 @@ html, body {
             events : [
                 @foreach($rosters as $roster)
                     @if($roster->user_id == $id)
-                        @if($roster->description == "work" || $roster->description == null)
+                        @if($roster->description == "work" || $roster->description == null && $roster->annual_leave == 0)
                             {
                                 title : '{{$roster->user->name}}',
                                 backgroundColor : '{{$roster->user->color}}',
@@ -63,6 +63,14 @@ html, body {
                                 eventBorderColor : '#f1aea6',
                                 start : '{{ $roster->shift_start }}',
                                 end : '{{ $roster->shift_end }}',
+                            },
+                            @elseif($roster->annual_leave == "1")
+                            {
+                                title : 'A/L Day',
+                                color : '#AAABBB',
+                                start : '{{ $roster->shift_start }}',
+                                end : '{{ $roster->shift_end }}',
+                                url : '{{route("admin.edit_user_calendar", $roster->id)}}',
                             },
                         @endif
                     @endif
