@@ -23,20 +23,27 @@ class RostersController extends Controller
         $coms = "";
         $disrupt = "";
         $system = "";
+
+        $tlcoms = "";
+        $tldisrupt = "";
+        $tlsystem = "";
         
         foreach($teams as $team){
             if($team->id == 1){
                 $unacc = $team->color;
             }elseif($team->id == 2){
                 $coms = $team->color;
+                $tlcoms = $team->tl_color;
             }elseif($team->id == 3){
                 $disrupt = $team->color;
+                $tldisrupt = $team->tl_color;
             }elseif($team->id == 4){
                 $system = $team->color;
+                $tlsystem = $team->tl_color;
             }
         }
 
-        return view('rosters.index', compact('rosters', 'teams', 'unacc', 'coms', 'disrupt', 'system'));
+        return view('rosters.index', compact('rosters', 'teams', 'unacc', 'coms', 'disrupt', 'system', 'tlcoms', 'tldisrupt', 'tlsystem'));
     }
 
     public function create()

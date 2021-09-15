@@ -54,15 +54,22 @@ html, body {
                     @if($roster->description == "work" || $roster->description == null && $roster->annual_leave != 1)
                         {
                             title : '{{$roster->user->name}}',
-                            @if($roster->user->team_id == 1)
-                            color : '{{$unacc}}',
-                            @elseif($roster->user->team_id == 2)
-                            color : '{{$coms}}',
-                            @elseif($roster->user->team_id == 3)
-                            color : '{{$disrupt}}',
-                            @elseif($roster->user->team_id == 4)
-                            color : '{{$system}}',
+                            @if($roster->user->isAdmin == 1 && $roster->user->team_id == 2)
+                                color : '{{$tlcoms}}',
+                            @elseif($roster->user->isAdmin == 1 && $roster->user->team_id == 3)
+                                color : '{{$tldisrupt}}',
+                            @elseif($roster->user->isAdmin == 1 && $roster->user->team_id == 4)
+                                color : '{{$tlsystem}}',
                             @endif
+                                @if($roster->user->team_id == 1 && $roster->user->isAdmin != 1)
+                                    color : '{{$unacc}}',
+                                @elseif($roster->user->team_id == 2 && $roster->user->isAdmin != 1)
+                                    color : '{{$coms}}',
+                                @elseif($roster->user->team_id == 3 && $roster->user->isAdmin != 1)
+                                    color : '{{$disrupt}}',
+                                @elseif($roster->user->team_id == 4 && $roster->user->isAdmin != 1)
+                                    color : '{{$system}}',
+                                @endif
                             start : '{{ $roster->shift_start }}',
                             end : '{{ $roster->shift_end }}',
                         },
