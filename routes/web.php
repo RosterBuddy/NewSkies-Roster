@@ -53,4 +53,6 @@ Route::group(['middleware' => ['admin']], function () {
     //Teams Routes
     Route::resource('teams', 'TeamsController');
 
+    Route::get('test', 'AdminController@test');
+
 });
