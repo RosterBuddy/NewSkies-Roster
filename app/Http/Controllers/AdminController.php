@@ -34,6 +34,7 @@ class AdminController extends Controller
     public function store(Request $request) {
         Roster::create([
             'user_id' => $request->user_id,
+            'description' => 'manually set',
             'shift_start' => $request->shift_start,
             'shift_end' => $request->shift_end,
         ]);
