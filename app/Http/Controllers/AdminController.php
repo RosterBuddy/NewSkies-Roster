@@ -264,6 +264,22 @@ class AdminController extends Controller
             return redirect()->route('admin.show_user_calendar', $roster->user_id);
 
         }
+    }
 
+    public function test() {
+        $rosters = Roster::all();
+
+        $missingtimes = [];
+
+        foreach($rosters as $roster){
+            $start = $roster->shift_start;
+            if(substr($start,11, 19) == "00:00:00"){
+               $missingtimes[] = $roster;
+            }
+        }
+
+        return view('admin.test', compact('missingtimes'));
+
+        
     }
 }
