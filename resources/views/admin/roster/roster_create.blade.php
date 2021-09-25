@@ -1,37 +1,44 @@
 @extends('layouts.admin')
 @section('content')
 
-<center>
-  <div>
-        Select Agent Name:
-        <br />
-        <select name="users" id="users">
-            <option value="">Select User</option>
-          @foreach ($users as $user)
-            <option id="users" value="{{$user->id}}">{{$user->name}}</option>
-          @endforeach
-        </select>
-        <br />
-        <br />
-        Block Start Date:
-        <br />
-        <input type="date" value="<?= date('Y-m-d') ?>" id="datestart"><br>
-        <br />
-        <br />
-        Block Finish Date:
-        <br />
-        <input type="date" value="<?= date('Y-m-d') ?>" id="dateend"><br>
-        <br>
-        <br>
-        <button class="btn btn-success save-data">Save</button>
-      
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card text-center">
+        <div class="card-header">
+          Create Roster Block
+        </div>
+        <div class="card-body">
+          Select Agent Name:<br>
+            <select name="users" id="users">
+              <option value="">Select User</option>
+                @foreach ($users as $user)
+                  <option id="users" value="{{$user->id}}">{{$user->name}}</option>
+                @endforeach
+            </select>
+            <br>
+            <br>
+          Block Start Date:<br>
+            <input type="date" value="<?= date('Y-m-d') ?>" id="datestart">
+            <br>
+            <br>
+          Block Finish Date:<br>
+            <input type="date" value="<?= date('Y-m-d') ?>" id="dateend">
+            <br>
+            <br>
+          <button class="btn btn-success save-data">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 
 
     <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.js'></script>
-  </div>
-</center>
+
 
 <script>
   $(document).ready(function() {
