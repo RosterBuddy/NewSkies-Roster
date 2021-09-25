@@ -3,12 +3,12 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
+            <div class="card text-center">
                 <table class="table table-striped">
                     <tr>
                         <th>Team Name</th>
                         <th>No. Members</th>
-                        <th></th>
+                        <th>View Team Members</th>
                     </tr>    
                     @foreach ($teams as $team)
                     <tr>
