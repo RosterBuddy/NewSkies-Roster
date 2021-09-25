@@ -20,7 +20,22 @@ html, body {
 }
 </style>
 
-<div id='calendar'></div>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card text-center">
+                <div class="card-header">
+                    Hi {{$user->name}}
+                </div>
+                <div class="card-body">
+                    <div id='calendar'></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js'></script>
@@ -79,20 +94,4 @@ html, body {
         })
     });
 </script>
-
-<form name="color" id="color" method="post" action="{{route('profile.update', Auth::id())}}" class="form-horizontal">
-    @csrf
-    @method('PATCH')
-        <div class="form-group" style="padding-top: 5px;"><label class="" style="margin-top: -5px;margin-bottom: 10px;"></label>
-            <div class="col-sm-10">
-                Select Your Color: <input type="color" id="favcolor" name="favcolor" value="{{$user->color}}">
-            </div>
-        </div>
-    </form>
-
-    <div style="justify-content: flex-end;padding: 1rem;border-top: 1px solid #e9ecef;">
-        <button type="submit" class="btn btn-primary" form="color"><i class="fa fa-user"></i>Save</button>
-    </div>
-
-
 @endsection
