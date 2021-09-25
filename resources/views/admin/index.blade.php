@@ -33,29 +33,38 @@
 
 </style>
 
-<div class="center-screen">
-    <div class="menu-container">
-        <div class="button-container">
-            <div style="margin-right: 6%;" class="action-container">
-                <a  class="btn btn-primary btn-lg" href="{{route('admin.block')}}" role="button">Add Roster Block</a>
-            </div>
-            <div style="margin-right: 6%;" class="action-container">
-                <a class="btn btn-primary btn-lg" href="{{route('admin.newuser')}}" role="button">Create User Profile</a>
-            </div>
-            <div style="margin-right: 6%; margin-top: 5%;" class="action-container">
-                <a class="btn btn-primary btn-lg" href="{{route('admin.show_user')}}" role="button">Update Roster</a>
-            </div>
-            <div style="margin-right: 6%; margin-top: 5%;" class="action-container">
-                <a class="btn btn-primary btn-lg" href="{{route('admin.select_user_profile')}}" role="button">Update User Profile</a>
-            </div>
-            <div style="margin-right: 6%; margin-top: 5%;" class="action-container">
-                <a class="btn btn-primary btn-lg" href="{{route('admin.create')}}" role="button">Create Single Day</a>
-            </div>
-            <div style="margin-right: 6%; margin-top: 5%;" class="action-container">
-                <a class="btn btn-primary btn-lg" href="{{route('teams.index')}}" role="button">View Teams</a>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card text-center">
+                <div class="card-header">
+                    Team Lead Tools
+                </div>
+                <div class="card-body">
+                    <div style="margin-right: 6%;" class="action-container">
+                        <a  class="btn btn-primary btn-lg" href="{{route('admin.block')}}" role="button">Add Roster Block</a>
+                    </div>
+                    <div style="margin-right: 6%;" class="action-container">
+                        <a class="btn btn-primary btn-lg" href="{{route('admin.newuser')}}" role="button">Create User Profile</a>
+                    </div>
+                    <div style="margin-right: 6%; margin-top: 5%;" class="action-container">
+                        <a class="btn btn-primary btn-lg" href="{{route('admin.show_user')}}" role="button">Update Roster</a>
+                    </div>
+                    <div style="margin-right: 6%; margin-top: 5%;" class="action-container">
+                        <a class="btn btn-primary btn-lg" href="{{route('admin.create')}}" role="button">Create Single Day</a>
+                    </div>
+                    <div style="margin-right: 6%; margin-top: 5%;" class="action-container">
+                        <a class="btn btn-primary btn-lg" href="{{route('admin.select_user_profile')}}" role="button">Update User Profile</a>
+                    </div>
+                    <div style="margin-right: 6%; margin-top: 5%;" class="action-container">
+                        <a class="btn btn-primary btn-lg" href="{{route('teams.index')}}" role="button">View Teams</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
 
 @endsection
