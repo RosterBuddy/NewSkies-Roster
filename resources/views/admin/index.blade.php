@@ -60,6 +60,12 @@
                     <div style="margin-right: 6%; margin-top: 5%;" class="action-container">
                         <a class="btn btn-primary btn-lg" href="{{route('teams.index')}}" role="button">View Teams</a>
                     </div>
+                    <div style="margin-right: 6%; margin-top: 5%;" class="action-container">
+                        <a class="btn btn-primary btn-lg" href="{{route('timing.index')}}" role="button">Update Times</a>
+                    </div>
+                    <div style="margin-right: 6%; margin-top: 5%;" class="action-container">
+                        <a class="btn btn-primary btn-lg" href="{{route('teams.index')}}" role="button">PlaceHolder</a>
+                    </div>
                 </div>
             </div>
         </div>
