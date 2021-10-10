@@ -9,7 +9,7 @@
                         <th>Name</th>
                         <th>Start Time</th>
                         <th>Finish Time</th>
-                        <th><a href="">Create Time</a></th>
+                        <th><a href="{{route('timing.create')}}">Create Time</a></th>
                     </tr>    
                     @foreach($timings as $timing)
                     <tr>
