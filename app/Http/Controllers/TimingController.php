@@ -18,10 +18,14 @@ class TimingController extends Controller
     }
 
     public function create(){
-        Timing::create([
-            'name' => $request['name'],
-            'shift_start' => $request["shift_start"],
-            'shift_end' => $request["shift_end"],
+        return view('admin.team.timings.create');
+    }
+
+    public function store(Request $request){
+         Timing::create([
+            'name' => $request->name,
+            'shift_start' => $request->shift_start,
+            'shift_end' => $request->shift_end,
         ]);
         toastr()->success('Time Created Successfully!');
         return redirect()->route('timing.index');
