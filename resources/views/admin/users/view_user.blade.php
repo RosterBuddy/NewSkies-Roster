@@ -61,7 +61,7 @@
 
                         <!--Insert isAdmin Here-->
                         <div class="form-group row">
-                            <label for="isAdmin" class="col-md-4 col-form-label text-md-right">{{ __('Is user an Admin?') }}</label>
+                            <label for="isAdmin" class="col-md-4 col-form-label text-md-right">{{ __('Is user a Teamlead?') }}</label>
 
                             <div class="col-md-6">
                                 <select name="isAdmin" id="isAdmin">
