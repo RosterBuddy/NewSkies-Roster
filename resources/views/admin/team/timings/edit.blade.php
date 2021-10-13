@@ -12,15 +12,18 @@
         <form action="{{ route('timing.update', $timing->id) }}" method="post">
             @csrf
             @method('PATCH')
-            Shift Start Time:
+            Shift Start Time:<input type="time" value="{{\Carbon\Carbon::createFromFormat('H:i:s', $timing->shift_start)->format('H:i')}}" name="shift_start" class="date" />
             <br>
-            <input type="time" value="{{\Carbon\Carbon::createFromFormat('H:i:s', $timing->shift_start)->format('H:i')}}" name="shift_start" class="date" />
+            <br>Shift End Time:<input type="time" value="{{\Carbon\Carbon::createFromFormat('H:i:s', $timing->shift_end)->format('H:i')}}" name="shift_end" class="date" />
             <br>
-            <br>Shift End Time:
             <br>
-            <input type="time" value="{{\Carbon\Carbon::createFromFormat('H:i:s', $timing->shift_end)->format('H:i')}}" name="shift_end" class="date" />
+            Select User Type:
+            <select name="user_type">
+              <option value="Agent">Agent</option>
+              <option value="Teamlead">Teamlead</option>
+            </select>
             <br>
-            <br>           
+            <br>
             <input type="submit" value="Save"/>
         </form>
       </div>
