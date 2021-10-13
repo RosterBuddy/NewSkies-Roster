@@ -14,6 +14,10 @@ class RostersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+        public function __construct()
+    {
+        $this->middleware(['auth', 'verified']);
+    }
     public function index()
     {
         $rosters = Roster::all();
