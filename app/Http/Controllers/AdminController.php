@@ -201,15 +201,27 @@ class AdminController extends Controller
         if($al == "no"){
             foreach($timings as $timing){
                 if($timing->name == $shift){
+                    if($timing->shift_end == "00:00:00"){
+                        $new_shift_start = $shift_start_date . " " . $timing->shift_start;
+                        $new_shift_end = $shift_end_date . " 23:59:00";
+    
+                        $roster->shift_start = $new_shift_start;
+                        $roster->shift_end = $new_shift_end;
+                        $roster->save();                    
+    
+                        toastr()->success('Shift Updated Successfully!');
+                        return redirect()->route('admin.show_user_calendar', $roster->user_id);
+                    }else{
                     $new_shift_start = $shift_start_date . " " . $timing->shift_start;
                     $new_shift_end = $shift_end_date . " " . $timing->shift_end;
 
                     $roster->shift_start = $new_shift_start;
                     $roster->shift_end = $new_shift_end;
-                     $roster->save();                    
+                    $roster->save();                    
 
                     toastr()->success('Shift Updated Successfully!');
                     return redirect()->route('admin.show_user_calendar', $roster->user_id);
+                    }
                 }
             }
         }elseif($al == "yes"){

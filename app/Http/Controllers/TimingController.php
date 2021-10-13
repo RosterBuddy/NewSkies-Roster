@@ -23,7 +23,6 @@ class TimingController extends Controller
     }
 
     public function store(Request $request){
-            
         Timing::create([
             'name' => $request->shift_name,
             'shift_start' => $request->shift_start,
