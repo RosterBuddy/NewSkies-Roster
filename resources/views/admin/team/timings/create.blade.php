@@ -17,7 +17,15 @@
             <br>
             Shift Start Time:<input type="time" name="shift_start" class="date" />
             <br>
-            <br>Shift End Time:<input type="time" name="shift_end" class="date" />
+            <br>
+            Shift End Time:<input type="time" name="shift_end" class="date" />
+            <br>
+            <br>
+            Select User Type:
+            <select name="user_type">
+              <option value="Agent">Agent</option>
+              <option value="Teamlead">Teamlead</option>
+            </select>
             <br>
             <br>           
             <input type="submit" value="Save"/>

@@ -28,6 +28,7 @@ class TimingController extends Controller
             'name' => $request->shift_name,
             'shift_start' => $request->shift_start,
             'shift_end' => $request->shift_end,
+            'user_type' => $request->user_type,
         ]);
         
         toastr()->success('Time Created Successfully!');
