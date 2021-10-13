@@ -15,7 +15,8 @@ Route::get('/', function () {
     return redirect('login');
 });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
+
 
 
 Route::group(['middleware' => ['isLoggedIn']], function (){
