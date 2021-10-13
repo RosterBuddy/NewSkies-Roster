@@ -62,7 +62,6 @@
                         <!--Insert isAdmin Here-->
                         <div class="form-group row">
                             <label for="isAdmin" class="col-md-4 col-form-label text-md-right">{{ __('Is user a Teamlead?') }}</label>
-
                             <div class="col-md-6">
                                 <select name="isAdmin" id="isAdmin">
                                     @if($user->isAdmin == 1)
@@ -75,8 +74,6 @@
                                 </select>
                             </div>
                         </div>
-
-
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
@@ -85,6 +82,25 @@
                             </div>
                         </div>
                     </form>
+                    <br>
+                    <div class="form-group row">
+                        <label class="col-md-4 text-md-right">Created At:</label>
+                        <div class="col-md-4">
+                            {{\Carbon\Carbon::createFromTimestamp(strtotime($user->created_at))->format('H:i d/m/Y')}}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-4 text-md-right">Updated At:</label>
+                        <div class="col-md-4">
+                            {{\Carbon\Carbon::createFromTimestamp(strtotime($user->updated_at))->format('H:i d/m/Y')}}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-4 text-md-right">Verified At:</label>
+                        <div class="col-md-4">
+                            {{\Carbon\Carbon::createFromTimestamp(strtotime($user->email_verified_at))->format('H:i d/m/Y')}}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
