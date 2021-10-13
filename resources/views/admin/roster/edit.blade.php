@@ -23,13 +23,13 @@
               Select Shift Time
             <br>
           <select name="shift" id="shift">
-            @if(!$roster->user->isAdmin || $roster->user->name == "Ciaran Breen")
-              <option value="early">Early</option>
-              <option value="late">Late</option>
-            @elseif($roster->user->isAdmin)
-              <option value="tlearly">TL Early</option>
-              <option value="tllate">TL Late</option>
-            @endif
+            @foreach($timings as $timing)
+              @if(!$roster->user->isAdmin && $timing->user_type == "Agent")
+                <option value="{{$timing->name}}">{{$timing->name}}</option>
+              @elseif($roster->user->isAdmin && $timing->user_type == "Teamlead")
+                <option value="{{$timing->name}}">{{$timing->name}}</option>
+              @endif
+            @endforeach
           </select>
           <br>
           <br>
