@@ -10,22 +10,18 @@
             Create A New Roster Time
          </div>
         <div class="card-body">
-            <form action="{{ route('timing.store')}}" method="POST">
+          <form action="{{ route('timing.store') }}" method="post">
             @csrf
-                Shift Name:<br>
-                <input type="text" id="name">
-                <br>
-                <br>
-                Start Time:<br>
-                <input type="time" id="shift_start">
-                <br>
-                <br>
-                Finish Time:<br>
-                <input type="time" id="shift_end">
-                <br>
-                <br>
-                <input type="submit" value="Save"/>
-            </form>
+            Name:<input type="text" name="shift_name">
+            <br>
+            <br>
+            Shift Start Time:<input type="time" name="shift_start" class="date" />
+            <br>
+            <br>Shift End Time:<input type="time" name="shift_end" class="date" />
+            <br>
+            <br>           
+            <input type="submit" value="Save"/>
+        </form>
         </div>
       </div>
     </div>
