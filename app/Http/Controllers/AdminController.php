@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Roster;
 use App\User;
 use App\Team;
+use App\Timing;
 use Auth;
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
@@ -178,16 +179,18 @@ class AdminController extends Controller
 
     public function edit_user_calendar($id) {
         $roster = Roster::find($id);
+        $timings = Timing::all();
 
         $starttime = Carbon::createFromFormat('Y-m-d H:i:s', $roster->shift_start)->format('Y-m-d\TH:i');
         $endtime = Carbon::createFromFormat('Y-m-d H:i:s', $roster->shift_end)->format('Y-m-d\TH:i');
         
 
-        return view('admin.roster.edit', compact('roster', 'starttime', 'endtime'));
+        return view('admin.roster.edit', compact('roster', 'starttime', 'endtime', 'timings'));
     }
 
     public function update_user_calendar(Request $request, $id){
         $roster = Roster::find($id);
+        $timings = Timing::all();
 
         $shift_start_date = substr($roster->shift_start, 0,10);
         $shift_end_date = substr($roster->shift_end, 0,10);
@@ -196,65 +199,18 @@ class AdminController extends Controller
         $al = $request->annualleave;
         
         if($al == "no"){
-            if($shift == "early"){
-                $shift_start_time = "06:00";
-                $shift_end_time = "17:00";
-            
-                $new_shift_start = $shift_start_date . " " . $shift_start_time;
-                $new_shift_end = $shift_end_date . " " . $shift_end_time;
-            
-                $roster->shift_start = $new_shift_start;
-                $roster->shift_end = $new_shift_end;
-                $roster->save();
-            
-                toastr()->success('Shift Updated Successfully!');
-                return redirect()->route('admin.show_user_calendar', $roster->user_id);
-                
-            }
-        
-            if($shift == "late"){
-                $shift_start_time = "12:00";
-                $shift_end_time = "23:00";
-            
-                $new_shift_start = $shift_start_date . " " . $shift_start_time;
-                $new_shift_end = $shift_end_date . " " . $shift_end_time;
-            
-                $roster->shift_start = $new_shift_start;
-                $roster->shift_end = $new_shift_end;
-                $roster->save();
-            
-                toastr()->success('Shift Updated Successfully!');
-                return redirect()->route('admin.show_user_calendar', $roster->user_id);
-            }
-        
-            if($shift == "tlearly"){
-                $shift_start_time = "07:00";
-                $shift_end_time = "18:00";
-            
-                $new_shift_start = $shift_start_date . " " . $shift_start_time;
-                $new_shift_end = $shift_end_date . " " . $shift_end_time;
-            
-                $roster->shift_start = $new_shift_start;
-                $roster->shift_end = $new_shift_end;
-                $roster->save();
-            
-                toastr()->success('Team Lead Shift Updated Successfully!');
-                return redirect()->route('admin.show_user_calendar', $roster->user_id);
-            }
-        
-            if($shift == "tllate"){
-                $shift_start_time = "10:00";
-                $shift_end_time = "21:00";
-            
-                $new_shift_start = $shift_start_date . " " . $shift_start_time;
-                $new_shift_end = $shift_end_date . " " . $shift_end_time;
-            
-                $roster->shift_start = $new_shift_start;
-                $roster->shift_end = $new_shift_end;
-                $roster->save();
-            
-                toastr()->success('Team Lead Shift Updated Successfully!');
-                return redirect()->route('admin.show_user_calendar', $roster->user_id);
+            foreach($timings as $timing){
+                if($timing->name == $shift){
+                    $new_shift_start = $shift_start_date . " " . $timing->shift_start;
+                    $new_shift_end = $shift_end_date . " " . $timing->shift_end;
+
+                    $roster->shift_start = $new_shift_start;
+                    $roster->shift_end = $new_shift_end;
+                     $roster->save();                    
+
+                    toastr()->success('Shift Updated Successfully!');
+                    return redirect()->route('admin.show_user_calendar', $roster->user_id);
+                }
             }
         }elseif($al == "yes"){
 
