@@ -51,7 +51,7 @@ html, body {
 
             events : [
                 @foreach($rosters as $roster)
-                    @if($roster->description == "work" || $roster->description == null && $roster->annual_leave != 1)
+                    @if($roster->description != "off" && $roster->annual_leave != 1)
                         {
                             title : '{{$roster->user->name}}',
                             @if($roster->user->isAdmin == 1 && $roster->user->team_id == 2)
