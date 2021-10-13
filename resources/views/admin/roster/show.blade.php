@@ -70,20 +70,4 @@ html, body {
         })
     });
 </script>
-
-<form name="color" id="color" method="post" action="{{route('profile.update', Auth::id())}}" class="form-horizontal">
-    @csrf
-    @method('PATCH')
-        <div class="form-group" style="padding-top: 5px;"><label class="" style="margin-top: -5px;margin-bottom: 10px;"></label>
-            <div class="col-sm-10">
-                Select Your Color: <input type="color" id="favcolor" name="favcolor" value="{{$user->color}}">
-            </div>
-        </div>
-    </form>
-
-    <div style="justify-content: flex-end;padding: 1rem;border-top: 1px solid #e9ecef;">
-        <button type="submit" class="btn btn-primary" form="color"><i class="fa fa-user"></i>Save</button>
-    </div>
-
-
 @endsection
