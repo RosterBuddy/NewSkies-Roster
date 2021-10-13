@@ -39,11 +39,7 @@
                                 @enderror
                             </div>
                         </div>
-                        
-                        @foreach ($teams as $team)
-                        
 
-                        @endforeach
                         <!--Insert Team Logic Here-->
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Select Team') }}</label>
