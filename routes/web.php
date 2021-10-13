@@ -56,6 +56,6 @@ Route::group(['middleware' => ['admin']], function () {
     //Timing Routes
     Route::resource('timing', 'TimingController');
 
-    Route::get('test', 'AdminController@test');
+    Route::get('test', 'AdminController@test')->name('test.index');
 
 });
