@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Timing;
+use Auth;
 
 class TimingController extends Controller
 {
@@ -22,17 +23,19 @@ class TimingController extends Controller
     }
 
     public function store(Request $request){
-         Timing::create([
-            'name' => $request->name,
+            
+        Timing::create([
+            'name' => $request->shift_name,
             'shift_start' => $request->shift_start,
             'shift_end' => $request->shift_end,
         ]);
+        
         toastr()->success('Time Created Successfully!');
         return redirect()->route('timing.index');
     }
 
     public function update(Request $request, $id){
-        $timing = timing::find($id);
+        $timing = Timing::find($id);
         $timing->shift_start = $request->shift_start;
         $timing->shift_end = $request->shift_end;
         $timing->save();
