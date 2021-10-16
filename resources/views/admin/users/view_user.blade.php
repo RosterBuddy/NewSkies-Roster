@@ -70,6 +70,20 @@
                                 </select>
                             </div>
                         </div>
+                        <div class="form-group row">
+                            <label for="isInactive" class="col-md-4 col-form-label text-md-right">{{ __('Terminate User?') }}</label>
+                            <div class="col-md-6">
+                                <select name="isInactive" id="isInactive">
+                                    @if($user->isInactive == 1)
+                                        <option value="1">Yes</option>
+                                        <option value="0">No</option>
+                                    @elseif($user->isInactive == 0)
+                                        <option value="0">No</option>
+                                        <option value="1">Yes</option>
+                                    @endif
+                                </select>
+                            </div>
+                        </div>
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
