@@ -59,4 +59,6 @@ Route::group(['middleware' => ['admin']], function () {
 
     Route::get('test', 'AdminController@test')->name('test.index');
 
+    Route::get('email/lastedited', 'EmailController@lastedited');
+
 });
