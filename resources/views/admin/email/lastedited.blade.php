@@ -156,6 +156,11 @@
         .clear {
             clear: both;
         }
+        .center-screen {
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
         /* -------------------------------------
             ALERTS
             Change the class depending on warning email, good email or bad email
@@ -183,28 +188,28 @@
         .alert.alert-good {
             background: #1ab394;
         }
-        /* -------------------------------------
-            INVOICE
-            Styles for the billing table
-        ------------------------------------- */
-        .invoice {
-            margin: 40px auto;
-            text-align: left;
-            width: 80%;
-        }
-        .invoice td {
-            padding: 5px 0;
-        }
-        .invoice .invoice-items {
+        #customers {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
             width: 100%;
+            }
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+            }
+        #customers tr:nth-child(even) {
+            background-color: #f2f2f2;
         }
-        .invoice .invoice-items td {
-            border-top: #eee 1px solid;
+
+        #customers tr:hover {
+            background-color: #ddd;
         }
-        .invoice .invoice-items .total td {
-            border-top: 2px solid #333;
-            border-bottom: 2px solid #333;
-            font-weight: 700;
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: center;
+            background-color: #073590;
+            color: white;
         }
         /* -------------------------------------
             RESPONSIVE AND MOBILE FRIENDLY STYLES
@@ -229,28 +234,6 @@
             .content, .content-wrap {
                 padding: 10px !important;
             }
-            #customers {
-  font-family: Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
-
-#customers td, #customers th {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
-
-#customers tr:nth-child(even){background-color: #f2f2f2;}
-
-#customers tr:hover {background-color: #ddd;}
-
-#customers th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  background-color: #04AA6D;
-  color: white;
-}
         }
     </style>
 </head>
@@ -268,30 +251,43 @@
                             <table  cellpadding="0" cellspacing="0">
                                 <tr>
                                     <td>
-                                        <img class="img-responsive" src=""/>
+                                        <img class="img-responsive" src="https://corporate.ryanair.com/wp-content/mu-plugins/ryanair-config/assets/img/ryanair-aircraft.jpg"/>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="content-block">
-                                        <h3><strong>An Update To Your Roster</strong></h3>
+                                        <h2><strong>An Update To Your Roster</strong></h2>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="content-block">
                                         <p>Dear {{$user->name}},</p>
-                                        <p>Please see below modified times to your roster.</p>
-                                        <table class="aligncenter" id="customers">
-                                            <tr>
-                                              <th>Shift</th>
-                                              <th>Start</th>
-                                              <th>Finish</th>
-                                            </tr>
-                                            @foreach($rosteredits as $rosteredit)
-                                                @if($rosteredit->user_id == $user->id)
-                                                    {{$rosteredit->user_id}}
-                                                @endif
-                                            @endforeach
-                                          </table>
+                                        <br>
+                                        <p>Please see below modified timess to your roster.</p>
+                                        <div class="center-screen">
+                                            <table id="customers">
+                                                <tr>
+                                                <th>Shift</th>
+                                                <th>Start</th>
+                                                <th>Finish</th>
+                                                </tr>
+                                                @foreach($rosteredits as $rosteredit)
+
+                                                <tr>
+                                                    @if($rosteredit->user_id == $user->id)
+                                                        <td>{{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $rosteredit->shift_start)->format('d/m/Y')}}</td>
+                                                        <td>{{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $rosteredit->shift_start)->format('H:i')}}</td>
+                                                        <td>{{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $rosteredit->shift_end)->format('H:i')}}</td>
+                                                    @endif
+                                                </tr>
+                                                @endforeach
+                                            </table>
+                                        </div>
+                                        <br>
+                                        <p>To view your full roster <a href="">Click Here</a></p>
+                                        <br>
+                                        <p>Kind Regards</p>
+                                        <pre>Newskies Managment</pre>
                                     </td>
                                 </tr>
                             </table>
