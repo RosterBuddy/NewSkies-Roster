@@ -12,6 +12,8 @@ class EmailController extends Controller
 {
     public function lastedited($id) {
         $date  = Carbon::now()->subMinutes(10);
+        $date->setTimezone('Europe/Dublin');
+
         $user = User::find($id);
 
 
