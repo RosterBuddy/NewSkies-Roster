@@ -229,22 +229,28 @@
             .content, .content-wrap {
                 padding: 10px !important;
             }
-            .invoice {
-                width: 100% !important;
-            }
-            table {
-                border-collapse: collapse;
-                width: 100%;
-            }
+            #customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
 
-            th, td {
-                text-align: left;
-                padding: 8px;
-            }
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
 
-            tr:nth-child(even) {
-	            background-color: #f2f2f2;
-            }
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
         }
     </style>
 </head>
@@ -272,9 +278,20 @@
                                 </tr>
                                 <tr>
                                     <td class="content-block">
-                                        <p>Dear {$user->name},</p>
+                                        <p>Dear {{$user->name}},</p>
                                         <p>Please see below modified times to your roster.</p>
-
+                                        <table class="aligncenter" id="customers">
+                                            <tr>
+                                              <th>Shift</th>
+                                              <th>Start</th>
+                                              <th>Finish</th>
+                                            </tr>
+                                            @foreach($rosteredits as $rosteredit)
+                                                @if($rosteredit->user_id == $user->id)
+                                                    {{$rosteredit->user_id}}
+                                                @endif
+                                            @endforeach
+                                          </table>
                                     </td>
                                 </tr>
                             </table>

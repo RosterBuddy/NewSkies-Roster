@@ -10,9 +10,10 @@ use Email;
 
 class EmailController extends Controller
 {
-    public function lastedited(Request $request) {
-        $date  = Carbon::now()->subMinutes(5);
-        $user = User::find($request->user_id);
+    public function lastedited($id) {
+        $date  = Carbon::now()->subMinutes(10);
+        $user = User::find($id);
+
 
         $rosteredits = Roster::where('updated_at', '>=', $date)->get();
 
