@@ -251,7 +251,7 @@
                             <table  cellpadding="0" cellspacing="0">
                                 <tr>
                                     <td>
-                                        <img class="img-responsive" src="https://corporate.ryanair.com/wp-content/mu-plugins/ryanair-config/assets/img/ryanair-aircraft.jpg"/>
+                                        <img class="img-responsive" src="https://newskies.rosterbuddy.org/img/email_header.jpg"/>
                                     </td>
                                 </tr>
                                 <tr>
@@ -263,7 +263,7 @@
                                     <td class="content-block">
                                         <p>Dear {{$user->name}},</p>
                                         <br>
-                                        <p>Please see below modified timess to your roster.</p>
+                                        <p>Please see below modified times to your roster.</p>
                                         <div class="center-screen">
                                             <table id="customers">
                                                 <tr>
@@ -272,14 +272,19 @@
                                                 <th>Finish</th>
                                                 </tr>
                                                 @foreach($rosteredits as $rosteredit)
-
-                                                <tr>
-                                                    @if($rosteredit->user_id == $user->id)
-                                                        <td>{{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $rosteredit->shift_start)->format('d/m/Y')}}</td>
-                                                        <td>{{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $rosteredit->shift_start)->format('H:i')}}</td>
-                                                        <td>{{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $rosteredit->shift_end)->format('H:i')}}</td>
+                                                    @if ($rosteredit->updated_at != $rosteredit->last_edited)
+                                                    <tr>
+                                                        @if($rosteredit->user_id == $user->id)
+                                                            <td>{{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $rosteredit->shift_start)->format('d/m/Y')}}</td>
+                                                            <td>{{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $rosteredit->shift_start)->format('H:i')}}</td>
+                                                            @if(\Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $rosteredit->shift_end)->format('H:i') == "23:59")
+                                                                <td>24:00</td>
+                                                            @else
+                                                                <td>{{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $rosteredit->shift_end)->format('H:i')}}</td>
+                                                            @endif
+                                                        @endif
+                                                    </tr>
                                                     @endif
-                                                </tr>
                                                 @endforeach
                                             </table>
                                         </div>
