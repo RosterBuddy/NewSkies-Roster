@@ -20,6 +20,7 @@ html, body {
 }
 </style>
 
+<a href="{{route('email.lastedited', $id)}}">Here</a>
 <div id='calendar'></div>
 
 <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
