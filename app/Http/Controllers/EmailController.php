@@ -12,19 +12,16 @@ class EmailController extends Controller
 {
     public function lastedited($id) {
         $user = User::find($id);
-        $date  = Carbon::now()->subHours(3);
-
-        $rosteredits = Roster::where('updated_at', '>=', $date)->get();
-
-       foreach($rosteredits as $rosteredit){
-          if($rosteredit->updated_at != $rosteredit->last_edited){
-              $roster = Roster::find($rosteredit->id);
-              $roster->updated_at = Carbon::now();
-              $roster->last_edited = $roster->updated_at;
-              $roster->save();
-          }
-       }
-
+        $rosteredits = Roster::all();
+        
+        foreach($rosteredits as $rosteredit){
+            if($rosteredit->updated_at != $rosteredit->last_edited){
+                    $roster = Roster::find($rosteredit->id);
+                    $roster->updated_at = Carbon::now();
+                    $roster->last_edited = $roster->updated_at;
+                    $roster->save();
+            }
+        }        
         Mail::send('admin.email.lastedited', [
             'rosteredits' => $rosteredits,
             'user' => $user,
