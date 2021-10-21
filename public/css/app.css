@@ -7698,3 +7698,9 @@ a.text-dark:hover {
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, .04)
 }
+footer {
+    display: flex;
+    justify-content: center;
+    background-color: #45a1ff;
+    color: #fff;
+}
