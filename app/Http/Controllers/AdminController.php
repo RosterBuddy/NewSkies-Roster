@@ -184,7 +184,7 @@ class AdminController extends Controller
         $count = 0;
         
         foreach($rosters as $rosteredit){
-            if($rosteredit->updated_at != $rosteredit->last_edited){
+            if($rosteredit->updated_at != $rosteredit->last_edited && $rosteredit->last_edited != NULL){
                 $count++;
             }
         }      
@@ -222,6 +222,9 @@ class AdminController extends Controller
     
                         $roster->shift_start = $new_shift_start;
                         $roster->shift_end = $new_shift_end;
+
+                        $roster->last_edited = "1970-01-01 00:00:01";
+
                         $roster->save();                    
     
                         toastr()->success('Shift Updated Successfully!');
@@ -232,6 +235,9 @@ class AdminController extends Controller
 
                     $roster->shift_start = $new_shift_start;
                     $roster->shift_end = $new_shift_end;
+
+                    $roster->last_edited = "1970-01-01 00:00:01";
+
                     $roster->save();                    
 
                     toastr()->success('Shift Updated Successfully!');
