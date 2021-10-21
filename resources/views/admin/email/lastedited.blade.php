@@ -272,7 +272,7 @@
                                                 <th>Finish</th>
                                                 </tr>
                                                 @foreach($rosteredits as $rosteredit)
-                                                    @if ($rosteredit->updated_at != $rosteredit->last_edited)
+                                                    @if ($rosteredit->updated_at != $rosteredit->last_edited && $rosteredit->last_edited != NULL)
                                                     <tr>
                                                         @if($rosteredit->user_id == $user->id)
                                                             <td>{{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $rosteredit->shift_start)->format('d/m/Y')}}</td>
