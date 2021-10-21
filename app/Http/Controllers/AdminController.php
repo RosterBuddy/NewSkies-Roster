@@ -181,8 +181,15 @@ class AdminController extends Controller
 
     public function show_user_calendar($id) {
         $rosters = Roster::all();
+        $count = 0;
+        
+        foreach($rosters as $rosteredit){
+            if($rosteredit->updated_at != $rosteredit->last_edited){
+                $count++;
+            }
+        }      
         $user = User::find($id);
-        return view('admin.roster.show', compact('rosters', 'user', 'id'));
+        return view('admin.roster.show', compact('rosters', 'user', 'id', 'count'));
     }
 
     public function edit_user_calendar($id) {
