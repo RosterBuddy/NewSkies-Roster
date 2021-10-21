@@ -54,7 +54,6 @@
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
-
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 @if(Auth::user()->isAdmin)
                                     <a class="dropdown-item" href="{{ route('admin.index')}}">Admin-Area</a>
@@ -86,5 +85,10 @@
     </div>
     @toastr_js
     @toastr_render
+    <footer>
+        <div class="text-center">
+            <p>© {{date("Y")}} Ciaran Breen &nbsp;&nbsp;<a style="color: white;" href="">Changelog</a></p>
+        </div>
+    </footer>
 </body>
 </html>
