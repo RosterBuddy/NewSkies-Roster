@@ -88,5 +88,10 @@
     </div>
     @toastr_js
     @toastr_render
+    <footer>
+        <div class="text-center">
+            <p>© {{date("Y")}} Ciaran Breen &nbsp;&nbsp;<a style="color: white;" href="">Changelog</a></p>
+        </div>
+    </footer>
 </body>
 </html>
