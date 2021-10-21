@@ -289,7 +289,7 @@
                                             </table>
                                         </div>
                                         <br>
-                                        <p>To view your full roster <a href="{{route('roster.index')}}" target="_BLANK">Click Here</a></p>
+                                        <p>To view your full roster <a href="{{ route('profile.show', $user->id) }}" target="_BLANK">Click Here</a></p>
                                         <br>
                                         <p>Kind Regards</p>
                                         <pre>Newskies Managment</pre>
