@@ -15,7 +15,7 @@ class EmailController extends Controller
         $rosteredits = Roster::all();
         
         foreach($rosteredits as $rosteredit){
-            if($rosteredit->updated_at != $rosteredit->last_edited){
+            if($rosteredit->updated_at != $rosteredit->last_edited && $rosteredit->last_edited != NULL){
                     $roster = Roster::find($rosteredit->id);
                     $roster->updated_at = Carbon::now();
                     $roster->last_edited = $roster->updated_at;
@@ -27,13 +27,13 @@ class EmailController extends Controller
             'user' => $user,
         ], function ($mail) use($id) {    
             $user = User::find($id);
-            $mail->from('no-reply@rosterbuddy.org', "Newskies Managment");
+            $mail->from('no-reply@rosterbuddy.org', "RosterBuddy");
             $mail->to($user->email)->subject("An Update To Your Roster");
         });
 
         toastr()->success('Agent advised of changes in their roster.', 'Complete');
         return back()->withInput();
 
-        //return view('admin.email.lastedited', compact('rosteredits', 'user'));
+        return view('admin.email.lastedited', compact('rosteredits', 'user'));
     }
 }
