@@ -22,7 +22,7 @@ html, body {
 
 @if($count > 0)
 <div class="text-center">
-    <p>There has been {{$count}} changes to {{$user->name}} roster. </p>
+    <p>There has been {{$count}} changes to {{$user->name}}s roster. </p>
     <p><a class="btn btn-info" role="button" href="{{route('email.lastedited', $id)}}">Click Here</a> to notify</p>
 </div>
 @endif
