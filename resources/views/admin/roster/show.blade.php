@@ -20,7 +20,12 @@ html, body {
 }
 </style>
 
-<a href="{{route('email.lastedited', $id)}}">Here</a>
+@if($count > 0)
+<div class="text-center">
+    <p>There has been {{$count}} changes to {{$user->name}} roster. </p>
+    <p><a class="btn btn-info" role="button" href="{{route('email.lastedited', $id)}}">Click Here</a> to notify</p>
+</div>
+@endif
 <div id='calendar'></div>
 
 <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
