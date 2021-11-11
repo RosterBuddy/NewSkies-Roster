@@ -33,15 +33,21 @@
           </select>
           <br>
           <br>
-            Annual Leave
+            Day Off
           <br>
-          <select name="annualleave" id="annualleave">
-              @if($roster->annual_leave == 1)
-                <option value="yes">Yes</option>
-                <option value="no">No</option>
-              @elseif($roster->annual_leave == 0)
-                <option value="no">No</option>
-                <option value="yes">Yes</option>
+          <select name="day_off" id="day_off">
+              @if($roster->day_off == 0)
+                <option value="0">None</option>
+                <option value="1">A/L</option>
+                <option value="2">B/H</option>
+              @elseif($roster->day_off == 1)
+                <option value="1">A/L</option>
+                <option value="2">B/H</option>
+                <option value="0">None</option>
+              @elseif($roster->day_off == 2)
+                <option value="2">B/H</option>
+                <option value="1">A/L</option>
+                <option value="0">None</option>
               @endif
             </select>
           <br>

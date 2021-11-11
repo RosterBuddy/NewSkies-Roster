@@ -54,16 +54,24 @@ html, body {
             events : [
                 @foreach($rosters as $roster)
                     @if($roster->user_id == $id)
-                        @if($roster->description != "off" && $roster->annual_leave == 0)
+                        @if($roster->description != "off" && $roster->day_off == 0)
                             {
                                 title : '{{$roster->user->name}}',
                                 start : '{{ $roster->shift_start }}',
                                 end : '{{ $roster->shift_end }}',
                                 url : '{{route("admin.edit_user_calendar", $roster->id)}}',
                             },
-                        @elseif($roster->annual_leave == "1")
+                        @elseif($roster->day_off == 1)
                             {
-                                title : 'A/L Day',
+                                title : 'A/L',
+                                color : '#AAABBB',
+                                start : '{{ $roster->shift_start }}',
+                                end : '{{ $roster->shift_end }}',
+                                url : '{{route("admin.edit_user_calendar", $roster->id)}}',
+                            },
+                        @elseif($roster->day_off == 2)
+                            {
+                                title : 'B/H',
                                 color : '#AAABBB',
                                 start : '{{ $roster->shift_start }}',
                                 end : '{{ $roster->shift_end }}',

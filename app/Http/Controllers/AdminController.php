@@ -211,9 +211,9 @@ class AdminController extends Controller
         $shift_end_date = substr($roster->shift_end, 0,10);
 
         $shift = $request->shift;
-        $al = $request->annualleave;
+        $dayoff = $request->day_off;
         
-        if($al == "no"){
+        if($dayoff == 0){
             foreach($timings as $timing){
                 if($timing->name == $shift){
                     if($timing->shift_end == "00:00:00"){
@@ -245,12 +245,20 @@ class AdminController extends Controller
                     }
                 }
             }
-        }elseif($al == "yes"){
+        }elseif($dayoff == 1){
 
-            $roster->annual_leave = 1;
+            $roster->day_off = 1;
             $roster->save();
 
             toastr()->success('Annual Leave Added Successfully!');
+            return redirect()->route('admin.show_user_calendar', $roster->user_id);
+
+        }elseif($dayoff == 2){
+
+            $roster->day_off = 2;
+            $roster->save();
+
+            toastr()->success('Bank Holiday Added Successfully!');
             return redirect()->route('admin.show_user_calendar', $roster->user_id);
 
         }
