@@ -163,7 +163,7 @@ class AdminController extends Controller
         $user->email = $request->email;
         $user->team_id = $request->team;
         $user->isAdmin = $request->isAdmin;
-        $user->isInactive = $request->isInactive;
+        $user->isTerminated = $request->isTerminated;
         $user->save();
 
 

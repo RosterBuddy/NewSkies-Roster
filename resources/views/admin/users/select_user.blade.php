@@ -13,7 +13,7 @@
                                 <th>Roster</th>
                             </tr>
                             @foreach ($users as $user)
-                                @if($user->isInactive == 0)
+                                @if($user->isTerminated == 0)
                                 <tr>
                                     <th>{{$user->name}}</th>
                                     <th>{{$user->email}}</th>

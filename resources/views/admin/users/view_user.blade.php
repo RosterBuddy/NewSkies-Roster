@@ -71,13 +71,13 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="isInactive" class="col-md-4 col-form-label text-md-right">{{ __('Terminate User?') }}</label>
+                            <label for="isTerminated" class="col-md-4 col-form-label text-md-right">{{ __('Terminate User?') }}</label>
                             <div class="col-md-6">
-                                <select name="isInactive" id="isInactive">
-                                    @if($user->isInactive == 1)
+                                <select name="isTerminated" id="isTerminated">
+                                    @if($user->isTerminated == 1)
                                         <option value="1">Yes</option>
                                         <option value="0">No</option>
-                                    @elseif($user->isInactive == 0)
+                                    @elseif($user->isTerminated == 0)
                                         <option value="0">No</option>
                                         <option value="1">Yes</option>
                                     @endif
