@@ -53,7 +53,7 @@
           @csrf
           @method('PATCH')
 
-            <input type="submit" class="btn btn-danger" value="Delete Day">
+            <input onclick="return confirm('Are you sure you want to delete this day?')" type="submit" class="btn btn-danger" value="Delete Day">
         </form>
       </div>
     </div>
