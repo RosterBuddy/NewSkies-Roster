@@ -45,6 +45,7 @@ class AdminController extends Controller
             'description' => $desc,
             'shift_start' => $request->shift_start,
             'shift_end' => $request->shift_end,
+            'day_off' => $request->day_off,
         ]);
         toastr()->success('Time Successfully Added!');
         return redirect()->route('admin.create');

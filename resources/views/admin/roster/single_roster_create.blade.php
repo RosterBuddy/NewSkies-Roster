@@ -35,6 +35,15 @@
           <input type="datetime-local" name="shift_end" class="date" />
             <br>
             <br>
+            Day Type
+            <br>
+            <select name="day_off">
+                <option value="0">None</option>
+                <option value="1">A/L</option>
+                <option value="2">B/H</option>
+            </select>
+            <br>
+            <br>
           <button class="btn btn-primary" type="submit">Save</button>
           </form>
         </div>
