@@ -25,6 +25,29 @@
                     </div>
                 </div>
             </div>
+
+            <div class="card text-center">
+                <div class="card-header">Terminated Users</div>
+                    <div class="card-body">
+                        <table class="table table-striped">
+                            <tr>
+                                <th>Name</th>
+                                <th>E-Mail</th>
+                                <th>Roster</th>
+                            </tr>
+                            @foreach ($users as $user)
+                                @if($user->isTerminated == 1)
+                                <tr>
+                                    <th>{{$user->name}}</th>
+                                    <th>{{$user->email}}</th>
+                                    <th><a href="{{ route('admin.view_user_profile',$user->id)}}">Edit User</a></th>
+                                </tr>
+                                @endif
+                            @endforeach
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

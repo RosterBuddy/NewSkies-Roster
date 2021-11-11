@@ -14,7 +14,9 @@
             <select name="users" id="users">
               <option value="">Select User</option>
                 @foreach ($users as $user)
-                  <option id="users" value="{{$user->id}}">{{$user->name}}</option>
+                  @if($user->isTerminated == 0)    
+                    <option id="users" value="{{$user->id}}">{{$user->name}}</option>
+                  @endif
                 @endforeach
             </select>
             <br>
