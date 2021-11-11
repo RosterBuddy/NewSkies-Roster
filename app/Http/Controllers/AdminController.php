@@ -279,7 +279,7 @@ class AdminController extends Controller
 
         foreach($rosters as $roster){
             $start = $roster->shift_start;
-            if(substr($start,11, 19) == "00:00:00" && $roster->description != "off"){
+            if(substr($start,11, 19) == "00:00:00" && $roster->description != "off" && $roster->day_off == 0){
                $missingtimes[] = $roster;
             }
         }
