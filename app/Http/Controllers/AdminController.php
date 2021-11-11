@@ -256,6 +256,14 @@ class AdminController extends Controller
         }
     }
 
+    public function delete_day_from_user_calendar($id) {
+        $roster = Roster::find($id);
+        $roster->delete();
+
+        toastr()->success('Day Deleted Successfully!');
+        return redirect()->route('admin.show_user_calendar', $roster->user_id);
+    }
+
     public function test() {
         $rosters = Roster::all();
 

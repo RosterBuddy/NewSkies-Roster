@@ -19,13 +19,9 @@ html, body {
     color: #fff; /* bootstrap default styles make it black. undo */
 }
 </style>
-
-@if(Auth::user()->isAdmin)
-    <a style="margin-left:26.4%" class="btn btn-primary" href="{{route('admin.index')}}" role="button">Create New Schedule</a>
-@endif
-
-<div id='calendar'></div>
-
+<div class="calendar-move">
+    <div id='calendar'></div>
+</div>
 <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.js'></script>

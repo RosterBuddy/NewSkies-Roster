@@ -48,6 +48,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('admin/user/roster/{admin}', 'AdminController@show_user_calendar')->name('admin.show_user_calendar');
     Route::get('admin/user/roster/{admin}/edit', 'AdminController@edit_user_calendar')->name('admin.edit_user_calendar');
     Route::patch('admin/user/roster/{admin}/update', 'AdminController@update_user_calendar')->name('admin.update_user_calendar');
+    Route::patch('admin/user/roster/{admin}/delete', 'AdminController@delete_day_from_user_calendar')->name('admin.delete_day_from_user_calendar');
 
     Route::resource('admin', 'AdminController');
     

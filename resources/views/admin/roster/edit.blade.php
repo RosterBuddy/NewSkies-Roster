@@ -46,7 +46,14 @@
             </select>
           <br>
           <br>
-            <input type="submit" value="Save"/>
+            <input type="submit" class="btn btn-success" value="Save"/>
+        </form>
+        <br>
+        <form action="{{ route('admin.delete_day_from_user_calendar', $roster->id) }}" method="post">
+          @csrf
+          @method('PATCH')
+
+            <input type="submit" class="btn btn-danger" value="Delete Day">
         </form>
       </div>
     </div>
