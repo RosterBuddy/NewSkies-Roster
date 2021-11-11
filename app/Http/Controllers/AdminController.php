@@ -142,7 +142,13 @@ class AdminController extends Controller
 
     public function select_user_profile(){
         $users = User::all();
-        return view('admin.users.select_user', compact('users'));
+        $terminatedcount = 0;
+        foreach($users as $user){
+            if($user->isTerminated){
+                $terminatedcount++;
+            }
+        }
+        return view('admin.users.select_user', compact('users', 'terminatedcount'));
     }
     
     public function view_user_profile($id){

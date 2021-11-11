@@ -25,7 +25,7 @@
                     </div>
                 </div>
             </div>
-
+            @if ($terminatedcount > 0)
             <div class="card text-center">
                 <div class="card-header">Terminated Users</div>
                     <div class="card-body">
@@ -48,6 +48,7 @@
                     </div>
                 </div>
             </div>
+            @endif
         </div>
     </div>
 </div>
