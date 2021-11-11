@@ -15,7 +15,7 @@ class EmailController extends Controller
         $rosteredits = Roster::all();
         
         foreach($rosteredits as $rosteredit){
-            if($rosteredit->updated_at != $rosteredit->last_edited && $rosteredit->last_edited != NULL){
+            if($rosteredit->updated_at != $rosteredit->last_edited && $rosteredit->last_edited != NULL && $rosteredit->user_id == $id){
                     $roster = Roster::find($rosteredit->id);
                     $roster->updated_at = Carbon::now();
                     $roster->last_edited = $roster->updated_at;

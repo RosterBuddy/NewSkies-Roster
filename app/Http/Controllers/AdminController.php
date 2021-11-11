@@ -184,7 +184,7 @@ class AdminController extends Controller
         $count = 0;
         
         foreach($rosters as $rosteredit){
-            if($rosteredit->updated_at != $rosteredit->last_edited && $rosteredit->last_edited != NULL){
+            if($rosteredit->updated_at != $rosteredit->last_edited && $rosteredit->last_edited != NULL && $rosteredit->user_id == $id){
                 $count++;
             }
         }      
