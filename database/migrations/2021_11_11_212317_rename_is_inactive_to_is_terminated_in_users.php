@@ -14,7 +14,7 @@ class RenameIsInactiveToIsTerminatedInUsers extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->renameColumn('isInactive', 'isTermianted');
+            $table->renameColumn('isInactive', 'isTerminated');
         });
     }
 
