@@ -16,11 +16,13 @@
                 <table class="table table-striped">
                     <tr>
                         <th>Name</th>
+                        <th>Status</th>
                         <th>View Agent Profile</th>
                     </tr>    
                     @foreach ($users as $user)
                         <tr>
                             <th>{{$user->name}}</th>
+                            <th>@if($user->isTerminated != 1)Active @else Termianted @endif</th>
                             <th><a href={{ route('admin.view_user_profile',$user->id)}}">View Profile</a></th>
                         </tr>
                     @endforeach        
