@@ -24,6 +24,8 @@ Route::group(['middleware' => ['isLoggedIn']], function (){
     Route::resource('roster', 'RostersController');
     Route::resource('profile', 'ProfileController');
 
+    Route::get('teams/myteam', 'TeamsController@myteam')->name('team.myteam');
+
 });
 
 //User must be admin to access this.
