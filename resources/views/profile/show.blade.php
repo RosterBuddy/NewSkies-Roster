@@ -25,7 +25,11 @@ html, body {
         <div class="col-md-8">
             <div class="card text-center">
                 <div class="card-header">
-                    Hi {{$user->name}}
+                    @if(Auth::id() == $user->id)
+                        Hi {{$user->name}}
+                    @else
+                        Viewing {{$user->name}}'s Profile
+                    @endif
                 </div>
                 <div class="card-body">
                     <div id='calendar'></div>
