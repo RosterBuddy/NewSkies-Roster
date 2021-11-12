@@ -29,7 +29,7 @@
             <input type="date" value="<?= date('Y-m-d') ?>" id="dateend">
             <br>
             <br>
-          <button class="btn btn-success save-data">Save</button>
+          <button id="save-button" class="btn btn-success save-data">Save</button>
         </div>
       </div>
     </div>
@@ -43,6 +43,12 @@
 
 
 <script>
+  $( "#save-button" ).click(function() {
+    alert( "Please wait. \r\nGenerating Roster Block" );
+  });
+
+
+
   $(document).ready(function() {
       var schedule = [{
               duration: 4,
