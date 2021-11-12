@@ -279,7 +279,7 @@ class AdminController extends Controller
         return redirect()->route('admin.show_user_calendar', $roster->user_id);
     }
 
-    public function test() {
+    public function missingtimes() {
         $rosters = Roster::all();
 
         $missingtimes = [];
@@ -291,7 +291,7 @@ class AdminController extends Controller
             }
         }
 
-        return view('admin.test', compact('missingtimes'));
+        return view('admin.missingtimes', compact('missingtimes'));
 
         
     }

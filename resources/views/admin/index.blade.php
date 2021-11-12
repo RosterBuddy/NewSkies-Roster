@@ -64,7 +64,7 @@
                         <a class="btn btn-primary btn-lg" href="{{route('timing.index')}}" role="button">Update Times</a>
                     </div>
                     <div style="margin-right: 6%; margin-top: 5%;" class="action-container">
-                        <a class="btn btn-primary btn-lg" href="{{route('test.index')}}" role="button">PlaceHolder</a>
+                        <a class="btn btn-primary btn-lg" href="{{route('missingtimes.index')}}" role="button">Missing Times</a>
                     </div>
                 </div>
             </div>
