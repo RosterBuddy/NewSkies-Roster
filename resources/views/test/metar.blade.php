@@ -53,29 +53,29 @@ body{
   <h3>Visibility</h3>
   <div class='square-container'>
   <?php
+  $style = "";
   foreach ($metars as $metar => $value) {
       if ($value['flight_category'] == "IFR" || $value['flight_category'] == "LIFR") {
-          echo "
-          <div class='square'"; 
-          try{
-            if($value['visibility']['meters_float'] <= 5000) {
-              echo 'style="background-color:green; color:white;"';
-            }elseif($value['visibility']['meters_float'] <= 2000) {
-              echo 'style="background-color:orange;"';
-            }elseif($value['visibility']['meters_float'] <= 999) {
-              echo 'style="background-color:red;"';
-            }
-          } catch (Throwable $t){
-
+        try {
+          if($value['visibility']['meters_float'] <= 1000) {
+            $style = "red";
+          }elseif ($value['visibility']['meters_float'] <= 2000) {
+            $style = "orange";
+          }elseif ($value['visibility']['meters_float'] <= 5000) {
+            $style = "green";
           }
-          echo ">
-              <div class='content text-center'>
-                  {$value['icao']} 
-                    <br> 
-                  <p style='max-width: 95%;'>{$value['raw_text']}</p>
-              </div>
-          </div>";
-          // echo "<h1>". $value['icao'] . "</h1><p>" . $value['raw_text'] . "</p>";
+          echo "<div class='square' style='background-color:".$style.";'>";
+            echo "<div class='content text-center'>";
+              echo $value['icao'];
+              echo "<br>";
+              try {
+                echo "<p style='max-width: 95%;'>{$value['raw_text']}</p>";
+              } catch (\Throwable $th) {
+              }
+            echo "</div>";
+          echo "</div>";
+        } catch (\Throwable $th) {
+        }
       }
   }
   curl_close($ch);
@@ -92,7 +92,7 @@ body{
         try {
         if ($value['wind']['gust_kts'] >= 40) {
           $style = "red";
-        }elseif ($value['wind']['gust_kts'] >= 30) {
+        }elseif ($value['wind']['gust_kts'] >= 35) {
           $style = "orange";
         }elseif ($value['wind']['gust_kts'] >= 20) {
           $style = "green";
