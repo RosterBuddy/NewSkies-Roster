@@ -48,42 +48,66 @@ var mymap = L.map('mapid').setView([48.3460247, 8.3744107], 5);
         accessToken: 'pk.eyJ1IjoiMTMwNjYzOSIsImEiOiJjaXVheHF1emUwMDBnMnZ1dnF3NXlkcHJsIn0.EA9FU7f3QqXtirYubf6hvg'
     }).addTo(mymap);
 
-function update_position() {
-    $.getJSON('https://opensky-network.org/api/states/all', function(data) {
-        var planes = data.states
-        for(let i = 0; i < planes.length; i++){
-            plane = planes[i]
-            lat = plane[6]
-            lon = plane[5]
-            csfilter = plane[1].substring(0,3);
-            //if(csfilter == "RYR"){
-                // if(!aircraft){
-                    //var live_position = [[plane[1], plane[6], plane[5]]]
-                    var aircraft = L.marker([lat,lon]).bindPopup("I am "+plane[1]);
+// function update_position() {
+//     $.getJSON('https://opensky-network.org/api/states/all', function(data) {
+//         var planes = data.states
+//         for(let i = 0; i < planes.length; i++){
+//             plane = planes[i]
+//             lat = plane[6]
+//             lon = plane[5]
+//             csfilter = plane[1].substring(0,3);
+//             //if(csfilter == "RYR"){
+//                 // if(!aircraft){
+//                     //var live_position = [[plane[1], plane[6], plane[5]]]
+//                     var aircraft = L.marker([lat,lon]).bindPopup("I am "+plane[1]);
 
-                    aircraftlayer.addLayer(aircraft)
-                    mymap.addLayer(aircraftlayer)
+//                     aircraftlayer.addLayer(aircraft)
+//                     mymap.addLayer(aircraftlayer)
 
-                // }
-            //}
-        }
-        aircraft.setLatLng([lat,lon]).update();
-        setTimeout(update_position, 10000);
+//                 // }
+//             //}
+//         }
+//         aircraft.setLatLng([lat,lon]).update();
+//         setTimeout(update_position, 10000);
+//     });
+// }
+// update_position();
+
+
+
+// function remove_marker(){
+//     aircraftlayer.clearLayers(); // Blindly remove everything from the Layer Group
+//     console.log("Removing");
+//     setTimeout(remove_marker, 9500);
+
+// }
+
+var markersLayer = new L.LayerGroup(); // NOTE: Layer is created here!
+
+window.addEventListener("load", function() { updatePoints(); });
+
+function getMarkers(planes) {
+    var airplane = planes.states
+    var marker;
+    for(let i = 0; i < airplane.length; i++){
+        marker = new L.marker([airplane[i][6],airplane[i][5]]).bindPopup(airplane[i][0]);    
+        markersLayer.addLayer(marker);
+    }
+}
+
+markersLayer.addTo(mymap);
+
+
+
+function updatePoints() {
+    $.getJSON("https://opensky-network.org/api/states/all").done(function(planes){ 
+        	getMarkers(planes);
+            markersLayer.clearLayers();
     });
+    setTimeout(function(){ updatePoints(); }, 10000);
 }
-update_position();
 
 
-
-
-
-
-function remove_marker(){
-    aircraftlayer.clearLayers(); // Blindly remove everything from the Layer Group
-    console.log("Removing");
-    setTimeout(remove_marker, 9500);
-
-}
 
 
 </script>
