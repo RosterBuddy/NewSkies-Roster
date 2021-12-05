@@ -11,8 +11,11 @@ class MetarController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        return view('metar.index');
+    public function metar() {
+        return view('test.metar');
+    }
+
+    public function flight(){
+        return view('test.flight');
     }
 }
