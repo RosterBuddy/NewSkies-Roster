@@ -1,214 +1,213 @@
-id,name,iata,icao,lat,lon,country,created_at,updated_at
-,Aalborg Airport,AAL,EKYT,57.092781,9.849164,Denmark,,
-,Aarhus Airport,AAR,EKAH,56.300011,10.619,Denmark,,
-,Aberdeen International Airport,ABZ,EGPD,57.201939,-2.19777,United Kingdom,,
-,Lanzarote Airport,ACE,GCRR,28.945459,-13.6052,Spain,,
-,Agadir Al Massira Airport,AGA,GMAD,30.324989,-9.41306,Morocco,,
-,Malaga Costa Del Sol Airport,AGP,LEMG,36.6749,-4.4991,Spain,,
-,Alghero Fertilia Airport,AHO,LIEA,40.63213,8.290772,Italy,,
-,Alicante Airport,ALC,LEAL,38.282162,-0.55815,Spain,,
-,Amman Queen Alia International Airport,AMM,OJAI,31.722549,35.99321,Jordan,,
-,Amsterdam Schiphol Airport,AMS,EHAM,52.308609,4.763889,Netherlands,,
-,Ancona Airport,AOI,LIPY,43.616341,13.36231,Italy,,
-,Aqaba King Hussein International Airport,AQJ,OJAQ,29.61161,35.018059,Jordan,,
-,Stockholm Arlanda Airport,ARN,ESSA,59.653545,17.939816,Sweden,,
-,Athens Eleftherios Venizelos,ATH,LGAV,37.936352,23.94446,Greece,,
-,Barcelona El Prat Airport,BCN,LEBL,41.29707,2.078463,Spain,,
-,Brindisi Airport,BDS,LIBR,40.657631,17.947029,Italy,,
-,Berlin Brandenburg Airport,BER,EDDB,52.362877,13.503722,Germany,,
-,Brest Bretagne Airport,BES,LFRB,48.44722,-4.42166,France,,
-,Seattle Boeing Field,BFI,KBFI,47.5341,-122.305901,United States,,
-,Milan Bergamo Il Caravaggio International Airport,BGY,LIME,45.673882,9.704166,Italy,,
-,Birmingham Airport,BHX,EGBB,52.45385,-1.74802,United Kingdom,,
-,Biarritz Pays Basque Airport,BIQ,LFBZ,43.46833,-1.53111,France,,
-,Bismarck Municipal Airport,BIS,KBIS,46.774479,-100.758209,United States,,
-,Billund Airport,BLL,EKBI,55.740318,9.151778,Denmark,,
-,Bologna Guglielmo Marconi Airport,BLQ,LIPE,44.535439,11.28866,Italy,,
-,Banja Luka International Airport,BNX,LQBK,44.941441,17.297501,Bosnia And Herzegovina,,
-,Bordeaux Merignac Airport,BOD,LFBD,44.828609,-0.71527,France,,
-,Bournemouth Airport,BOH,EGHH,50.779999,-1.8425,United Kingdom,,
-,Bremen Airport,BRE,EDDW,53.047501,8.786667,Germany,,
-,Bari Karol Wojtyla Airport,BRI,LIBD,41.138851,16.76059,Italy,,
-,Brno Turany Airport,BRQ,LKTB,49.15126,16.694429,Czechia,,
-,Bristol Airport,BRS,EGGD,51.38266,-2.71908,United Kingdom,,
-,Brussels Airport,BRU,EBBR,50.901379,4.484444,Belgium,,
-,Basel Mulhouse-Freiburg EuroAirport,BSL,LFSB,47.5989,7.5283,France,,
-,Bratislava M. R. Stefanik Airport,BTS,LZIB,48.170158,17.21266,Slovakia,,
-,Burlington International Airport,BTV,KBTV,44.471859,-73.153198,United States,,
-,Budapest Ferenc Liszt International Airport,BUD,LHBP,47.436932,19.25559,Hungary,,
-,Paris Beauvais-Tille Airport,BVA,LFOB,49.454441,2.112778,France,,
-,Brive Souillac Airport,BVE,LFSL,45.040031,1.487762,France,,
-,Bydgoszcz Ignacy Jan Paderewski Airport,BZG,EPBY,53.096802,17.977659,Poland,,
-,Beziers Cap d'Agde Airport,BZR,LFMU,43.323421,3.353397,France,,
-,Cagliari Elmas Airport,CAG,LIEE,39.251461,9.054283,Italy,,
-,Carcassonne Airport,CCF,LFMK,43.215809,2.308544,France,,
-,Castellon Costa Azahar Airport,CDT,LECH,40.209721,0.069722,Spain,,
-,Clermont-Ferrand Auvergne Airport,CFE,LFLC,45.785831,3.1625,France,,
-,Cologne Bonn Airport,CGN,EDDK,50.866001,7.143,Germany,,
-,Chania International Airport,CHQ,LGSA,35.531738,24.14967,Greece,,
-,Rome Ciampino Airport,CIA,LIRA,41.799358,12.59493,Italy,,
-,Comiso Airport,CIY,LICB,36.990002,14.6,Italy,,
-,Cluj-Napoca International Airport,CLJ,LRCL,46.785091,23.68611,Romania,,
-,Copenhagen Airport,CPH,EKCH,55.616959,12.645637,Denmark,,
-,Brussels South Charleroi Airport,CRL,EBCI,50.459999,4.452778,Belgium,,
-,Crotone Airport,CRV,LIBC,38.997219,17.08016,Italy,,
-,Catania Fontanarossa Airport,CTA,LICC,37.466782,15.0664,Italy,,
-,Cuneo Levaldigi Airport,CUF,LIMZ,44.547009,7.623217,Italy,,
-,Wausau Central Wisconsin Airport,CWA,KCWA,44.777611,-89.666702,United States,,
-,Cardiff Airport,CWL,EGFF,51.396469,-3.33753,United Kingdom,,
-,Dole Jura Airport,DLE,LFGJ,47.04277,5.435,France,,
-,Dortmund Airport,DTM,EDLW,51.518311,7.612242,Germany,,
-,Dublin Airport,DUB,EIDW,53.421379,-6.27,Ireland,,
-,Devils Lake Regional Airport,DVL,KDVL,48.113056,-98.907501,United States,,
-,Edinburgh Airport,EDI,EGPH,55.950001,-3.3725,United Kingdom,,
-,Bergerac Dordogne Perigord Airport,EGC,LFBE,44.824429,0.520525,France,,
-,Eindhoven Airport,EIN,EHEH,51.45013,5.374528,Netherlands,,
-,East Midlands Airport,EMA,EGNX,52.831108,-1.32805,United Kingdom,,
-,Erie International Airport,ERI,KERI,42.082001,-80.176201,United States,,
-,Essaouira Airport,ESU,GMMI,31.397499,-9.681667,Morocco,,
-,Exeter Airport,EXT,EGTE,50.73444,-3.41388,United Kingdom,,
-,Faro Airport,FAO,LPFR,37.01442,-7.96591,Portugal,,
-,Fargo Hector International Airport,FAR,KFAR,46.92065,-96.815697,United States,,
-,Rome Leonardo da Vinci Fiumicino Airport,FCO,LIRF,41.80447,12.25079,Italy,,
-,Fes Saiss Airport,FEZ,GMFF,33.927261,-4.97795,Morocco,,
-,Karlsruhe/Baden-Baden Airport,FKB,EDSB,48.77935,8.0805,Germany,,
-,Memmingen Airport,FMM,EDJA,47.988609,10.239444,Germany,,
-,Nimes Ales Camargue Cevennes Airport,FNI,LFTW,43.7575,4.416389,France,,
-,Frankfurt Airport,FRA,EDDF,50.037796,8.555783,Germany,,
-,Fuerteventura Airport,FUE,GCFV,28.452709,-13.8637,Spain,,
-,Gdansk Lech Walesa Airport,GDN,EPGD,54.37756,18.466221,Poland,,
-,Glasgow International Airport,GLA,EGPF,55.871941,-4.43305,United Kingdom,,
-,Genoa Cristoforo Colombo Airport,GOA,LIMJ,44.41333,8.8375,Italy,,
-,Gothenburg Landvetter Airport,GOT,ESGG,57.66283,12.27981,Sweden,,
-,Girona Costa Brava Airport,GRO,LEGE,41.900959,2.760547,Spain,,
-,Hamburg Airport,HAM,EDDH,53.630379,9.988228,Germany,,
-,Helsinki Vantaa Airport,HEL,EFHK,60.317219,24.963329,Finland,,
-,Frankfurt Hahn Airport,HHN,EDFH,49.948669,7.263892,Germany,,
-,Kharkiv International Airport,HRK,UKHH,49.924782,36.289982,Ukraine,,
-,Ibiza Airport,IBZ,LEIB,38.872849,1.373117,Spain,,
-,Nis Constantine the Great Airport,INI,LYNI,43.33728,21.85372,Serbia,,
-,Kyiv Boryspil International Airport,KBP,UKBB,50.345001,30.89472,Ukraine,,
-,Kerry Airport,KIR,EIKY,52.18087,-9.52378,Ireland,,
-,Krakow John Paul II International Airport,KRK,EPKK,50.077728,19.78483,Poland,,
-,Kosice International Airport,KSC,LZKZ,48.663052,21.24111,Slovakia,,
-,Katowice International Airport,KTW,EPKT,50.474251,19.080009,Poland,,
-,Kaunas Airport,KUN,EYKA,54.963909,24.08477,Lithuania,,
-,Leeds Bradford Airport,LBA,EGNM,53.865891,-1.66056,United Kingdom,,
-,Lodz Wladyslaw Reymont Airport,LCJ,EPLL,51.721882,19.39813,Poland,,
-,Tarbes-Lourdes-Pyrenees Airport,LDE,LFBT,43.185551,-0.00277,France,,
-,London Gatwick Airport,LGW,EGKK,51.148048,-0.19027,United Kingdom,,
-,Limoges Bellegarde Airport,LIG,LFBL,45.860828,1.180278,France,,
-,Lille Airport,LIL,LFQQ,50.563332,3.086944,France,,
-,Lisbon Humberto Delgado Airport,LIS,LPPT,38.781311,-9.13591,Portugal,,
-,Gran Canaria Airport,LPA,GCLP,27.931881,-15.3865,Spain,,
-,Liverpool John Lennon Airport,LPL,EGGP,53.333611,-2.84972,United Kingdom,,
-,Lappeenranta Airport,LPP,EFLP,61.044552,28.14439,Finland,,
-,La Rochelle Ile de Re Airport,LRH,LFBH,46.179211,-1.19523,France,,
-,London Luton Airport,LTN,EGGW,51.874722,-0.36833,United Kingdom,,
-,Luxembourg Findel Airport,LUX,ELLX,49.623329,6.204444,Luxembourg,,
-,Lublin Airport,LUZ,EPLB,51.240002,22.713333,Poland,,
-,Lviv Danylo Halytskyi International Airport,LWO,UKLL,49.8125,23.95611,Ukraine,,
-,Lyon Saint Exupery Airport,LYS,LFLL,45.719643,5.089108,France,,
-,Madrid Barajas Airport,MAD,LEMD,40.488701,-3.57,Spain,,
-,Mahon Menorca Airport,MAH,LEMH,39.862591,4.218647,Spain,,
-,Manchester Airport,MAN,EGCC,53.353741,-2.27495,United Kingdom,,
-,Manchester Boston Regional Airport,MHT,KMHT,42.9328,-71.435699,United States,,
-,Milwaukee General Mitchell International Airport,MKE,KMKE,42.94722,-87.8965,United States,,
-,Luqa Malta International Airport,MLA,LMML,35.857491,14.4775,Malta,,
-,Teesside International Airport,MME,EGNV,54.509178,-1.4294,United Kingdom,,
-,Malmo Airport,MMX,ESMS,55.53019,13.37163,Sweden,,
-,Minot International Airport,MOT,KMOT,48.257629,-101.278,United States,,
-,Marseille Provence Airport,MRS,LFML,43.436661,5.215,France,,
-,Maastricht Aachen Airport,MST,EHBK,50.911652,5.770144,Netherlands,,
-,Milan Malpensa Airport,MXP,LIMC,45.6306,8.728111,Italy,,
-,Naples Airport,NAP,LIRN,40.886028,14.29078,Italy,,
-,Nice Cote d'Azur Airport,NCE,LFMN,43.665272,7.215,France,,
-,Newcastle Airport,NCL,EGNT,55.037498,-1.69166,United Kingdom,,
-,Nador International Airport,NDR,GMMW,34.988888,-3.028333,Morocco,,
-,Knock Ireland West Airport,NOC,EIKN,53.91029,-8.81849,Ireland,,
-,Newquay Cornwall Airport,NQY,EGHQ,50.440552,-4.9954,United Kingdom,,
-,Weeze Airport,NRN,EDLV,51.602409,6.142172,Germany,,
-,Nantes Atlantique Airport,NTE,LFRS,47.15694,-1.60777,France,,
-,Nuremberg Airport,NUE,EDDN,49.498699,11.06689,Germany,,
-,Odesa International Airport,ODS,UKOO,46.426762,30.67646,Ukraine,,
-,Oradea International Airport,OMR,LROD,47.025269,21.9025,Romania,,
-,Porto Francisco de Sa Carneiro Airport,OPO,LPPR,41.248051,-8.68138,Portugal,,
-,Cork Airport,ORK,EICK,51.841381,-8.49111,Ireland,,
-,Oslo Gardermoen Airport,OSL,ENGM,60.193909,11.10036,Norway,,
-,Ostrava Leos Janacek Airport,OSR,LKMT,49.696289,18.11105,Czechia,,
-,Bucharest Henri Coanda International Airport,OTP,LROP,44.572159,26.102171,Romania,,
-,Oujda Angads Airport,OUD,GMFO,34.787151,-1.92398,Morocco,,
-,Ouarzazate Airport,OZZ,GMMZ,30.939051,-6.90943,Morocco,,
-,Ponta Delgada Joao Paulo II Airport,PDL,LPPD,37.74118,-25.6978,Portugal,,
-,Plovdiv Airport,PDV,LBPD,42.067799,24.85083,Bulgaria,,
-,Perugia Umbria International Airport,PEG,LIRZ,43.095901,12.51322,Italy,,
-,Paphos International Airport,PFO,LCPH,34.718029,32.485729,Cyprus,,
-,Perpignan Rivesaltes Airport,PGF,LFMP,42.740829,2.869722,France,,
-,Glasgow Prestwick Airport,PIK,EGPK,55.509441,-4.58666,United Kingdom,,
-,Poitiers – Biard Airport,PIS,LFBI,46.587502,0.306667,France,,
-,Palanga International Airport,PLQ,EYPA,55.973221,21.093849,Lithuania,,
-,Parma Airport,PMF,LIMP,44.824478,10.29636,Italy,,
-,Palma de Mallorca Airport,PMI,LEPA,39.55167,2.738808,Spain,,
-,Palermo Falcone-Borsellino Airport,PMO,LICJ,38.175949,13.09101,Italy,,
-,Poznan Lawica Airport,POZ,EPPO,52.421028,16.826321,Poland,,
-,Presque Isle Northern Maine Airport,PQI,KPQI,46.688969,-68.0448,United States,,
-,Prague Vaclav Havel Airport,PRG,LKPR,50.10083,14.26,Czechia,,
-,Pisa Galileo Galilei Airport,PSA,LIRP,43.68391,10.39275,Italy,,
-,Pescara Abruzzo International Airport,PSR,LIBP,42.431648,14.18106,Italy,,
-,Portland International Jetport,PWM,KPWM,43.64616,-70.309196,United States,,
-,Lasham Airport,QLA,EGHL,51.187199,-1.0335,United Kingdom,,
-,Marrakesh Menara Airport,RAK,GMMX,31.60688,-8.0363,Morocco,,
-,Rabat-Sale Airport,RBA,GMME,34.05146,-6.75151,Morocco,,
-,Rhinelander Oneida County Airport,RHI,KRHI,45.631191,-89.4674,United States,,
-,Riga International Airport,RIX,EVRA,56.923611,23.971109,Latvia,,
-,Murcia Corvera International Airport,RMU,LEMI,37.80405,-1.141831,Spain,,
-,Rzeszow Jasionka Airport,RZE,EPRZ,50.109951,22.018999,Poland,,
-,South Bend Airport,SBN,KSBN,41.708221,-86.317299,United States,,
-,Sibiu International Airport,SBZ,LRSB,45.785789,24.091181,Romania,,
-,Santiago de Compostela Airport,SCQ,LEST,42.896332,-8.41514,Spain,,
-,Suceava International Airport,SCV,LRSV,47.6875,26.35405,Romania,,
-,Santander Airport,SDR,LEXJ,43.427059,-3.82,Spain,,
-,Thessaloniki International Airport,SKG,LGTS,40.519718,22.970949,Greece,,
-,Shannon Airport,SNN,EINN,52.701969,-8.92481,Ireland,,
-,Sofia Airport,SOF,LBSF,42.69519,23.40616,Bulgaria,,
-,London Stansted Airport,STN,EGSS,51.884998,0.235,United Kingdom,,
-,Lamezia Terme Airport,SUF,LICA,38.905392,16.24226,Italy,,
-,Seville San Pablo Airport,SVQ,LEZL,37.417999,-5.8931,Spain,,
-,Salzburg Airport,SZG,LOWS,47.793301,13.00433,Austria,,
-,Olsztyn Mazury Airport,SZY,EPSY,53.481899,20.9377,Poland,,
-,Szczecin Goleniow Airport,SZZ,EPSC,53.584728,14.9022,Poland,,
-,Lajes Field,TER,LPLA,38.761841,-27.0907,Portugal,,
-,Tenerife North Airport,TFN,GCXO,28.482651,-16.341499,Spain,,
-,Tenerife South Airport,TFS,GCTS,28.04447,-16.572399,Spain,,
-,Podgorica Airport,TGD,LYPG,42.35939,19.25189,Montenegro,,
-,Tallinn Lennart Meri Airport ,TLL,EETN,59.413311,24.83284,Estonia,,
-,Toulouse Blagnac Airport,TLS,LFBO,43.634998,1.367778,France,,
-,Tel Aviv Ben Gurion International Airport,TLV,LLBG,32.011379,34.886662,Israel,,
-,Tampere Pirkkala Airport,TMP,EFTP,61.415272,23.58777,Finland,,
-,Tangier Ibn Battouta Airport,TNG,GMTT,35.72691,-5.91688,Morocco,,
-,Trapani Birgi Airport,TPS,LICT,37.9114,12.48796,Italy,,
-,Oslo Sandefjord Airport,TRF,ENTO,59.186699,10.25862,Norway,,
-,Turin Caselle Airport,TRN,LIMF,45.20076,7.649631,Italy,,
-,Trieste Friuli Venezia Giulia Airport,TRS,LIPQ,45.827499,13.47222,Italy,,
-,Treviso Airport,TSF,LIPH,45.648399,12.19442,Italy,,
-,Timisoara Traian Vuia International Airport,TSR,LRTR,45.80986,21.33786,Romania,,
-,Tetuan Sania Ramel Airport,TTU,GMTN,35.59433,-5.32001,Morocco,,
-,Tours Val de Loire Airport,TUF,LFOT,47.431938,0.723056,France,,
-,Thief River Falls Regional Airport,TVF,KTVF,48.066113,-96.184998,United States,,
-,Venice Marco Polo Airport,VCE,LIPZ,45.505268,12.35194,Italy,,
-,Vigo-Peinador Airport,VGO,LEVX,42.2318,-8.62677,Spain,,
-,Vienna International Airport,VIE,LOWW,48.110271,16.569719,Austria,,
-,Vitoria Airport,VIT,LEVT,42.882832,-2.72446,Spain,,
-,Valencia Airport,VLC,LEVC,39.489311,-0.48162,Spain,,
-,Valladolid Airport,VLL,LEVD,41.706108,-4.85194,Spain,,
-,Vilnius International Airport,VNO,EYVI,54.63707,25.2878,Lithuania,,
-,Verona Airport,VRN,LIPX,45.395699,10.88853,Italy,,
-,Stockholm Vasteras Hasslo Airport,VST,ESOW,59.589439,16.63361,Sweden,,
-,Warsaw Modlin Airport,WMI,EPMO,52.451111,20.651667,Poland,,
-,Wroclaw Copernicus Airport,WRO,EPWR,51.10268,16.88583,Poland,,
-,Waterville Robert LaFleur Airport,WVL,KWVL,44.53389,-69.675835,United States,,
-,Paris Vatry Chalons Airport,XCR,LFOK,48.759998,4.2,France,,
-,Jerez Airport,XRY,LEJR,36.744621,-6.06011,Spain,,
-,Williston Basin International Airport,XWA,KXWA,48.251793,-103.74942,United States,,
-,Zagreb Franjo Tudman Airport,ZAG,LDZA,45.742931,16.068769,Croatia,,
-,Zaragoza Airport,ZAZ,LEZG,41.666241,-1.04155,Spain,,
+EKYT,"EKYT,"
+EKAH,"EKAH,"
+EGPD,"EGPD,"
+GCRR,"GCRR,"
+GMAD,"GMAD,"
+LEMG,"LEMG,"
+LIEA,"LIEA,"
+LEAL,"LEAL,"
+OJAI,"OJAI,"
+EHAM,"EHAM,"
+LIPY,"LIPY,"
+OJAQ,"OJAQ,"
+ESSA,"ESSA,"
+LGAV,"LGAV,"
+LEBL,"LEBL,"
+LIBR,"LIBR,"
+EDDB,"EDDB,"
+LFRB,"LFRB,"
+KBFI,"KBFI,"
+LIME,"LIME,"
+EGBB,"EGBB,"
+LFBZ,"LFBZ,"
+KBIS,"KBIS,"
+EKBI,"EKBI,"
+LIPE,"LIPE,"
+LQBK,"LQBK,"
+LFBD,"LFBD,"
+EGHH,"EGHH,"
+EDDW,"EDDW,"
+LIBD,"LIBD,"
+LKTB,"LKTB,"
+EGGD,"EGGD,"
+EBBR,"EBBR,"
+LFSB,"LFSB,"
+LZIB,"LZIB,"
+KBTV,"KBTV,"
+LHBP,"LHBP,"
+LFOB,"LFOB,"
+LFSL,"LFSL,"
+EPBY,"EPBY,"
+LFMU,"LFMU,"
+LIEE,"LIEE,"
+LFMK,"LFMK,"
+LECH,"LECH,"
+LFLC,"LFLC,"
+EDDK,"EDDK,"
+LGSA,"LGSA,"
+LIRA,"LIRA,"
+LICB,"LICB,"
+LRCL,"LRCL,"
+EKCH,"EKCH,"
+EBCI,"EBCI,"
+LIBC,"LIBC,"
+LICC,"LICC,"
+LIMZ,"LIMZ,"
+KCWA,"KCWA,"
+EGFF,"EGFF,"
+LFGJ,"LFGJ,"
+EDLW,"EDLW,"
+EIDW,"EIDW,"
+KDVL,"KDVL,"
+EGPH,"EGPH,"
+LFBE,"LFBE,"
+EHEH,"EHEH,"
+EGNX,"EGNX,"
+KERI,"KERI,"
+GMMI,"GMMI,"
+EGTE,"EGTE,"
+LPFR,"LPFR,"
+KFAR,"KFAR,"
+LIRF,"LIRF,"
+GMFF,"GMFF,"
+EDSB,"EDSB,"
+EDJA,"EDJA,"
+LFTW,"LFTW,"
+EDDF,"EDDF,"
+GCFV,"GCFV,"
+EPGD,"EPGD,"
+EGPF,"EGPF,"
+LIMJ,"LIMJ,"
+ESGG,"ESGG,"
+LEGE,"LEGE,"
+EDDH,"EDDH,"
+EFHK,"EFHK,"
+EDFH,"EDFH,"
+UKHH,"UKHH,"
+LEIB,"LEIB,"
+LYNI,"LYNI,"
+UKBB,"UKBB,"
+EIKY,"EIKY,"
+EPKK,"EPKK,"
+LZKZ,"LZKZ,"
+EPKT,"EPKT,"
+EYKA,"EYKA,"
+EGNM,"EGNM,"
+EPLL,"EPLL,"
+LFBT,"LFBT,"
+EGKK,"EGKK,"
+LFBL,"LFBL,"
+LFQQ,"LFQQ,"
+LPPT,"LPPT,"
+GCLP,"GCLP,"
+EGGP,"EGGP,"
+EFLP,"EFLP,"
+LFBH,"LFBH,"
+EGGW,"EGGW,"
+ELLX,"ELLX,"
+EPLB,"EPLB,"
+UKLL,"UKLL,"
+LFLL,"LFLL,"
+LEMD,"LEMD,"
+LEMH,"LEMH,"
+EGCC,"EGCC,"
+KMHT,"KMHT,"
+KMKE,"KMKE,"
+LMML,"LMML,"
+EGNV,"EGNV,"
+ESMS,"ESMS,"
+KMOT,"KMOT,"
+LFML,"LFML,"
+EHBK,"EHBK,"
+LIMC,"LIMC,"
+LIRN,"LIRN,"
+LFMN,"LFMN,"
+EGNT,"EGNT,"
+GMMW,"GMMW,"
+EIKN,"EIKN,"
+EGHQ,"EGHQ,"
+EDLV,"EDLV,"
+LFRS,"LFRS,"
+EDDN,"EDDN,"
+UKOO,"UKOO,"
+LROD,"LROD,"
+LPPR,"LPPR,"
+EICK,"EICK,"
+ENGM,"ENGM,"
+LKMT,"LKMT,"
+LROP,"LROP,"
+GMFO,"GMFO,"
+GMMZ,"GMMZ,"
+LPPD,"LPPD,"
+LBPD,"LBPD,"
+LIRZ,"LIRZ,"
+LCPH,"LCPH,"
+LFMP,"LFMP,"
+EGPK,"EGPK,"
+LFBI,"LFBI,"
+EYPA,"EYPA,"
+LIMP,"LIMP,"
+LEPA,"LEPA,"
+LICJ,"LICJ,"
+EPPO,"EPPO,"
+KPQI,"KPQI,"
+LKPR,"LKPR,"
+LIRP,"LIRP,"
+LIBP,"LIBP,"
+KPWM,"KPWM,"
+EGHL,"EGHL,"
+GMMX,"GMMX,"
+GMME,"GMME,"
+KRHI,"KRHI,"
+EVRA,"EVRA,"
+LEMI,"LEMI,"
+EPRZ,"EPRZ,"
+KSBN,"KSBN,"
+LRSB,"LRSB,"
+LEST,"LEST,"
+LRSV,"LRSV,"
+LEXJ,"LEXJ,"
+LGTS,"LGTS,"
+EINN,"EINN,"
+LBSF,"LBSF,"
+EGSS,"EGSS,"
+LICA,"LICA,"
+LEZL,"LEZL,"
+LOWS,"LOWS,"
+EPSY,"EPSY,"
+EPSC,"EPSC,"
+LPLA,"LPLA,"
+GCXO,"GCXO,"
+GCTS,"GCTS,"
+LYPG,"LYPG,"
+EETN,"EETN,"
+LFBO,"LFBO,"
+LLBG,"LLBG,"
+EFTP,"EFTP,"
+GMTT,"GMTT,"
+LICT,"LICT,"
+ENTO,"ENTO,"
+LIMF,"LIMF,"
+LIPQ,"LIPQ,"
+LIPH,"LIPH,"
+LRTR,"LRTR,"
+GMTN,"GMTN,"
+LFOT,"LFOT,"
+KTVF,"KTVF,"
+LIPZ,"LIPZ,"
+LEVX,"LEVX,"
+LOWW,"LOWW,"
+LEVT,"LEVT,"
+LEVC,"LEVC,"
+LEVD,"LEVD,"
+EYVI,"EYVI,"
+LIPX,"LIPX,"
+ESOW,"ESOW,"
+EPMO,"EPMO,"
+EPWR,"EPWR,"
+KWVL,"KWVL,"
+LFOK,"LFOK,"
+LEJR,"LEJR,"
+KXWA,"KXWA,"
+LDZA,"LDZA,"
+LEZG,"LEZG,"
