@@ -1,14 +1,25 @@
 from datetime import datetime, timedelta
 import csv
+import mysql.connector
 
 data = {}
 people = {}
 date_tmp = None
+day_off = 0
+
+mydb = mysql.connector.connect(
+  host="localhost",
+  user="root",
+  password="",
+  database="workcalendar"
+)
+
+mycursor = mydb.cursor()
 
 def standardise_hour(hour) -> int:
     return hour if hour != 0 else 24
 
-with open('C:\\Users\\Tommy\\Desktop\\WorkCalendar\\public\\Python\\shifts.csv', 'r') as file:
+with open('C:\\Users\\Larry\\Desktop\\RosterBuddy\\NewskiesRoster\\public\\Python\\shifts.csv', 'r') as file:
 
   reader = csv.reader(file)
   counter = 0
@@ -44,17 +55,32 @@ with open('C:\\Users\\Tommy\\Desktop\\WorkCalendar\\public\\Python\\shifts.csv',
         for shift in shifts:
 
             name = people[shift_counter]
-
-            if any([shift == "X", shift == "", shift == "AL"]):
-                print(f"{name}: {shift}")
+            
+            if any([shift == "BH", shift == "AL"]):
+                if shift == "AL":
+                    day_off = 1
+                elif shift == "BH":
+                    day_off = 2
+                
+                #print(f"{name}: {shift}")
                 shift_counter += 1
-                #SQL
                 continue
             else:
                 start_time,end_time = shift.split("-")
                 print(f"{name} is starting work at {start_time} and finishing at {end_time}")
-                #SQL
+
+                
+                shift_start = date + " " + start_time
+                shift_end = date + " " + end_time
+
+                
+                sql = "INSERT INTO rosters (user_id, day_off,shift_start,shift_end) VALUES (%s,%s,%s,%s)"
+                val = (name, 0,shift_start,shift_end)
+
 
             shift_counter += 1
+            mycursor.execute(sql, val)
+            mydb.commit()
+            print(mycursor.rowcount, "record inserted.")
 
         date_tmp = date
