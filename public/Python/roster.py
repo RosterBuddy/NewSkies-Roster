@@ -5,7 +5,6 @@ import mysql.connector
 data = {}
 people = {}
 date_tmp = None
-day_off = 0
 
 mydb = mysql.connector.connect(
   host="localhost",
@@ -15,11 +14,12 @@ mydb = mysql.connector.connect(
 )
 
 mycursor = mydb.cursor()
+mycursor1 = mydb.cursor()
 
 def standardise_hour(hour) -> int:
     return hour if hour != 0 else 24
 
-with open('C:\\Users\\Larry\\Desktop\\RosterBuddy\\NewskiesRoster\\public\\Python\\shifts.csv', 'r') as file:
+with open('C:\\Users\\Larry\\Desktop\\RosterBuddy\\NewskiesRoster\\public\\Python\\shifts_test.csv', 'r') as file:
 
   reader = csv.reader(file)
   counter = 0
@@ -55,23 +55,32 @@ with open('C:\\Users\\Larry\\Desktop\\RosterBuddy\\NewskiesRoster\\public\\Pytho
         for shift in shifts:
 
             name = people[shift_counter]
+            day_off = None
+            desc = None
+            shift_map = {'AL': { 'day_off': 1, 'desc': 'A/L' }, 'BH': { 'day_off': 2, 'desc': 'B/H' }, 'X': { 'day_off': 0, 'desc': 'Off' } }
+
             
-            if any([shift == "BH", shift == "AL"]):
-                if shift == "AL":
-                    day_off = 1
-                elif shift == "BH":
-                    day_off = 2
+            if any([shift == "X",shift == "BH", shift == "AL"]):
+                day_off = shift_map[shift]['day_off']
+                desc = shift_map[shift]['desc']
+                
+                odd_day = date + " 00:00:00"
+
+                sql = "INSERT INTO rosters (user_id, description, day_off,shift_start,shift_end) VALUES (%s,%s,%s,%s,%s)"
+                val = (name,desc,day_off,odd_day,odd_day)
+                
                 
                 #print(f"{name}: {shift}")
-                shift_counter += 1
-                continue
             else:
                 start_time,end_time = shift.split("-")
-                print(f"{name} is starting work at {start_time} and finishing at {end_time}")
+                #print(f"{name} is starting work at {start_time} and finishing at {end_time}")
+                if end_time == "24:00":
+                    shift_end = date + " 23:59:00"
+                else: 
+                    shift_end = date + " " + end_time
 
-                
                 shift_start = date + " " + start_time
-                shift_end = date + " " + end_time
+                
 
                 
                 sql = "INSERT INTO rosters (user_id, day_off,shift_start,shift_end) VALUES (%s,%s,%s,%s)"
@@ -79,7 +88,9 @@ with open('C:\\Users\\Larry\\Desktop\\RosterBuddy\\NewskiesRoster\\public\\Pytho
 
 
             shift_counter += 1
+            
             mycursor.execute(sql, val)
+
             mydb.commit()
             print(mycursor.rowcount, "record inserted.")
 
