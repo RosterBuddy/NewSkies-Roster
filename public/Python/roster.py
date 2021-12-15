@@ -19,7 +19,7 @@ mycursor1 = mydb.cursor()
 def standardise_hour(hour) -> int:
     return hour if hour != 0 else 24
 
-with open('C:\\Users\\Larry\\Desktop\\RosterBuddy\\NewskiesRoster\\public\\Python\\shifts_test.csv', 'r') as file:
+with open('C:\\Users\\Larry\\Desktop\\RosterBuddy\\NewskiesRoster\\public\\Python\\shifts.csv', 'r') as file:
 
   reader = csv.reader(file)
   counter = 0
