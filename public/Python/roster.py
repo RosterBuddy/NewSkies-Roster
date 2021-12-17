@@ -19,7 +19,7 @@ mycursor1 = mydb.cursor()
 def standardise_hour(hour) -> int:
     return hour if hour != 0 else 24
 
-with open('C:\\Users\\Larry\\Desktop\\RosterBuddy\\NewskiesRoster\\public\\Python\\shifts.csv', 'r') as file:
+with open('C:\\Users\\Larry\\Desktop\\RosterBuddy\\NewskiesRoster\\public\\Python\\shift.csv', 'r') as file:
 
   reader = csv.reader(file)
   counter = 0
@@ -57,7 +57,7 @@ with open('C:\\Users\\Larry\\Desktop\\RosterBuddy\\NewskiesRoster\\public\\Pytho
             name = people[shift_counter]
             day_off = None
             desc = None
-            shift_map = {'AL': { 'day_off': 1, 'desc': 'A/L' }, 'BH': { 'day_off': 2, 'desc': 'B/H' }, 'X': { 'day_off': 0, 'desc': 'Off' } }
+            shift_map = {'AL': { 'day_off': 1, 'desc': 'A/L' }, 'BH': { 'day_off': 2, 'desc': 'B/H' }, 'X': { 'day_off': 0, 'desc': 'off' } }
 
             
             if any([shift == "X",shift == "BH", shift == "AL"]):
