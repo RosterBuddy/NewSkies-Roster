@@ -8,6 +8,7 @@
                     <div class="card-body">
                         <table class="table table-striped">
                             <tr>
+                                <th>ID</th>
                                 <th>Name</th>
                                 <th>E-Mail</th>
                                 <th>Roster</th>
@@ -15,6 +16,7 @@
                             @foreach ($users as $user)
                                 @if($user->isTerminated == 0)
                                 <tr>
+                                    <th>{{$user->id}}</th>
                                     <th>{{$user->name}}</th>
                                     <th>{{$user->email}}</th>
                                     <th><a href="{{ route('admin.view_user_profile',$user->id)}}">Edit User</a></th>
