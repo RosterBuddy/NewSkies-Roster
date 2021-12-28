@@ -5,6 +5,9 @@ import mysql.connector
 data = {}
 people = {}
 date_tmp = None
+now = datetime.now()
+formatted_date = now.strftime('%Y-%m-%d %H:%M:%S')
+
 
 mydb = mysql.connector.connect(
   host="localhost",
@@ -66,8 +69,8 @@ with open('C:\\Users\\Larry\\Desktop\\RosterBuddy\\NewskiesRoster\\public\\Pytho
                 
                 odd_day = date + " 00:00:00"
 
-                sql = "INSERT INTO rosters (user_id, description, day_off,shift_start,shift_end) VALUES (%s,%s,%s,%s,%s)"
-                val = (name,desc,day_off,odd_day,odd_day)
+                sql = "INSERT INTO rosters (user_id, description, day_off,shift_start,shift_end, last_edited, created_at, updated_at) VALUES (%s,%s,%s,%s,%s,%s,%s,%s)"
+                val = (name,desc,day_off,odd_day,odd_day,formatted_date,formatted_date,formatted_date)
                 
                 
                 #print(f"{name}: {shift}")
@@ -83,8 +86,8 @@ with open('C:\\Users\\Larry\\Desktop\\RosterBuddy\\NewskiesRoster\\public\\Pytho
                 
 
                 
-                sql = "INSERT INTO rosters (user_id, day_off,shift_start,shift_end) VALUES (%s,%s,%s,%s)"
-                val = (name, 0,shift_start,shift_end)
+                sql = "INSERT INTO rosters (user_id, day_off,shift_start,shift_end,last_edited, created_at, updated_at) VALUES (%s,%s,%s,%s,%s,%s,%s)"
+                val = (name, 0,shift_start,shift_end,formatted_date,formatted_date,formatted_date)
 
 
             shift_counter += 1
