@@ -33,16 +33,6 @@ var planeicon = L.icon({
   popupAnchor:  [3, -10] // point from which the popup should open relative to the iconAnchor
 });
 
-
-// function updatePoints() {
-//     $.getJSON("https://opensky-network.org/api/states/all").done(function(planes){ 
-//         	getMarkers(planes);
-//             markersLayer.clearLayers();
-//     });
-//     setTimeout(function(){ updatePoints(); }, 10000);
-// }
-
-
 var map;
 var markers = [];
 var live_data = [];
@@ -51,16 +41,36 @@ var updateMap = function(data) {
     console.log('Refreshing Map...');
     markersLayer.clearLayers();
     for (var i = 0; i < live_data.length; i++) {
+
+      var alt_m=parseInt(live_data[i][5] * 3.281);
+      var alt_f = (Math.round(alt_m));
+      if(alt_f > 7000 ){
+        alt_f = alt_f.toString()
+        alt_f = alt_f.substring(0,3)
+        alt_f = "FL" + alt_f
+      }else{
+        alt_f = alt_f + "ft"
+      }
+
+      var gs_m=parseInt(live_data[i][4] * 1.944);
+      var gs_k = (Math.round(gs_m));
+
+
         var heading = live_data[i][3];
         var latitude = live_data[i][1];
         var longtitude = live_data[i][2];
         var callsign = live_data[i][0];
-
+        var sq = live_data[i][6]
+        if(latitude == null || longtitude == null){
+          var latitude = 0;
+          var longtitude = 0;
+        }
         var popup = L.popup()
             .setLatLng([latitude, longtitude])
-            .setContent(callsign);
+            .setContent(`Callsign: ${callsign}<br>ALT: ${alt_f}<br> GS: ${gs_k}kts<br>SQ: ${sq}`);
         marker = L.marker([latitude, longtitude], {icon:planeicon, rotationAngle:heading, clickable: true}).bindPopup(popup, {showOnMouseOver:true});
         markersLayer.addLayer(marker);
+      
     }
 }
 
@@ -74,8 +84,9 @@ function GetData() {
         $.each(data, function(index, value) { //for each line
           for (var i = 0; i < value.length; i++) {
             cs = value[i][1]
-            if(cs.slice(0,3) == "RYR"){
-              var data_marker = [value[i][1], value[i][6], value[i][5], value[i][10]];
+            on_gnd = value[i][8]
+            if(cs.slice(0,3) == "RYR" && on_gnd != 1){
+              var data_marker = [value[i][1], value[i][6], value[i][5], value[i][10], value[i][9], value[i][7], value[i][14]];
               live_data.push(data_marker);
             }
           }
@@ -85,8 +96,7 @@ function GetData() {
 }
 
 $(document).ready(function(){
-   var mymap = L.map('mapid').setView([48.3460247, 8.3744107], 5);     
-
+   var mymap = L.map('mapid').setView([47.72, 5.29], 5);     
     L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
         maxZoom: 13,
@@ -97,8 +107,7 @@ $(document).ready(function(){
     }).addTo(mymap);
     markersLayer.addTo(mymap);
     GetData();
-    setInterval(GetData, 10000); //every minute
+    setInterval(GetData, 10000); //every 10 seconds
 });
-
 
 </script>
