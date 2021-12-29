@@ -11,6 +11,14 @@
     text-align: left;
     grid-column: 1/4;
 } 
+body {
+            padding: 0;
+            margin: 0;
+        }
+        html, body, #map {
+            height: 100%;
+            width: 100%;
+        }
 </style>
 
 
