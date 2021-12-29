@@ -20,12 +20,18 @@ html, body {
 }
 </style>
 
-@if($count > 0)
 <div class="text-center">
-    <p>There has been {{$count}} changes to {{$user->name}}s roster. </p>
-    <p><a class="btn btn-info" role="button" href="{{route('email.lastedited', $id)}}">Click Here</a> to notify</p>
+    @if($count > 0)
+        <p>There has been {{$count}} changes to {{$user->name}}s roster. </p>
+        <p><a class="btn btn-info" role="button" href="{{route('email.lastedited', $id)}}">Click Here</a> to notify</p>
+    @endif
+    <div class="card-body">
+        <form action="{{route('admin.delete_user_roster', $id)}}" method="post">
+            @csrf
+            @method('PATCH')
+            <input type="submit" class="btn btn-success" value="Clear Roster"/>
+        </form>
 </div>
-@endif
 <div id='calendar'></div>
 
 <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>

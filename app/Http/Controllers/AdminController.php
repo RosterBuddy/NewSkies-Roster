@@ -199,6 +199,18 @@ class AdminController extends Controller
         return view('admin.roster.show', compact('rosters', 'user', 'id', 'count'));
     }
 
+    public function delete_user_roster($id){
+        $rosters = Roster::all();
+        $user = User::find($id);
+        foreach($rosters as $roster){
+            if($roster->user_id == $user->id){
+                $ros = Roster::find($roster->id);
+                $ros->delete();
+            }
+        }
+        return redirect()->route('admin.show_user_calendar', $user->id);
+    }
+
     public function edit_user_calendar($id) {
         $roster = Roster::find($id);
         $timings = Timing::all();
