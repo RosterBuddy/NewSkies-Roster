@@ -1,6 +1,7 @@
 from datetime import datetime, timedelta
 import csv
 import mysql.connector
+import json
 
 data = {}
 people = {}
@@ -9,12 +10,17 @@ now = datetime.now()
 formatted_date = now.strftime('%Y-%m-%d %H:%M:%S')
 
 
-mydb = mysql.connector.connect(
-  host="localhost",
-  user="root",
-  password="",
-  database="workcalendar"
-)
+
+with open('C:\\Users\\Larry\\Desktop\\RosterBuddy\\NewskiesRoster\\public\\Python\\config.json') as f:
+    d = json.load(f)
+    mydb = mysql.connector.connect(
+        host=d['host'],
+        user=d['user'],
+        password=d['password'],
+        database=d['database'],
+    )
+
+
 
 mycursor = mydb.cursor()
 mycursor1 = mydb.cursor()
