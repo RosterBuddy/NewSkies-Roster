@@ -5,7 +5,7 @@
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="js/Marker.Rotate.js"></script>
+<script src="js/leaflet.rotatedMarker.js"></script>
 <style>
  #mapid { 
     text-align: left;
@@ -26,9 +26,6 @@
 
    
 <script>
-var aircraft;
-var aircraftlayer = new L.LayerGroup()
-
 var planeicon = L.icon({
   iconUrl: 'img/icon.png',
   iconSize:     [40, 40], // size of the icon
@@ -37,7 +34,58 @@ var planeicon = L.icon({
 });
 
 
-var mymap = L.map('mapid').setView([48.3460247, 8.3744107], 5);     
+// function updatePoints() {
+//     $.getJSON("https://opensky-network.org/api/states/all").done(function(planes){ 
+//         	getMarkers(planes);
+//             markersLayer.clearLayers();
+//     });
+//     setTimeout(function(){ updatePoints(); }, 10000);
+// }
+
+
+var map;
+var markers = [];
+var live_data = [];
+var markersLayer = new L.LayerGroup(); // NOTE: Layer is created here!
+var updateMap = function(data) {
+    console.log('Refreshing Map...');
+    markersLayer.clearLayers();
+    for (var i = 0; i < live_data.length; i++) {
+        var heading = live_data[i][3];
+        var latitude = live_data[i][1];
+        var longtitude = live_data[i][2];
+        var callsign = live_data[i][0];
+
+        var popup = L.popup()
+            .setLatLng([latitude, longtitude])
+            .setContent(callsign);
+        marker = L.marker([latitude, longtitude], {icon:planeicon, rotationAngle:heading, clickable: true}).bindPopup(popup, {showOnMouseOver:true});
+        markersLayer.addLayer(marker);
+    }
+}
+
+function GetData() {
+  live_data = []
+    $.ajax({
+        type        : 'GET', 
+        url         : 'https://opensky-network.org/api/states/all'
+    })
+    .done(function(data) {
+        $.each(data, function(index, value) { //for each line
+          for (var i = 0; i < value.length; i++) {
+            cs = value[i][1]
+            if(cs.slice(0,3) == "RYR"){
+              var data_marker = [value[i][1], value[i][6], value[i][5], value[i][10]];
+              live_data.push(data_marker);
+            }
+          }
+        });
+        updateMap();
+    });
+}
+
+$(document).ready(function(){
+   var mymap = L.map('mapid').setView([48.3460247, 8.3744107], 5);     
 
     L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -47,67 +95,10 @@ var mymap = L.map('mapid').setView([48.3460247, 8.3744107], 5);
         zoomOffset: -1,
         accessToken: 'pk.eyJ1IjoiMTMwNjYzOSIsImEiOiJjaXVheHF1emUwMDBnMnZ1dnF3NXlkcHJsIn0.EA9FU7f3QqXtirYubf6hvg'
     }).addTo(mymap);
-
-// function update_position() {
-//     $.getJSON('https://opensky-network.org/api/states/all', function(data) {
-//         var planes = data.states
-//         for(let i = 0; i < planes.length; i++){
-//             plane = planes[i]
-//             lat = plane[6]
-//             lon = plane[5]
-//             csfilter = plane[1].substring(0,3);
-//             //if(csfilter == "RYR"){
-//                 // if(!aircraft){
-//                     //var live_position = [[plane[1], plane[6], plane[5]]]
-//                     var aircraft = L.marker([lat,lon]).bindPopup("I am "+plane[1]);
-
-//                     aircraftlayer.addLayer(aircraft)
-//                     mymap.addLayer(aircraftlayer)
-
-//                 // }
-//             //}
-//         }
-//         aircraft.setLatLng([lat,lon]).update();
-//         setTimeout(update_position, 10000);
-//     });
-// }
-// update_position();
-
-
-
-// function remove_marker(){
-//     aircraftlayer.clearLayers(); // Blindly remove everything from the Layer Group
-//     console.log("Removing");
-//     setTimeout(remove_marker, 9500);
-
-// }
-
-var markersLayer = new L.LayerGroup(); // NOTE: Layer is created here!
-
-window.addEventListener("load", function() { updatePoints(); });
-
-function getMarkers(planes) {
-    var airplane = planes.states
-    var marker;
-    for(let i = 0; i < airplane.length; i++){
-        marker = new L.marker([airplane[i][6],airplane[i][5]]).bindPopup(airplane[i][0]);    
-        markersLayer.addLayer(marker);
-    }
-}
-
-markersLayer.addTo(mymap);
-
-
-
-function updatePoints() {
-    $.getJSON("https://opensky-network.org/api/states/all").done(function(planes){ 
-        	getMarkers(planes);
-            markersLayer.clearLayers();
-    });
-    setTimeout(function(){ updatePoints(); }, 10000);
-}
-
-
+    markersLayer.addTo(mymap);
+    GetData();
+    setInterval(GetData, 10000); //every minute
+});
 
 
 </script>
