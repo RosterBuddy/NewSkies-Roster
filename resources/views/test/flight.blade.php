@@ -169,7 +169,7 @@ var updateMap = function(data) {
           document.getElementById("ac_data").innerHTML = this._popup._content;
         }
 
-        marker = L.marker([latitude, longtitude], {icon:planeicon, rotationAngle:heading, clickable: true}).on('click',onClick).bindPopup(popup);
+        marker = L.marker([latitude, longtitude], {icon:planeicon, rotationAngle:heading}).on('click',onClick).bindPopup(popup);
         markersLayer.addLayer(marker);
 
       
@@ -213,7 +213,7 @@ $(document).ready(function(){
     GetData();
     setInterval(GetData, 10000); //every 10 seconds
   
-
+setInterval(() => {
     /**
      * Load all the available maps frames from RainViewer API
      */
@@ -342,6 +342,8 @@ $(document).ready(function(){
         optionColorScheme = e.options[e.selectedIndex].value;
         initialize(apiData, optionKind);
     }
+
+  }, 900000); // 15 minutes
 });
 
 
