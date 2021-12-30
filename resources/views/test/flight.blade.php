@@ -61,7 +61,7 @@ li {
 }
 </style>
 <div class="sidenav">
-  <ul style="position: absolute;top: 0; left: 0; right: 0; height: 50px;">
+  {{-- <ul style="position: absolute;top: 0; left: 0; right: 0; height: 50px;">
     <li><input type="radio" name="kind" checked="checked" onchange="setKind('radar')">Radar (Past + Future) <input type="radio" name="kind" onchange="setKind('satellite')">Infrared Satellite</li>
 
     <li><select id="colors" onchange="setColors(); return;">
@@ -75,9 +75,9 @@ li {
         <option value="7">RAINBOW @ SELEX-SI</option>
         <option value="8">Dark Sky</option>
     </select></li>
-  </ul>
+  </ul> --}}
 
-<p id="callsign"></p>
+<p id="ac_data">No Aircraft Selected</p>
 
 </div>
 
@@ -159,15 +159,24 @@ var updateMap = function(data) {
         if(latitude == null || longtitude == null){
           var latitude = 0;
           var longtitude = 0;
-        }
+        }else{
         var popup = L.popup()
             .setLatLng([latitude, longtitude])
             .setContent(`Callsign: ${callsign}<br>ALT: ${alt_f}<br> GS: ${gs_k}kts<br>${vs_f}<br>SQ: ${sq}`);
-        marker = L.marker([latitude, longtitude], {icon:planeicon, rotationAngle:heading, clickable: true}).bindPopup(popup, {showOnMouseOver:true});
+        }
+
+        function onClick(e){
+          document.getElementById("ac_data").innerHTML = this._popup._content;
+        }
+
+        marker = L.marker([latitude, longtitude], {icon:planeicon, rotationAngle:heading, clickable: true}).on('click',onClick).bindPopup(popup);
         markersLayer.addLayer(marker);
+
       
     }
 }
+
+
 
 function GetData() {
   live_data = []
