@@ -189,7 +189,7 @@ function GetData() {
           for (var i = 0; i < value.length; i++) {
             cs = value[i][1]
             on_gnd = value[i][8]
-            if(cs.slice(0,3) == "RYR" && on_gnd != 1){
+            if(cs.slice(0,3) == "RYR" || cs.slice(0,3) == "RUK" && on_gnd != 1){
               var data_marker = [value[i][1], value[i][6], value[i][5], value[i][10], value[i][9], value[i][7], value[i][14], value[i][11]];
               live_data.push(data_marker);
             }
