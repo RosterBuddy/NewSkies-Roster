@@ -213,7 +213,7 @@ $(document).ready(function(){
     GetData();
     setInterval(GetData, 10000); //every 10 seconds
   
-setInterval(() => {
+function weather_update(){
     /**
      * Load all the available maps frames from RainViewer API
      */
@@ -342,8 +342,9 @@ setInterval(() => {
         optionColorScheme = e.options[e.selectedIndex].value;
         initialize(apiData, optionKind);
     }
-
-  }, 900000); // 15 minutes
+  }
+  weather_update();
+  setInterval(weather_update, 900000); // 15 minutes
 });
 
 
