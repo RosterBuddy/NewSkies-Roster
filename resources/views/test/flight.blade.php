@@ -60,6 +60,15 @@ var updateMap = function(data) {
         alt_f = alt_f + "ft"
       }
 
+      var vs_m = parseInt(live_data[i][7] * 196.85);
+      var vs_f = (Math.round(vs_m));
+      if(vs_f == 0){
+        vs_f = "Crusing"
+      }else{
+        vs_f = "V/S: " + vs_f + " fpm"
+      }     
+
+
       var gs_m=parseInt(live_data[i][4] * 1.944);
       var gs_k = (Math.round(gs_m));
 
@@ -75,7 +84,7 @@ var updateMap = function(data) {
         }
         var popup = L.popup()
             .setLatLng([latitude, longtitude])
-            .setContent(`Callsign: ${callsign}<br>ALT: ${alt_f}<br> GS: ${gs_k}kts<br>SQ: ${sq}`);
+            .setContent(`Callsign: ${callsign}<br>ALT: ${alt_f}<br> GS: ${gs_k}kts<br>${vs_f}<br>SQ: ${sq}`);
         marker = L.marker([latitude, longtitude], {icon:planeicon, rotationAngle:heading, clickable: true}).bindPopup(popup, {showOnMouseOver:true});
         markersLayer.addLayer(marker);
       
@@ -94,7 +103,7 @@ function GetData() {
             cs = value[i][1]
             on_gnd = value[i][8]
             if(cs.slice(0,3) == "RYR" && on_gnd != 1){
-              var data_marker = [value[i][1], value[i][6], value[i][5], value[i][10], value[i][9], value[i][7], value[i][14]];
+              var data_marker = [value[i][1], value[i][6], value[i][5], value[i][10], value[i][9], value[i][7], value[i][14], value[i][11]];
               live_data.push(data_marker);
             }
           }
