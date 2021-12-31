@@ -77,7 +77,11 @@ li {
     </select></li>
   </ul> --}}
 
-<p id="ac_data">No Aircraft Selected</p>
+<p id="ac_cs">No Aircraft Selected</p>
+<p id="ac_alt">No Aircraft Selected</p>
+<p id="ac_kt">No Aircraft Selected</p>
+<p id="ac_sq">No Aircraft Selected</p>
+<p id="ac_vs">No Aircraft Selected</p>
 
 </div>
 
@@ -109,7 +113,17 @@ var optionSnowColors = 1; // 0 - do not show snow colors, 1 - show snow colors
 var animationPosition = 0;
 var animationTimer = false;
 
-
+function loadJSON(callback) {   
+  var xobj = new XMLHttpRequest();
+  xobj.overrideMimeType("application/json");
+  xobj.open('GET', '../ryanair.json', true);
+  xobj.onreadystatechange = function () {
+    if (xobj.readyState == 4 && xobj.status == "200") {
+      callback(JSON.parse(xobj.responseText));
+    }
+  };
+  xobj.send(null);  
+}
 
 
 var planeicon = L.icon({
@@ -123,14 +137,20 @@ var map;
 var markers = [];
 var live_data = [];
 var markersLayer = new L.LayerGroup(); // NOTE: Layer is created here!
+
+loadJSON(function(json) {
+          console.log(json); // this will log out the json object
+});
+
 var updateMap = function(data) {
     console.log('Refreshing Map...');
     markersLayer.clearLayers();
+
     for (var i = 0; i < live_data.length; i++) {
 
       var alt_m=parseInt(live_data[i][5] * 3.281);
       var alt_f = (Math.round(alt_m));
-      if(alt_f > 7000 ){
+      if(alt_f > 10000 ){
         alt_f = alt_f.toString()
         alt_f = alt_f.substring(0,3)
         alt_f = "FL" + alt_f
@@ -150,12 +170,16 @@ var updateMap = function(data) {
       var gs_m=parseInt(live_data[i][4] * 1.944);
       var gs_k = (Math.round(gs_m));
 
-
         var heading = live_data[i][3];
         var latitude = live_data[i][1];
         var longtitude = live_data[i][2];
         var callsign = live_data[i][0];
         var sq = live_data[i][6]
+
+
+        
+
+
         if(latitude == null || longtitude == null){
           var latitude = 0;
           var longtitude = 0;
@@ -166,8 +190,56 @@ var updateMap = function(data) {
         }
 
         function onClick(e){
-          document.getElementById("ac_data").innerHTML = this._popup._content;
+          console.log(e);
+
+          let content = this._popup._content
+          split_items = content.split("<br>")
+          callsign = split_items[0].replace("Callsign: ", "")
+          callsign_data = window.localStorage.getItem(callsign);
+          meow = callsign_data.split(",")
+
+
+          var alt_m=parseInt(meow[5] * 3.281);
+          var alt_f = (Math.round(alt_m));
+          if(alt_f > 10000 ){
+            alt_f = alt_f.toString()
+            alt_f = alt_f.substring(0,3)
+            alt_f = "FL" + alt_f
+          }else{
+            alt_f = alt_f + "ft"
+          }
+        
+          var vs_m = parseInt(meow[7] * 196.85);
+          var vs_f = (Math.round(vs_m));
+          if(vs_f == 0){
+            vs_f = "Crusing"
+          }else{
+            vs_f = vs_f + " fpm"
+          }     
+        
+        
+          var gs_m=parseInt(meow[4] * 1.944);
+          var gs_k = (Math.round(gs_m));
+
+
+
+          document.getElementById("ac_cs").innerHTML = "C/S: " + meow[0];
+          document.getElementById("ac_alt").innerHTML = "ALT: " + alt_f;
+          document.getElementById("ac_vs").innerHTML = "V/S: " + vs_f;
+          document.getElementById("ac_kt").innerHTML = "Speed: " + gs_k + "Kts"
+          document.getElementById("ac_sq").innerHTML = "Squawk: " + meow[6];
+
+
+
+
+
         }
+        
+        myStorage = window.localStorage;
+        var accs = myStorage.setItem(callsign,live_data[i])
+
+
+
 
         marker = L.marker([latitude, longtitude], {icon:planeicon, rotationAngle:heading}).on('click',onClick).bindPopup(popup);
         markersLayer.addLayer(marker);
