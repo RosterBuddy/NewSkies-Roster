@@ -67,7 +67,7 @@ html, body {
             events : [
                 @foreach($rosters as $roster)
                     @if($roster->user_id == $id)
-                        @if($roster->description == "work" || $roster->description == null && $roster->annual_leave == 0)
+                        @if($roster->description != "off" && $roster->day_off == 0)
                             {
                                 title : '{{$roster->user->name}}',
                                 backgroundColor : '{{$roster->user->color}}',
