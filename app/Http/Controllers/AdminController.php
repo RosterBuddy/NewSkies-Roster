@@ -38,7 +38,7 @@ class AdminController extends Controller
         if(isset($request->description)){
             $desc = $request->description;
         }else{
-            $desc = "manually set";
+            $desc = "custom";
         }
         Roster::create([
             'user_id' => $request->user_id,
