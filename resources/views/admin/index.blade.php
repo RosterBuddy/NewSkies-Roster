@@ -68,6 +68,20 @@
                     </div>
                 </div>
             </div>
+            <br>
+            <div class="card text-center">
+                <div class="card-header">
+                    Play Area
+                </div>
+                <div class="card-body">
+                    <div style="margin-right: 6%; margin-top: 5%;" class="action-container">
+                        <a class="btn btn-primary btn-lg" href="{{route('test.weather')}}" role="button">Weather</a>
+                    </div>
+                    <div style="margin-right: 6%; margin-top: 5%;" class="action-container">
+                        <a class="btn btn-primary btn-lg" href="{{route('test.flight')}}" role="button">Flight</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
