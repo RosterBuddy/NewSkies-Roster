@@ -17,8 +17,8 @@ Route::get('/', function () {
 
 Auth::routes(['verify' => true, 'register' => false]);
 
-Route::get('weather', 'MetarController@metar');
-Route::get('flight', 'MetarController@flight');
+Route::get('weather', 'MetarController@metar')->name('test.weather');
+Route::get('flight', 'MetarController@flight')->name('test.flight');
 
 
 Route::group(['middleware' => ['isLoggedIn']], function (){
