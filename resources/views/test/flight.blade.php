@@ -125,6 +125,13 @@ function loadJSON(callback) {
   xobj.send(null);  
 }
 
+//here we load the php db connection to fuck everything over.
+
+<?php 
+
+
+?>
+
 
 var planeicon = L.icon({
   iconUrl: 'img/icon.png',
