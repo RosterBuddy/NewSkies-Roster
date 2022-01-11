@@ -36,14 +36,14 @@ request({
                 if(estDepartureAirport == null){
                    var estDepartureAirport = "XXXX"
                 }else{
-                    // console.log(`${dep.callsign} ${dep.estDepartureAirport} ${dep.estArrivalAirport}`);
-                    con.query("INSERT flighttracker(callsign, estDepartureAirport, estArrivalAirport) VALUES (?, ?, ?)",[callsign, estDepartureAirport, estArrivalAirport] , (err, results, fields) => {
-                        if(err & err == "ER_DUPE_ENTRY"){
+                    console.log(`${dep.callsign} ${dep.estDepartureAirport} ${dep.estArrivalAirport}`);
+                    // con.query("INSERT flighttracker(callsign, estDepartureAirport, estArrivalAirport) VALUES (?, ?, ?)",[callsign, estDepartureAirport, estArrivalAirport] , (err, results, fields) => {
+                    //     if(err & err == "ER_DUPE_ENTRY"){
                             
-                        }else{
-                            console.log("Added to database successfully")
-                        }
-                    });
+                    //     }else{
+                    //         console.log("Added to database successfully")
+                    //     }
+                    // });
                 }
             }
         }
