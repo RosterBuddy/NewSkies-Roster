@@ -82,6 +82,8 @@ li {
 <p id="ac_kt">No Aircraft Selected</p>
 <p id="ac_sq">No Aircraft Selected</p>
 <p id="ac_vs">No Aircraft Selected</p>
+<p id="ac_dp">No Aircraft Selected</p>
+<p id="ac_ar">No Aircraft Selected</p>
 
 </div>
 
@@ -95,6 +97,14 @@ li {
 </div>
    
 <script>
+var flight_info = {};
+
+@foreach($flighttracks as $flighttrack)
+  flight_info['{{$flighttrack->callsign}}'] = {
+    "departure": '{{$flighttrack->estDepartureAirport}}',
+    "arrival": '{{$flighttrack->estArrivalAirport}}'
+  }
+@endforeach
 
 var weatherLayer = new L.LayerGroup(); // NOTE: Layer is created here!
 
@@ -125,14 +135,6 @@ function loadJSON(callback) {
   xobj.send(null);  
 }
 
-//here we load the php db connection to fuck everything over.
-
-<?php 
-
-
-?>
-
-
 var planeicon = L.icon({
   iconUrl: 'img/icon.png',
   iconSize:     [40, 40], // size of the icon
@@ -154,6 +156,8 @@ var updateMap = function(data) {
     markersLayer.clearLayers();
 
     for (var i = 0; i < live_data.length; i++) {
+
+
 
       var alt_m=parseInt(live_data[i][5] * 3.281);
       var alt_f = (Math.round(alt_m));
@@ -177,14 +181,15 @@ var updateMap = function(data) {
       var gs_m=parseInt(live_data[i][4] * 1.944);
       var gs_k = (Math.round(gs_m));
 
+        // var callsign, latitude, longtitude, heading, blank_one, blank_two, sq, departure, arrival = live_data[i];
+
         var heading = live_data[i][3];
         var latitude = live_data[i][1];
         var longtitude = live_data[i][2];
         var callsign = live_data[i][0];
         var sq = live_data[i][6]
-
-
-        
+        var departure = live_data[i][8]
+        var arrival = live_data[i][9]
 
 
         if(latitude == null || longtitude == null){
@@ -193,11 +198,10 @@ var updateMap = function(data) {
         }else{
         var popup = L.popup()
             .setLatLng([latitude, longtitude])
-            .setContent(`Callsign: ${callsign}<br>ALT: ${alt_f}<br> GS: ${gs_k}kts<br>${vs_f}<br>SQ: ${sq}`);
+            .setContent(`Callsign: ${callsign}<br>ALT: ${alt_f}<br> GS: ${gs_k}kts<br>${vs_f}<br>SQ: ${sq}<br>Departure: ${departure}<br>Arrival: ${arrival}`);
         }
 
         function onClick(e){
-          console.log(e);
 
           let content = this._popup._content
           split_items = content.split("<br>")
@@ -235,6 +239,8 @@ var updateMap = function(data) {
           document.getElementById("ac_vs").innerHTML = "V/S: " + vs_f;
           document.getElementById("ac_kt").innerHTML = "Speed: " + gs_k + "Kts"
           document.getElementById("ac_sq").innerHTML = "Squawk: " + meow[6];
+          document.getElementById("ac_dp").innerHTML = "DEP: " + meow[8];
+          document.getElementById("ac_ar").innerHTML = "ARR: " + meow[9];
 
 
 
@@ -266,10 +272,16 @@ function GetData() {
     .done(function(data) {
         $.each(data, function(index, value) { //for each line
           for (var i = 0; i < value.length; i++) {
-            cs = value[i][1]
+            cs = value[i][1].trim();
             on_gnd = value[i][8]
             if(cs.slice(0,3) == "RYR" || cs.slice(0,3) == "RUK" && on_gnd != 1){
-              var data_marker = [value[i][1], value[i][6], value[i][5], value[i][10], value[i][9], value[i][7], value[i][14], value[i][11]];
+              var data_marker = [cs, value[i][6], value[i][5], value[i][10], value[i][9], value[i][7], value[i][14], value[i][11]];
+              if (flight_info[cs] !== undefined) {
+                current_flight_info = flight_info[cs]
+                data_marker.push(current_flight_info.departure, current_flight_info.arrival)
+              } else { 
+                data_marker.push('N/A', 'N/A')
+              }
               live_data.push(data_marker);
             }
           }
