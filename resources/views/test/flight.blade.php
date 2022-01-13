@@ -84,6 +84,8 @@ li {
 <p id="ac_vs">No Aircraft Selected</p>
 <p id="ac_dp">No Aircraft Selected</p>
 <p id="ac_ar">No Aircraft Selected</p>
+<p id="ac_reg">No Aircraft Selected</p>
+<p id="ac_type">No Aircraft Selected</p>
 
 </div>
 
@@ -98,11 +100,19 @@ li {
    
 <script>
 var flight_info = {};
+var aircraft_info = {};
 
 @foreach($flighttracks as $flighttrack)
   flight_info['{{$flighttrack->callsign}}'] = {
     "departure": '{{$flighttrack->estDepartureAirport}}',
     "arrival": '{{$flighttrack->estArrivalAirport}}'
+  }
+@endforeach
+
+@foreach($fleets as $fleet)
+  aircraft_info['{{$fleet["icao24"]}}'] = {
+    "reg": '{{$fleet["registration"]}}',
+    "actype": '{{$fleet["typecode"]}}'
   }
 @endforeach
 
@@ -123,17 +133,8 @@ var optionSnowColors = 1; // 0 - do not show snow colors, 1 - show snow colors
 var animationPosition = 0;
 var animationTimer = false;
 
-function loadJSON(callback) {   
-  var xobj = new XMLHttpRequest();
-  xobj.overrideMimeType("application/json");
-  xobj.open('GET', '../ryanair.json', true);
-  xobj.onreadystatechange = function () {
-    if (xobj.readyState == 4 && xobj.status == "200") {
-      callback(JSON.parse(xobj.responseText));
-    }
-  };
-  xobj.send(null);  
-}
+ 
+
 
 var planeicon = L.icon({
   iconUrl: 'img/icon.png',
@@ -147,9 +148,6 @@ var markers = [];
 var live_data = [];
 var markersLayer = new L.LayerGroup(); // NOTE: Layer is created here!
 
-loadJSON(function(json) {
-          console.log(json); // this will log out the json object
-});
 
 var updateMap = function(data) {
     console.log('Refreshing Map...');
@@ -190,6 +188,8 @@ var updateMap = function(data) {
         var sq = live_data[i][6]
         var departure = live_data[i][8]
         var arrival = live_data[i][9]
+        var reg = live_data[i][10]
+        var actype = live_data[i][11]
 
 
         if(latitude == null || longtitude == null){
@@ -198,7 +198,7 @@ var updateMap = function(data) {
         }else{
         var popup = L.popup()
             .setLatLng([latitude, longtitude])
-            .setContent(`Callsign: ${callsign}<br>ALT: ${alt_f}<br> GS: ${gs_k}kts<br>${vs_f}<br>SQ: ${sq}<br>Departure: ${departure}<br>Arrival: ${arrival}`);
+            .setContent(`Callsign: ${callsign}<br>ALT: ${alt_f}<br> GS: ${gs_k}kts<br>${vs_f}<br>SQ: ${sq}<br>Departure: ${departure}<br>Arrival: ${arrival}<br>REG: ${reg}<br>Type: ${actype}`);
         }
 
         function onClick(e){
@@ -239,20 +239,17 @@ var updateMap = function(data) {
           document.getElementById("ac_vs").innerHTML = "V/S: " + vs_f;
           document.getElementById("ac_kt").innerHTML = "Speed: " + gs_k + "Kts"
           document.getElementById("ac_sq").innerHTML = "Squawk: " + meow[6];
-          document.getElementById("ac_dp").innerHTML = "DEP: " + meow[8];
-          document.getElementById("ac_ar").innerHTML = "ARR: " + meow[9];
-
-
-
-
+          document.getElementById("ac_dp").innerHTML = "Dep: " + meow[8];
+          document.getElementById("ac_ar").innerHTML = "Arr: " + meow[9];
+          document.getElementById("ac_reg").innerHTML = "Reg: " + meow[10];
+          document.getElementById("ac_type").innerHTML = "Type: " + meow[11];
 
         }
         
         myStorage = window.localStorage;
         var accs = myStorage.setItem(callsign,live_data[i])
 
-
-
+        //console.log(myStorage[callsign]); // Come back to this
 
         marker = L.marker([latitude, longtitude], {icon:planeicon, rotationAngle:heading}).on('click',onClick).bindPopup(popup);
         markersLayer.addLayer(marker);
@@ -273,6 +270,7 @@ function GetData() {
         $.each(data, function(index, value) { //for each line
           for (var i = 0; i < value.length; i++) {
             cs = value[i][1].trim();
+            icao24 = value[i][0];
             on_gnd = value[i][8]
             if(cs.slice(0,3) == "RYR" || cs.slice(0,3) == "RUK" && on_gnd != 1){
               var data_marker = [cs, value[i][6], value[i][5], value[i][10], value[i][9], value[i][7], value[i][14], value[i][11]];
@@ -280,6 +278,13 @@ function GetData() {
                 current_flight_info = flight_info[cs]
                 data_marker.push(current_flight_info.departure, current_flight_info.arrival)
               } else { 
+                data_marker.push('N/A', 'N/A')
+              } 
+
+              if(aircraft_info[icao24] != undefined){
+                current_aircraft_info = aircraft_info[icao24]
+                data_marker.push(current_aircraft_info.reg, current_aircraft_info.actype)
+              } else{
                 data_marker.push('N/A', 'N/A')
               }
               live_data.push(data_marker);
