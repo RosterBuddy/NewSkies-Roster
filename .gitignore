@@ -12,3 +12,4 @@ npm-debug.log
 yarn-error.log
 public/Python/config_live.json
 public/Python/shift.csv - Copy.BK
+*.lock
