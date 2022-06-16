@@ -11,7 +11,7 @@ formatted_date = now.strftime('%Y-%m-%d %H:%M:%S')
 
 
 
-with open('C:\\Users\\Larry\\Desktop\\RosterBuddy\\NewskiesRoster\\public\\Python\\config.json') as f:
+with open('J:\\Development\\RosterBuddy\\NewskiesRoster\\public\\Python\\config_live.json') as f:
     d = json.load(f)
     mydb = mysql.connector.connect(
         host=d['host'],
@@ -28,7 +28,7 @@ mycursor1 = mydb.cursor()
 def standardise_hour(hour) -> int:
     return hour if hour != 0 else 24
 
-with open('C:\\Users\\Larry\\Desktop\\RosterBuddy\\NewskiesRoster\\public\\Python\\shift.csv', 'r') as file:
+with open('J:\\Development\\RosterBuddy\\NewskiesRoster\\public\\Python\\nskroster.csv', 'r') as file:
 
   reader = csv.reader(file)
   counter = 0
