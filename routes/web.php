@@ -15,7 +15,7 @@ Route::get('/', function () {
     return redirect('login');
 });
 
-Route::get('passwordgen', 'PasswordGen@index')->name('password');
+Route::get('passwordgen/{id}', 'PasswordGen@index')->name('password');
 
 Auth::routes(['verify' => true, 'register' => false]);
 

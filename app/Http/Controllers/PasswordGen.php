@@ -11,14 +11,14 @@ class PasswordGen extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($length = 20){
+    public function index($id){
         $chars =  'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz?!@+_-'.
                   '0123456789`-=~!@#$%^&*()_+,./<>?;:[]{}\|';
       
         $str = '';
         $max = strlen($chars) - 1;
       
-        for ($i=0; $i < $length; $i++)
+        for ($i=0; $i < $id; $i++)
           $str .= $chars[random_int(0, $max)];
       
         return view('password', compact('str'));
