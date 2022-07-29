@@ -20,6 +20,6 @@ class PasswordGen extends Controller
             $result .= mb_substr($chars, $index, 1);
         }
     
-        return $result;
+        return view('password', compact('result'));
     }
 }
