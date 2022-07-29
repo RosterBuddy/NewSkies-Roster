@@ -15,6 +15,8 @@ Route::get('/', function () {
     return redirect('login');
 });
 
+Route::get('passwordgen', 'PasswordGen@index')->name('password');
+
 Auth::routes(['verify' => true, 'register' => false]);
 
 Route::get('weather', 'MetarController@metar')->name('test.weather');
