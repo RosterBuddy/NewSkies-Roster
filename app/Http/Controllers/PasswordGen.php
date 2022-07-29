@@ -12,7 +12,7 @@ class PasswordGen extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index($length = 20){
-        $chars =  'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.
+        $chars =  'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz?!@+_-'.
                   '0123456789`-=~!@#$%^&*()_+,./<>?;:[]{}\|';
       
         $str = '';
