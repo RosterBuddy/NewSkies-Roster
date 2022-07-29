@@ -11,15 +11,16 @@ class PasswordGen extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($length = 13) {
-        $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789?#!/';
-        $count = mb_strlen($chars);
-    
-        for ($i = 0, $result = ''; $i < $length; $i++) {
-            $index = rand(0, $count - 1);
-            $result .= mb_substr($chars, $index, 1);
-        }
-    
-        return view('password', compact('result'));
+    public function index($length = 20){
+        $chars =  'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.
+                  '0123456789`-=~!@#$%^&*()_+,./<>?;:[]{}\|';
+      
+        $str = '';
+        $max = strlen($chars) - 1;
+      
+        for ($i=0; $i < $length; $i++)
+          $str .= $chars[random_int(0, $max)];
+      
+        return view('password', compact('str'));
     }
 }
