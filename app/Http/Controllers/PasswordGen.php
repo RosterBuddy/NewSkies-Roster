@@ -12,10 +12,10 @@ class PasswordGen extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+        $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890?_/-!';
         $pass = array(); 
         $alphaLength = strlen($alphabet) - 1;
-        for ($i = 0; $i < 8; $i++) {
+        for ($i = 0; $i < 13; $i++) {
             $n = rand(0, $alphaLength);
             $pass[] = $alphabet[$n];
         }
