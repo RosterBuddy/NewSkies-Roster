@@ -64,7 +64,7 @@
                                     <a class="dropdown-item" href="{{ route('admin.index')}}">Admin-Area</a>
                                 @endif
 
-                                <a class="dropdown-item" href="{{ route('password')}}">PasswordGen</a>
+                                <a class="dropdown-item" href="{{ route('password', 12)}}">PasswordGen</a>
                                 
                                 <a class="dropdown-item" href="{{ route('profile.show', Auth::id()) }}">Profile</a>
 

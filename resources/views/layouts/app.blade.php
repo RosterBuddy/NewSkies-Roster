@@ -63,7 +63,7 @@
                                 @endif
                                 <a class="dropdown-item" href="{{ route('profile.show', Auth::id()) }}">Profile</a>
 
-                                <a class="dropdown-item" href="{{ route('password')}}">PasswordGen</a>
+                                <a class="dropdown-item" href="{{ route('password', 12)}}">PasswordGen</a>
 
                                 <a class="dropdown-item" href="{{route('team.myteam')}}">My Team</a>
 
