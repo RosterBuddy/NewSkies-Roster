@@ -15,6 +15,10 @@ Route::get('/', function () {
     return redirect('login');
 });
 
+Route::get('/fir/weather', function() {
+    return view('test.fir_flight');
+});
+
 Route::get('passwordgen/{id}', 'PasswordGen@index')->name('password');
 
 Auth::routes(['verify' => true, 'register' => false]);
