@@ -244,6 +244,25 @@ var updateMap = function(data) {
     }
 }
 
+$.ajax({
+        type: "GET",
+        url: "https://raw.githubusercontent.com/vatsimnetwork/vatspy-data-project/master/Boundaries.geojson",
+        dataType: 'json',
+        success: function (response) {
+
+            geojsonLayer = L.geoJson(response, {
+                style: polystyle,
+                onEachFeature: function(feature, layer){
+                layer.bindPopup(feature.properties.id); 
+            }}).addTo(mymap);
+        }
+    });
+
+    function forEachFeature(feature, layer) {
+        var popupContent = "<p>" + feature.properties +"</p>";
+
+        layer.bindPopup(popupContent);
+    }
 
 
 function GetData() {
