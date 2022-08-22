@@ -167,7 +167,7 @@ var mymap = L.map('mapid').setView([47.4177873, 9.0855997], 4);
             geojsonLayer = L.geoJson(response, {
                 style: polystyle,
                 onEachFeature: function (feature, layer) {
-                    layer.bindPopup('Meow');
+                    layer.bindPopup(feature);
                 }
             }).addTo(mymap);
         }
