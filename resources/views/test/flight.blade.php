@@ -102,13 +102,6 @@ li {
 var flight_info = {};
 var aircraft_info = {};
 
-@foreach($flighttracks as $flighttrack)
-  flight_info['{{$flighttrack->callsign}}'] = {
-    "departure": '{{$flighttrack->estDepartureAirport}}',
-    "arrival": '{{$flighttrack->estArrivalAirport}}'
-  }
-@endforeach
-
 @foreach($fleets as $fleet)
   aircraft_info['{{$fleet["icao24"]}}'] = {
     "reg": '{{$fleet["registration"]}}',
