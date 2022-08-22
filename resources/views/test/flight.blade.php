@@ -102,13 +102,6 @@ li {
 var flight_info = {};
 var aircraft_info = {};
 
-@foreach($fleets as $fleet)
-  aircraft_info['{{$fleet["icao24"]}}'] = {
-    "reg": '{{$fleet["registration"]}}',
-    "actype": '{{$fleet["typecode"]}}'
-  }
-@endforeach
-
 var weatherLayer = new L.LayerGroup(); // NOTE: Layer is created here!
 
 var apiData = {};
