@@ -244,6 +244,16 @@ var updateMap = function(data) {
     }
 }
 
+function polystyle(feature) {
+        return {
+            fillColor: 'white',
+            weight: 0.5,
+            opacity: 0.3,
+            color: 'white',  //Outline color
+            fillOpacity: 0
+        };
+    }
+    
 $.ajax({
         type: "GET",
         url: "https://raw.githubusercontent.com/vatsimnetwork/vatspy-data-project/master/Boundaries.geojson",
