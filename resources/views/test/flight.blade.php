@@ -166,18 +166,15 @@ var mymap = L.map('mapid').setView([47.4177873, 9.0855997], 4);
 
             geojsonLayer = L.geoJson(response, {
                 style: polystyle,
-                onEachFeature: function (feature, layer) {
-                    layer.bindPopup(feature.properties);
-                }
-            }).addTo(mymap);
+                onEachFeature: function(feature, layer){
+                layer.bindPopup(feature.properties); 
+            }}).addTo(mymap);
         }
     });
 
-var planeicon = L.icon({
-    iconUrl: 'img/aircraft.png',
-    iconSize:     [40, 40], // size of the icon
-    iconAnchor:   [20, 20], // point of the icon which will correspond to marker's location
-    popupAnchor:  [3, -10] // point from which the popup should open relative to the iconAnchor
-});
+    function forEachFeature(feature, layer) {
+        var popupContent = "<p>" + feature.properties +"</p>";
 
+        layer.bindPopup(popupContent);
+    }
 </script>
