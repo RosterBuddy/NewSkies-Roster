@@ -244,37 +244,6 @@ var updateMap = function(data) {
     }
 }
 
-function polystyle(feature) {
-        return {
-            fillColor: 'white',
-            weight: 0.5,
-            opacity: 0.3,
-            color: 'white',  //Outline color
-            fillOpacity: 0
-        };
-    }
-    
-$.ajax({
-        type: "GET",
-        url: "https://raw.githubusercontent.com/vatsimnetwork/vatspy-data-project/master/Boundaries.geojson",
-        dataType: 'json',
-        success: function (response) {
-
-            geojsonLayer = L.geoJson(response, {
-                style: polystyle,
-                onEachFeature: function(feature, layer){
-                layer.bindPopup(feature.properties.id); 
-            }}).addTo(mymap);
-        }
-    });
-
-    function forEachFeature(feature, layer) {
-        var popupContent = "<p>" + feature.properties +"</p>";
-
-        layer.bindPopup(popupContent);
-    }
-
-
 function GetData() {
   live_data = []
     $.ajax({
@@ -457,6 +426,36 @@ function weather_update(){
   weather_update();
   setInterval(weather_update, 900000); // 15 minutes
 });
+
+function polystyle(feature) {
+        return {
+            fillColor: 'white',
+            weight: 0.5,
+            opacity: 0.3,
+            color: 'white',  //Outline color
+            fillOpacity: 0
+        };
+    }
+    
+$.ajax({
+        type: "GET",
+        url: "https://raw.githubusercontent.com/vatsimnetwork/vatspy-data-project/master/Boundaries.geojson",
+        dataType: 'json',
+        success: function (response) {
+
+            geojsonLayer = L.geoJson(response, {
+                style: polystyle,
+                onEachFeature: function(feature, layer){
+                layer.bindPopup(feature.properties.id); 
+            }}).addTo(mymap);
+        }
+    });
+
+    function forEachFeature(feature, layer) {
+        var popupContent = "<p>" + feature.properties +"</p>";
+
+        layer.bindPopup(popupContent);
+    }
 
 
 </script>
