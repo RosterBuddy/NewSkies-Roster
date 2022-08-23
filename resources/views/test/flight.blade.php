@@ -425,9 +425,8 @@ function weather_update(){
   }
   weather_update();
   setInterval(weather_update, 900000); // 15 minutes
-});
 
-function polystyle(feature) {
+  function polystyle(feature) {
         return {
             fillColor: 'white',
             weight: 0.5,
@@ -457,6 +456,7 @@ $.ajax({
         layer.bindPopup(popupContent);
     }
 
+});
 
 </script>
 
