@@ -189,11 +189,11 @@ var updateMap = function(data) {
             <br>ALT: ${alt_f}
             <br> GS: ${gs_k}kts
             <br>${vs_f}
-            <br>SQ: ${sq}`);
-            // <br>Departure: ${departure}
-            // <br>Arrival: ${arrival}
-            // <br>REG: ${reg}
-            // <br>Type: ${actype}
+            <br>SQ: ${sq}
+            <br>Departure: ${departure}
+            <br>Arrival: ${arrival}
+            <br>REG: ${reg}
+            <br>Type: ${actype}`);
         }
 
         function onClick(e){
