@@ -76,4 +76,4 @@ Route::group(['middleware' => ['admin']], function () {
 
 });
 
-Route::get('airport/{id}', 'WeatherController@airport');
+Route::get('airport/{id}', 'MetarController@airport');
