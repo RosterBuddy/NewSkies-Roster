@@ -8,6 +8,14 @@
     Country: {{$apt->country}}<br>
     Current Time: {{\Carbon\Carbon::now()->timezone($apt->db_timezone)->format('H:i')}} local time<br>
 
+    <style>
+    #mapid { 
+        height: 100%;
+        width: 100%;
+    }
+</style>
+
+<div id="mapid"></div>
 
 <script>
 var weatherLayer = new L.LayerGroup(); // NOTE: Layer is created here!
@@ -177,13 +185,4 @@ var mymap = L.map('mapid').setView([47.4177873, 9.0855997], 4);
         layer.bindPopup(popupContent);
     }
 </script>
-
-<style>
-    #mapid { 
-        height: 100%;
-        width: 100%;
-    }
-</style>
-
-<div id="mapid"></div>
 @endforeach
