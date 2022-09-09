@@ -23,6 +23,6 @@ class MetarController extends Controller
     public function airport($id)
     {
         $airport = Airport::where('iata', $id)->get();
-        return view('test.airport', comptact('airport'));
+        return view('test.airport', compact('airport'));
     }
 }
