@@ -2,7 +2,7 @@
     Airport Name: {{$apt->name}}<br>
     Airport Code: {{$apt->iata}} // {{$apt->icao}}<br>
     Country: {{$apt->country}}<br>
-    Current Time: {{\Carbon\Carbon:::now()->timezone($apt->db_timezone)}}<br>
+    Current Time: {{\Carbon\Carbon::now()->timezone($apt->db_timezone)}}<br>
 
 
 
