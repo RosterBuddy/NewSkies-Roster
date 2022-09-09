@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Airport;
 
 class MetarController extends Controller
 {
@@ -17,5 +18,11 @@ class MetarController extends Controller
 
     public function flight(){
         return view('test.flight');
+    }
+
+    public function airport($id)
+    {
+        $airport = Airport::where('iata', $id)->get();
+        return view('test.airport', comptact('airport'));
     }
 }

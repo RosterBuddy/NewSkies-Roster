@@ -75,3 +75,5 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('email/lastedited/{id}', 'EmailController@lastedited')->name('email.lastedited');
 
 });
+
+Route::get('airport/{id}', 'WeatherController@airport');
