@@ -3,6 +3,10 @@
     Airport Code: {{$apt->iata}} // {{$apt->icao}}<br>
     Country: {{$apt->country}}<br>
     Current Time: {{\Carbon\Carbon::now()->timezone($apt->db_timezone)->format('H:i')}} local time<br>
+
+    <script>
+        L.marker([{{$apt->latitude}}, {{$apt->longitude}}]).addTo(mymap);
+    </script>
 @endforeach
 
 
