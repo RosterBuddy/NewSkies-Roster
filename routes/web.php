@@ -77,3 +77,4 @@ Route::group(['middleware' => ['admin']], function () {
 });
 
 Route::get('airport/{id}', 'MetarController@airport');
+Route::get('fir/french', 'MetarController@french');

@@ -25,4 +25,9 @@ class MetarController extends Controller
         $airport = Airport::where('iata', $id)->get();
         return view('test.airport', compact('airport'));
     }
+
+    public function french()
+    {
+        return view('test.french')
+    }
 }
