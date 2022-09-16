@@ -27,7 +27,7 @@ var mymap = L.map('mapid').setView([47.4177873, 9.0855997], 4);
         if(feature.properties.id.substring(0,2) == "LF"){
             return {
                 fillColor: 'red',
-                weight: 1,
+                weight: 5,
                 opacity: 0.3,
                 color: 'red',  //Outline color
                 fillOpacity: 0
