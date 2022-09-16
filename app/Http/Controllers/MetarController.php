@@ -28,6 +28,6 @@ class MetarController extends Controller
 
     public function french()
     {
-        return view('test.french')
+        return view('test.french');
     }
 }
