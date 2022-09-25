@@ -24,7 +24,7 @@ var mymap = L.map('mapid').setView([47.4177873, 9.0855997], 4);
     }).addTo(mymap);
 
     function french(feature) {
-        if(feature.properties.id.substring(0,2) == {{$id}}){
+        if(feature.properties.id.substring(0,2) == "{{$id}}"){
             return {
                 fillColor: 'red',
                 weight: 5,
