@@ -14,7 +14,7 @@
 
     <style>
     #mapid { 
-        height: 100%;
+        height: 71%;
         width: 100%;
     }
 </style>
