@@ -26,8 +26,8 @@ class MetarController extends Controller
         return view('test.airport', compact('airport'));
     }
 
-    public function french()
+    public function fir_highlight($id)
     {
-        return view('test.french');
+        return view('test.fir_highlight', compact('id'));
     }
 }
