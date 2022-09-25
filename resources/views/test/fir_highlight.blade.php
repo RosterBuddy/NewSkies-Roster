@@ -36,7 +36,7 @@ var mymap = L.map('mapid').setView([47.4177873, 9.0855997], 4);
             return {
                 fillColor: 'white',
                 weight: 0.5,
-                opacity: 0.3,
+                opacity: 1,
                 color: 'white',  //Outline color
                 fillOpacity: 0
             };
