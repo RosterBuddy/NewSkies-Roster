@@ -30,13 +30,13 @@ var mymap = L.map('mapid').setView([47.4177873, 9.0855997], 4);
                 weight: 5,
                 opacity: 1,
                 color: 'red',  //Outline color
-                fillOpacity: 0
+                fillOpacity: 0.1
             };
         }else{
             return {
                 fillColor: 'white',
                 weight: 0.5,
-                opacity: 1,
+                opacity: 0.3,
                 color: 'white',  //Outline color
                 fillOpacity: 0
             };
