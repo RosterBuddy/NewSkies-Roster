@@ -11,14 +11,14 @@ formatted_date = now.strftime('%Y-%m-%d %H:%M:%S')
 
 
 
-with open('J:\\Development\\RosterBuddy\\NewskiesRoster\\public\\Python\\config_live.json') as f:
-    d = json.load(f)
-    mydb = mysql.connector.connect(
-        host=d['host'],
-        user=d['user'],
-        password=d['password'],
-        database=d['database'],
-    )
+# with open('J:\\Development\\RosterBuddy\\NewskiesRoster\\public\\Python\\config_live.json') as f:
+#     d = json.load(f)
+mydb = mysql.connector.connect(
+    host="localhost",
+    user="virtu120_work_calendar",
+    password="Aer&w+kEOBKC",
+    database="virtu120_workcalendar",
+)
 
 
 
