@@ -20,14 +20,14 @@ class PasswordGen extends Controller
         // for ($i=0; $i < $id; $i++)
         //   $str .= $chars[random_int(0, $max)];
 
-      $str = '';
-        function password_generate($chars) 
-        {
+        $str = '';
+        function password_generate($chars) {
           $data = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-=!@#$%&';
           return substr(str_shuffle($data), 0, $chars);
         }
+
         for($t=0; $t < 500; $t++;){
-          $str = password_generate(12)."\n";
+          $str = password_generate($id)."\n";
         }
       
         return view('password', compact('str'));
