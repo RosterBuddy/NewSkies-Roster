@@ -26,7 +26,7 @@ class PasswordGen extends Controller
           return substr(str_shuffle($data), 0, $chars);
         }
 
-        for($t=0; $t < 500; $t++;){
+        for($t=0; $t < 500; $t++){
           $str = password_generate($id)."\n";
         }
       
