@@ -29,6 +29,8 @@ class PasswordGen extends Controller
         for($t=0; $t < 500; $t++){
           $str = password_generate($id)."\n";
         }
+
+        var_dump($str);
       
         return view('password', compact('str'));
     }
