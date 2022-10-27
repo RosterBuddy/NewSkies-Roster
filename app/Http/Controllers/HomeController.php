@@ -30,6 +30,9 @@ class HomeController extends Controller
     public function youtube($id)
     {
         $commentThreads = Youtube::getCommentThreadsByVideoId($id);        
-        return view('test.youtube', compact('commentThreads'));
+
+        $comments = json_decode(json_encode($commentThreads),true)
+
+        return view('test.youtube', compact('comments'));
     }
 }
