@@ -80,3 +80,4 @@ Route::get('airport/{id}', 'MetarController@airport');
 Route::get('fir/{id}', 'MetarController@fir_highlight');
 
 Route::get('youtube/{id}', 'HomeController@youtube');
+Route::get('youtube/channel/{id}', 'HomeController@videos');

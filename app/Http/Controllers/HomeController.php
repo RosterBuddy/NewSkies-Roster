@@ -34,4 +34,10 @@ class HomeController extends Controller
 
         return view('test.youtube', compact('comments'));
     }
+
+    public function videos($id)
+    {
+        $videoList = Youtube::listChannelVideos($id);
+        dd($videoList);
+    }
 }
