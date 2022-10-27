@@ -4,13 +4,15 @@
   <thead class="thead-light">
     <tr>
       <th scope="col">Video ID</th>
-      <th scope="col">Comment</th>      
+      <th scope="col">Name</th>
+      <th scope="col">Comment</th>
     </tr>
   </thead>
   <tbody>
     @foreach($comments as $comment)
         <tr>
             <td>{{$comment["snippet"]["videoId"]}}</td>
+            <td>{{$comment["snippet"]["topLevelComment"]["snippet"]["authorDisplayName"]}}</td>
             <td>{{$comment["snippet"]["topLevelComment"]["snippet"]["textOriginal"]}}</td>
         </tr>
     @endforeach
