@@ -1,7 +1,9 @@
 @extends('layouts.app')
 @section('content')
 
-{{dd($comments)}}
+@foreach($comments as $comment)
+    {{$comment}}
+@endforeach
 
 
 @endsection
