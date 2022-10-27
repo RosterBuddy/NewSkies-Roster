@@ -37,7 +37,7 @@ class HomeController extends Controller
 
     public function videos($id)
     {
-        $playlist = Youtube::getPlaylistById($id);
+        $playlist = Youtube::getPlaylistItemsByPlaylistId($id);
 
         dd($playlist);
     }
