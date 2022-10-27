@@ -39,7 +39,7 @@ class HomeController extends Controller
             $video = json_decode(json_encode(Youtube::getVideoInfo($results["snippet"]["resourceId"]["videoId"])),true);
             $videoid = $results["snippet"]["resourceId"]["videoId"];
             try{
-                if($video["statistics"]["commentCount"] > 0){
+                if($video["statistics"]["commentCount"] ?? '0' > 0){
                     $commentThreads = Youtube::getCommentThreadsByVideoId($videoid);
                     $comments = json_decode(json_encode($commentThreads),true);
                 }
@@ -61,6 +61,7 @@ class HomeController extends Controller
                 if($video["statistics"]["commentCount"] > 0){
                     $commentThreads = Youtube::getCommentThreadsByVideoId($videoid);
                     $comments = json_decode(json_encode($commentThreads),true);
+                    print_r($comments);
                 }
             }catch(Exception $ignored){                
             }
