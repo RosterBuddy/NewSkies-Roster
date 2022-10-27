@@ -33,7 +33,9 @@ class HomeController extends Controller
         $comments = json_decode(json_encode($commentThreads),true);
 
         $channel = Youtube::getChannelById('UCM9kUKETf6Bu8P0lpUQGWwg');
-        dd($channel);
+        $playlists = Youtube::getPlaylistById(['UUM9kUKETf6Bu8P0lpUQGWwg']);
+
+        dd($playlists);
 
         return view('test.youtube', compact('comments'));
     }
