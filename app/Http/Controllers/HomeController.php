@@ -31,7 +31,7 @@ class HomeController extends Controller
     {
         $commentThreads = Youtube::getCommentThreadsByVideoId($id);        
 
-        $comments = json_decode(json_encode($commentThreads),true)
+        $comments = json_decode(json_encode($commentThreads),true);
 
         return view('test.youtube', compact('comments'));
     }
