@@ -52,6 +52,7 @@ class HomeController extends Controller
 
     public function videos($id)
     {
+        $comments = [];
         $playlist = Youtube::getPlaylistItemsByPlaylistId($id);
         foreach($playlist["results"] as $result){
             $results = json_decode(json_encode($result),true);
@@ -60,13 +61,12 @@ class HomeController extends Controller
             try{
                 if($video["statistics"]["commentCount"] ?? '0' > 0){
                     $commentThreads = Youtube::getCommentThreadsByVideoId($videoid);
-                    $comments = json_decode(json_encode($commentThreads),true);
-
-                    return view('test.youtube', compact('comments'));
-
+                    $comments[] = json_decode(json_encode($commentThreads),true);
                 }
             }catch(Exception $ignored){                
             }
+
+            return view('test.youtube', compact('comments'));
         }
     }
 }
