@@ -61,10 +61,12 @@ class HomeController extends Controller
                 if($video["statistics"]["commentCount"] ?? '0' > 0){
                     $commentThreads = Youtube::getCommentThreadsByVideoId($videoid);
                     $comments = json_decode(json_encode($commentThreads),true);
-                    dd($comments);
                 }
             }catch(Exception $ignored){                
             }
+
+            return view('test.youtube', compact('comments'));
+
         }
     }
 }
