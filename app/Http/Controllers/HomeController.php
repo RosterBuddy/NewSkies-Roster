@@ -29,8 +29,23 @@ class HomeController extends Controller
 
     public function youtube($id)
     {
-        $commentThreads = Youtube::getCommentThreadsByVideoId($id);
-        $comments = json_decode(json_encode($commentThreads),true);
+        // $commentThreads = Youtube::getCommentThreadsByVideoId($id);
+        // $comments = json_decode(json_encode($commentThreads),true);
+
+        $playlist = Youtube::getPlaylistItemsByPlaylistId($id);
+
+        foreach($playlist["results"] as $result){
+            $results = json_decode(json_encode($result),true);
+            $video = json_decode(json_encode(Youtube::getVideoInfo($results["snippet"]["resourceId"]["videoId"])),true);
+            $videoid = $results["snippet"]["resourceId"]["videoId"];
+            try{
+                if($video["statistics"]["commentCount"] > 0){
+                    $commentThreads = Youtube::getCommentThreadsByVideoId($videoid);
+                    $comments = json_decode(json_encode($commentThreads),true);
+                }
+            }catch(Exception $ignored){                
+            }
+        }
 
         return view('test.youtube', compact('comments'));
     }
@@ -38,7 +53,18 @@ class HomeController extends Controller
     public function videos($id)
     {
         $playlist = Youtube::getPlaylistItemsByPlaylistId($id);
-
-        dd($playlist);
+        foreach($playlist["results"] as $result){
+            $results = json_decode(json_encode($result),true);
+            $video = json_decode(json_encode(Youtube::getVideoInfo($results["snippet"]["resourceId"]["videoId"])),true);
+            $videoid = $results["snippet"]["resourceId"]["videoId"];
+            try{
+                if($video["statistics"]["commentCount"] > 0){
+                    $commentThreads = Youtube::getCommentThreadsByVideoId($videoid);
+                    $comments = json_decode(json_encode($commentThreads),true);
+                }
+            }catch(Exception $ignored){                
+            }
+        }
     }
+}
 }
