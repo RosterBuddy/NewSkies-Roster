@@ -37,7 +37,8 @@ class HomeController extends Controller
 
     public function videos($id)
     {
-        $videoList = Youtube::listChannelVideos($id);
-        dd($videoList);
+        $playlist = Youtube::getPlaylistById('PL590L5WQmH8fJ54F369BLDSqIwcs-TCfs');
+
+        dd($playlist);
     }
 }
