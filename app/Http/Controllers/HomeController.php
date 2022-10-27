@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Alaouy\Youtube\Facades\Youtube;
 
 class HomeController extends Controller
 {
@@ -24,5 +25,14 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+
+    public function youtube($id)
+    {
+        $commentThreads = Youtube::getCommentThreadsByVideoId($id);
+
+        dd($commentThreads);
+        
+        return view('test.youtube');
     }
 }

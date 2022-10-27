@@ -78,3 +78,5 @@ Route::group(['middleware' => ['admin']], function () {
 
 Route::get('airport/{id}', 'MetarController@airport');
 Route::get('fir/{id}', 'MetarController@fir_highlight');
+
+Route::get('youtube/{id}', 'HomeController@youtube');
