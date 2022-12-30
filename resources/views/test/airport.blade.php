@@ -16,7 +16,12 @@
             }
         </style>
         <br>
-        <div id="mapid"></div>
+        <td style="width:50%;padding-right:5px">
+            <div id="mapid"></div>
+        </td>
+        <td style="width:50%;padding-right:5px">
+            <iframe src="https://metar-taf.com/live/{{$apt->icao}}?zoom=116" frameborder="0"></iframe>
+        </td>
 
         <script>
         var mymap = L.map('mapid').setView([47.4177873, 9.0855997], 4);
