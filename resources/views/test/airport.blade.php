@@ -19,7 +19,7 @@
         <td style="width:50%;padding-right:5px">
             <div id="mapid"></div>
         </td>
-        <td style="width:50%;padding-right:5px">
+        <td style="width:50%;padding-left:5px">
             <iframe src="https://metar-taf.com/live/{{$apt->icao}}?zoom=116" frameborder="0"></iframe>
         </td>
 
